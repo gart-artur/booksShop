@@ -1,0 +1,113 @@
+.example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .mat-sidenav-container{
+  height: 150%;
+  }
+  .mat-drawer-content{
+    
+    align-content: left;
+    text-align-last:center;
+    height: 1000%;
+  }  
+  .mat-button1{ 
+    color : black;
+    position: relative;
+    background-color: #4CAF50;
+    border: none;
+    font-size: 28px;
+    color: #FFFFFF;
+    padding: 12px;
+    width: 250px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;   
+  }
+  .mat-button1:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+  }
+  
+  .mat-button1:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+  }
+
+  .mat-button2{ 
+    color : black;
+    position: relative;
+    background-color: #4CAF50;
+    border: none;
+    font-size: 28px;
+    color: #FFFFFF;
+    padding: 12px;
+    width: 250px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;   
+  }
+  .mat-button2:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+  }
+  
+  .mat-button2:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+  }
+  .mat-button-store{   
+    margin-top :25px;
+    font-size: 30px;
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+  }
+  .mat-button-store:hover {background-color: #3e8e41}
+
+  .mat-button-store:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(5px);
+  }
+  
+  
+  

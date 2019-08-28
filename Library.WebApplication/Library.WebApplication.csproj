@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <UserSecretsId>aspnet-Library.WebApplication-AF2C3374-B4AD-4D58-989B-72792EBCAD00</UserSecretsId>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.1" />
+    <PackageReference Include="Dapper" Version="1.60.6" />
+    <PackageReference Include="Microsoft.AspNet.WebApi" Version="5.2.2" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Owin" Version="5.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Owin.Cors" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Owin.Host.SystemWeb" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Owin.Security.OAuth" Version="3.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.3.0" />
+    <PackageReference Include="Thinktecture.IdentityModel.Core" Version="1.2.0" />
+  </ItemGroup>
+
+
+ 
+
+
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Data\" />
+    <Folder Include="Areas\Identity\Pages\Account\" />
+    <Folder Include="Views\Account\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Library.BusinessLogic\Library.BusinessLogic.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Content Update="Views\Home\Privacy.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
