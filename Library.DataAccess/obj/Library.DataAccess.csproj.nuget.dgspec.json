@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Anuitex-11\\source\\repos\\Library.DataAccess\\Library.DataAccess.csproj": {}
+    "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.DataAccess\\Library.DataAccess.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Anuitex-11\\source\\repos\\Library.DataAccess\\Library.DataAccess.csproj": {
+    "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.DataAccess\\Library.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Anuitex-11\\source\\repos\\Library.DataAccess\\Library.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.DataAccess\\Library.DataAccess.csproj",
         "projectName": "Library.DataAccess",
-        "projectPath": "C:\\Users\\Anuitex-11\\source\\repos\\Library.DataAccess\\Library.DataAccess.csproj",
+        "projectPath": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.DataAccess\\Library.DataAccess.csproj",
         "packagesPath": "C:\\Users\\Anuitex-11\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Anuitex-11\\source\\repos\\Library.DataAccess\\obj\\",
+        "outputPath": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

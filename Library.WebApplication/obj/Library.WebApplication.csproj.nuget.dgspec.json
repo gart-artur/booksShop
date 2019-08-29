@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Anuitex-11\\source\\repos\\Library.WebApplication\\Library.WebApplication.csproj": {}
+    "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.WebApplication\\Library.WebApplication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Anuitex-11\\source\\repos\\Library.BusinessLogic\\Library.BusinessLogic.csproj": {
+    "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.BusinessLogic\\Library.BusinessLogic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Anuitex-11\\source\\repos\\Library.BusinessLogic\\Library.BusinessLogic.csproj",
+        "projectUniqueName": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.BusinessLogic\\Library.BusinessLogic.csproj",
         "projectName": "Library.BusinessLogic",
-        "projectPath": "C:\\Users\\Anuitex-11\\source\\repos\\Library.BusinessLogic\\Library.BusinessLogic.csproj",
+        "projectPath": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.BusinessLogic\\Library.BusinessLogic.csproj",
         "packagesPath": "C:\\Users\\Anuitex-11\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Anuitex-11\\source\\repos\\Library.BusinessLogic\\obj\\",
+        "outputPath": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.BusinessLogic\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -30,8 +30,8 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "C:\\Users\\Anuitex-11\\source\\repos\\Library.DataAccess\\Library.DataAccess.csproj": {
-                "projectPath": "C:\\Users\\Anuitex-11\\source\\repos\\Library.DataAccess\\Library.DataAccess.csproj"
+              "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.DataAccess\\Library.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.DataAccess\\Library.DataAccess.csproj"
               }
             }
           }
@@ -92,14 +92,14 @@
         }
       }
     },
-    "C:\\Users\\Anuitex-11\\source\\repos\\Library.DataAccess\\Library.DataAccess.csproj": {
+    "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.DataAccess\\Library.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Anuitex-11\\source\\repos\\Library.DataAccess\\Library.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.DataAccess\\Library.DataAccess.csproj",
         "projectName": "Library.DataAccess",
-        "projectPath": "C:\\Users\\Anuitex-11\\source\\repos\\Library.DataAccess\\Library.DataAccess.csproj",
+        "projectPath": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.DataAccess\\Library.DataAccess.csproj",
         "packagesPath": "C:\\Users\\Anuitex-11\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Anuitex-11\\source\\repos\\Library.DataAccess\\obj\\",
+        "outputPath": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -180,14 +180,14 @@
         }
       }
     },
-    "C:\\Users\\Anuitex-11\\source\\repos\\Library.WebApplication\\Library.WebApplication.csproj": {
+    "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.WebApplication\\Library.WebApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Anuitex-11\\source\\repos\\Library.WebApplication\\Library.WebApplication.csproj",
+        "projectUniqueName": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.WebApplication\\Library.WebApplication.csproj",
         "projectName": "Library.WebApplication",
-        "projectPath": "C:\\Users\\Anuitex-11\\source\\repos\\Library.WebApplication\\Library.WebApplication.csproj",
+        "projectPath": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.WebApplication\\Library.WebApplication.csproj",
         "packagesPath": "C:\\Users\\Anuitex-11\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Anuitex-11\\source\\repos\\Library.WebApplication\\obj\\",
+        "outputPath": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.WebApplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -206,8 +206,8 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\Users\\Anuitex-11\\source\\repos\\Library.BusinessLogic\\Library.BusinessLogic.csproj": {
-                "projectPath": "C:\\Users\\Anuitex-11\\source\\repos\\Library.BusinessLogic\\Library.BusinessLogic.csproj"
+              "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.BusinessLogic\\Library.BusinessLogic.csproj": {
+                "projectPath": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.BusinessLogic\\Library.BusinessLogic.csproj"
               }
             }
           }

@@ -5677,11 +5677,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Anuitex-11\\source\\repos\\Library.BusinessLogic\\Library.BusinessLogic.csproj",
+      "projectUniqueName": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.BusinessLogic\\Library.BusinessLogic.csproj",
       "projectName": "Library.BusinessLogic",
-      "projectPath": "C:\\Users\\Anuitex-11\\source\\repos\\Library.BusinessLogic\\Library.BusinessLogic.csproj",
+      "projectPath": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.BusinessLogic\\Library.BusinessLogic.csproj",
       "packagesPath": "C:\\Users\\Anuitex-11\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Anuitex-11\\source\\repos\\Library.BusinessLogic\\obj\\",
+      "outputPath": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.BusinessLogic\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5700,8 +5700,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\Anuitex-11\\source\\repos\\Library.DataAccess\\Library.DataAccess.csproj": {
-              "projectPath": "C:\\Users\\Anuitex-11\\source\\repos\\Library.DataAccess\\Library.DataAccess.csproj"
+            "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.DataAccess\\Library.DataAccess.csproj": {
+              "projectPath": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.DataAccess\\Library.DataAccess.csproj"
             }
           }
         }
