@@ -6474,6 +6474,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.2.4",
       "Microsoft.IdentityModel.Tokens >= 5.5.0",
       "NETStandard.Library >= 2.0.3",
+      "System.IdentityModel.Tokens.Jwt >= 5.5.0",
       "linq2db >= 2.8.1"
     ]
   },
@@ -6559,6 +6560,10 @@
             "target": "Package",
             "version": "[2.0.3, )",
             "autoReferenced": true
+          },
+          "System.IdentityModel.Tokens.Jwt": {
+            "target": "Package",
+            "version": "[5.5.0, )"
           },
           "linq2db": {
             "target": "Package",

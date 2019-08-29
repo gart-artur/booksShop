@@ -47,7 +47,6 @@ namespace Library.BusinessLogic.Services
             var token = tokenHandler.CreateToken(tokenDescriptor);
             user.Token = tokenHandler.WriteToken(token);
 
-            // remove password before returning
             user.Password = null;
 
             return user;

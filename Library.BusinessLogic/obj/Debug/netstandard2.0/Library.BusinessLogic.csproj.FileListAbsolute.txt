@@ -7,3 +7,6 @@ C:\Users\Anuitex-11\source\repos\booksShop\Library.BusinessLogic\bin\Debug\netst
 C:\Users\Anuitex-11\source\repos\booksShop\Library.BusinessLogic\bin\Debug\netstandard2.0\Library.DataAccess.dll
 C:\Users\Anuitex-11\source\repos\booksShop\Library.BusinessLogic\bin\Debug\netstandard2.0\Library.DataAccess.pdb
 C:\Users\Anuitex-11\source\repos\booksShop\Library.BusinessLogic\obj\Debug\netstandard2.0\Library.BusinessLogic.csproj.CopyComplete
+C:\Users\Anuitex-11\source\repos\booksShop\Library.BusinessLogic\bin\Debug\netstandard2.0\Library.BusinessLogic.pdb
+C:\Users\Anuitex-11\source\repos\booksShop\Library.BusinessLogic\obj\Debug\netstandard2.0\Library.BusinessLogic.dll
+C:\Users\Anuitex-11\source\repos\booksShop\Library.BusinessLogic\obj\Debug\netstandard2.0\Library.BusinessLogic.pdb
