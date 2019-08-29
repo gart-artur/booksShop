@@ -30,19 +30,11 @@
   <ItemGroup>
     <Folder Include="Areas\Identity\Data\" />
     <Folder Include="Areas\Identity\Pages\Account\" />
-    <Folder Include="Views\Account\" />
   </ItemGroup>
 
 
   <ItemGroup>
     <ProjectReference Include="..\Library.BusinessLogic\Library.BusinessLogic.csproj" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Content Update="Views\Home\Privacy.cshtml">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
   </ItemGroup>
 
 </Project>

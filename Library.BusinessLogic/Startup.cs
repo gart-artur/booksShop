@@ -24,7 +24,6 @@ namespace Library.BusinessLogic
           
             services.AddDbContext<MagazineContext>(options => options.UseSqlServer(connectionString, b => b.MigrationsAssembly("Library.WebApplication")));
             services.AddScoped<IBookService, BookService>();
-            services.AddScoped<IUserService, UserService>();
             services.AddScoped<IAuthorService, AuthorService>();
             services.AddScoped<IBooksAndAuthorService, BooksAndAuthorService>();
 

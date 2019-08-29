@@ -22,3 +22,15 @@ C:\Users\Anuitex-11\source\repos\booksmagazine\Library.BusinessLogic\obj\Debug\n
 C:\Users\Anuitex-11\source\repos\booksmagazine\Library.BusinessLogic\obj\Debug\netstandard2.0\Library.BusinessLogic.AssemblyInfo.cs
 C:\Users\Anuitex-11\source\repos\booksmagazine\Library.BusinessLogic\obj\Debug\netstandard2.0\Library.BusinessLogic.dll
 C:\Users\Anuitex-11\source\repos\booksmagazine\Library.BusinessLogic\obj\Debug\netstandard2.0\Library.BusinessLogic.pdb
+C:\Users\Anuitex-11\source\repos\booksShop\Library.BusinessLogic\obj\Debug\netstandard2.0\Library.BusinessLogic.csprojAssemblyReference.cache
+C:\Users\Anuitex-11\source\repos\booksShop\Library.BusinessLogic\obj\Debug\netstandard2.0\Library.BusinessLogic.csproj.CoreCompileInputs.cache
+C:\Users\Anuitex-11\source\repos\booksShop\Library.BusinessLogic\obj\Debug\netstandard2.0\Library.BusinessLogic.AssemblyInfoInputs.cache
+C:\Users\Anuitex-11\source\repos\booksShop\Library.BusinessLogic\obj\Debug\netstandard2.0\Library.BusinessLogic.AssemblyInfo.cs
+C:\Users\Anuitex-11\source\repos\booksShop\Library.BusinessLogic\bin\Debug\netstandard2.0\Library.BusinessLogic.deps.json
+C:\Users\Anuitex-11\source\repos\booksShop\Library.BusinessLogic\bin\Debug\netstandard2.0\Library.BusinessLogic.dll
+C:\Users\Anuitex-11\source\repos\booksShop\Library.BusinessLogic\bin\Debug\netstandard2.0\Library.BusinessLogic.pdb
+C:\Users\Anuitex-11\source\repos\booksShop\Library.BusinessLogic\bin\Debug\netstandard2.0\Library.DataAccess.dll
+C:\Users\Anuitex-11\source\repos\booksShop\Library.BusinessLogic\bin\Debug\netstandard2.0\Library.DataAccess.pdb
+C:\Users\Anuitex-11\source\repos\booksShop\Library.BusinessLogic\obj\Debug\netstandard2.0\Library.BusinessLogic.csproj.CopyComplete
+C:\Users\Anuitex-11\source\repos\booksShop\Library.BusinessLogic\obj\Debug\netstandard2.0\Library.BusinessLogic.dll
+C:\Users\Anuitex-11\source\repos\booksShop\Library.BusinessLogic\obj\Debug\netstandard2.0\Library.BusinessLogic.pdb
