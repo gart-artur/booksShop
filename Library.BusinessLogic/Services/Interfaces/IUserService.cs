@@ -8,9 +8,8 @@ namespace Library.BusinessLogic.Services.Interfaces
 {
     public interface IUserService
     {
-        User Authenticate(User user);
-        //IEnumerable<User> GetAll();
-        //void Delete(User user);
-        User Create(User user);
+        User Authenticate(string login, string password);
+        IEnumerable<User> GetAll();
+
     }
 }

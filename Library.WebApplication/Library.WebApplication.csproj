@@ -15,21 +15,13 @@
     <PackageReference Include="Microsoft.AspNet.WebApi.Owin" Version="5.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.5.0" />
     <PackageReference Include="Microsoft.Owin.Cors" Version="3.0.0" />
     <PackageReference Include="Microsoft.Owin.Host.SystemWeb" Version="3.0.0" />
     <PackageReference Include="Microsoft.Owin.Security.OAuth" Version="3.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.3.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.5.0" />
     <PackageReference Include="Thinktecture.IdentityModel.Core" Version="1.2.0" />
-  </ItemGroup>
-
-
- 
-
-
-  <ItemGroup>
-    <Folder Include="Areas\Identity\Data\" />
-    <Folder Include="Areas\Identity\Pages\Account\" />
   </ItemGroup>
 
 
