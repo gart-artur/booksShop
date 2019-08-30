@@ -17,24 +17,15 @@ namespace Library.WebApplication.Controllers
       
         public BooksController(IBookService bookService)
         {
-            _bookService = bookService;
-            
+            _bookService = bookService;            
         }
         
         [HttpGet("books")]
-        public IActionResult Index()
+        public IActionResult GetAllBooks()
         {
             var books = _bookService.GetBooks();
             return Ok(books);
-        }
-
-
-        [HttpGet]        
-        public IActionResult Create()
-        {
-            return View();
-        }
-
+        }                     
 
         [HttpPost("create")]
         public IActionResult Create([FromBody]CreateBookViewModel createBookViewModel)
@@ -42,15 +33,6 @@ namespace Library.WebApplication.Controllers
             
             _bookService.Insert(createBookViewModel);
             return RedirectToAction("Index");
-        }
-
-
-        [HttpGet]        
-        public IActionResult Delete()
-        {
-
-            return View();
-
         }
 
         [HttpPost("delete/{id}")]

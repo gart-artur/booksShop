@@ -37,7 +37,6 @@ namespace Library.WebApplication
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BooksMagazine-API", Version = "v1" });
             });
 
-
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
 
@@ -66,11 +65,10 @@ namespace Library.WebApplication
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             BusinessLogic.Startup.ConfigureServices(services, connectionString);
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);        
             
-
-
         }
+
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -89,24 +87,12 @@ namespace Library.WebApplication
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
-            }
-
-         
-
-
-            app.UseCors(x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
-            app.UseAuthentication();
+            }    
+            
             app.UseMvc();
+            app.UseStaticFiles();
 
-          /*  app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });*/
+
         }
     }
 }

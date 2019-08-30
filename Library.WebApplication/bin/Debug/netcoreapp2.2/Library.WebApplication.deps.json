@@ -38,6 +38,7 @@
           "Microsoft.Owin.Host.SystemWeb": "3.0.0",
           "Microsoft.Owin.Security.OAuth": "3.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3",
+          "Swashbuckle": "5.6.0",
           "Swashbuckle.AspNetCore": "5.0.0-rc2",
           "System.IdentityModel.Tokens.Jwt": "5.5.0",
           "Thinktecture.IdentityModel.Core": "1.2.0"
