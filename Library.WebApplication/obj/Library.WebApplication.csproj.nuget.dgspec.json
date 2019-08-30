@@ -51,11 +51,11 @@
             },
             "AutoMapper": {
               "target": "Package",
-              "version": "[8.1.1, )"
+              "version": "[9.0.0, )"
             },
             "Dapper": {
               "target": "Package",
-              "version": "[1.60.6, )"
+              "version": "[2.0.4, )"
             },
             "DocumentFormat.OpenXml": {
               "target": "Package",
@@ -63,15 +63,19 @@
             },
             "EO.Pdf": {
               "target": "Package",
-              "version": "[19.2.11, )"
+              "version": "[19.2.42, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[2.2.4, )"
+              "version": "[2.2.6, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[2.2.4, )"
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "Microsoft.IdentityModel.Tokens": {
               "target": "Package",
@@ -83,13 +87,21 @@
               "version": "[2.0.3, )",
               "autoReferenced": true
             },
+            "Swashbuckle": {
+              "target": "Package",
+              "version": "[5.6.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.0.0-rc2, )"
+            },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[5.5.0, )"
             },
             "linq2db": {
               "target": "Package",
-              "version": "[2.8.1, )"
+              "version": "[2.9.0, )"
             }
           },
           "imports": [
@@ -143,11 +155,11 @@
             },
             "AutoMapper": {
               "target": "Package",
-              "version": "[8.1.1, )"
+              "version": "[9.0.0, )"
             },
             "Dapper": {
               "target": "Package",
-              "version": "[1.60.6, )"
+              "version": "[2.0.4, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
@@ -155,15 +167,19 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[2.2.4, )"
+              "version": "[2.2.6, )"
             },
             "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
-              "version": "[2.2.4, )"
+              "version": "[2.2.6, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[2.2.4, )"
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "Microsoft.Extensions.Identity.Stores": {
               "target": "Package",
@@ -182,6 +198,14 @@
             "NUnit": {
               "target": "Package",
               "version": "[3.12.0, )"
+            },
+            "Swashbuckle": {
+              "target": "Package",
+              "version": "[5.6.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.0.0-rc2, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
@@ -239,15 +263,15 @@
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
-              "version": "[8.1.1, )"
+              "version": "[9.0.0, )"
             },
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
-              "version": "[6.1.1, )"
+              "version": "[7.0.0, )"
             },
             "Dapper": {
               "target": "Package",
-              "version": "[1.60.6, )"
+              "version": "[2.0.4, )"
             },
             "Microsoft.AspNet.WebApi": {
               "target": "Package",
@@ -293,6 +317,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[2.2.3, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.0.0-rc2, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",

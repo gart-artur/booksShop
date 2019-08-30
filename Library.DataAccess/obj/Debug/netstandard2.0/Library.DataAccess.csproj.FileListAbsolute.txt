@@ -1,9 +1,9 @@
 C:\Users\Anuitex-11\source\repos\booksShop\Library.DataAccess\bin\Debug\netstandard2.0\Library.DataAccess.deps.json
 C:\Users\Anuitex-11\source\repos\booksShop\Library.DataAccess\bin\Debug\netstandard2.0\Library.DataAccess.dll
 C:\Users\Anuitex-11\source\repos\booksShop\Library.DataAccess\bin\Debug\netstandard2.0\Library.DataAccess.pdb
+C:\Users\Anuitex-11\source\repos\booksShop\Library.DataAccess\obj\Debug\netstandard2.0\Library.DataAccess.csprojAssemblyReference.cache
 C:\Users\Anuitex-11\source\repos\booksShop\Library.DataAccess\obj\Debug\netstandard2.0\Library.DataAccess.csproj.CoreCompileInputs.cache
 C:\Users\Anuitex-11\source\repos\booksShop\Library.DataAccess\obj\Debug\netstandard2.0\Library.DataAccess.AssemblyInfoInputs.cache
 C:\Users\Anuitex-11\source\repos\booksShop\Library.DataAccess\obj\Debug\netstandard2.0\Library.DataAccess.AssemblyInfo.cs
 C:\Users\Anuitex-11\source\repos\booksShop\Library.DataAccess\obj\Debug\netstandard2.0\Library.DataAccess.dll
 C:\Users\Anuitex-11\source\repos\booksShop\Library.DataAccess\obj\Debug\netstandard2.0\Library.DataAccess.pdb
-C:\Users\Anuitex-11\source\repos\booksShop\Library.DataAccess\obj\Debug\netstandard2.0\Library.DataAccess.csprojAssemblyReference.cache

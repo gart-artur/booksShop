@@ -8,9 +8,6 @@ namespace Library.WebApplication.Controllers
 {
     public class UsersController : Controller
     {
-        public IActionResult Index()
-        {
-            return null;
-        }
+
     }
 }

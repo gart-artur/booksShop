@@ -20,7 +20,7 @@ namespace Library.WebApplication.Controllers
             _bookService = bookService;
             
         }
-        // GET: /<controller>/
+        
         [HttpGet("books")]
         public IActionResult Index()
         {
@@ -28,12 +28,13 @@ namespace Library.WebApplication.Controllers
             return Ok(books);
         }
 
-        [HttpGet]
-        
+
+        [HttpGet]        
         public IActionResult Create()
         {
             return View();
         }
+
 
         [HttpPost("create")]
         public IActionResult Create([FromBody]CreateBookViewModel createBookViewModel)
@@ -43,8 +44,8 @@ namespace Library.WebApplication.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        
+
+        [HttpGet]        
         public IActionResult Delete()
         {
 

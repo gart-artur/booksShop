@@ -7,11 +7,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Library.WebApplication.Controllers
 {
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     public class AuthorsController : Controller
     {
@@ -21,7 +19,7 @@ namespace Library.WebApplication.Controllers
         {
             _authorService = authorService;
         }
-        // GET: /<controller>/
+        
         [HttpGet("authors")]
         public IActionResult Index()
          {
@@ -30,8 +28,6 @@ namespace Library.WebApplication.Controllers
         } 
 
         [HttpGet]
-        //[Authorize(Roles = "Administrator")]
-
         public IActionResult Create()
         {
             return Ok();
@@ -45,12 +41,12 @@ namespace Library.WebApplication.Controllers
         }
 
 
-        [HttpGet]
-        
+        [HttpGet]        
         public IActionResult Delete()
         {
             return Ok();
         }
+
         [HttpPost("delete/{id}")]
         public IActionResult Delete(DeleteAuthorsViewModel deleteAuthorsViewModel)
         {
