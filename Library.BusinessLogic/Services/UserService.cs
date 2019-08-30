@@ -56,7 +56,11 @@ namespace Library.BusinessLogic.Services
 
         public IEnumerable<User> GetAll()
         {
-            throw new NotImplementedException();
+            return _users.Select(x =>
+            {
+                x.Password = null;
+                return x;
+            });
         }
     }
 }
