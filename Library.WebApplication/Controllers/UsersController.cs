@@ -10,7 +10,7 @@ namespace Library.WebApplication.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return null;
         }
     }
 }
