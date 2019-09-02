@@ -4,7 +4,9 @@ using System.Text;
 
 namespace Library.BusinessLogic.Services.ViewModel.Users.GET
 {
-    class UserViewModel
+    public class UserViewModel
     {
+        public string Login { get; set; }
+        public string Password { get; set; }
     }
 }

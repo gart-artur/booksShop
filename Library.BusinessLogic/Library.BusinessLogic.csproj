@@ -30,10 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\ViewModel\Account\Get\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Library.DataAccess\Library.DataAccess.csproj" />
   </ItemGroup>
 

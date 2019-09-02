@@ -9,20 +9,24 @@ using System.Linq;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using AutoMapper;
+using Library.BusinessLogic.Services.ViewModel.Users.POSTT;
 
 namespace Library.BusinessLogic.Services
 {
     public class UserService : IUserService
     {
-        private readonly AppSettings _appSettings; 
+        private readonly AppSettings _appSettings;
+        private readonly IMapper _mapper;
 
         private readonly List<User> _users = new List<User>
         {
             new User {Id = 1, Login ="admin" , Password = "string", FirstName = "Alex" , SecondName = "Alex"}
         };
-        public UserService(IOptions<AppSettings> appsettings)
+        public UserService(IOptions<AppSettings> appsettings,IMapper mapper)
         {
             _appSettings = appsettings.Value;
+            _mapper = mapper;
 
         }
         public User Authenticate(string login, string password)
@@ -47,18 +51,19 @@ namespace Library.BusinessLogic.Services
             var token = tokenHandler.CreateToken(tokenDescriptor);
             user.Token = tokenHandler.WriteToken(token);
 
-            user.Password = null;
-
+/*            user.Password = null;
+*/
             return user;
 
 
         }
 
         public IEnumerable<User> GetAll()
-        {
+        {            
             return _users.Select(x =>
             {
                 x.Password = null;
+                x.Token = null;
                 return x;
             });
         }
