@@ -24,6 +24,7 @@ namespace Library.DataAccess
         public DbSet<Book> Books { get; set; }
         public DbSet<BooksAndAuthor> BooksAndAuthors { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<ShoppingCart> Bucket { get; set; }
         
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

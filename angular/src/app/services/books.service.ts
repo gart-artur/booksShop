@@ -21,4 +21,7 @@ export class BookService {
     getBooks() {
         return this.http.get(`${environment.apiUrl}api/Books/books`);  
     }
+    editBooks(book:Book){
+        return this.http.post(`${environment.apiUrl}api/Books/edit`, book,{ observe: 'response' });
+    }
 }

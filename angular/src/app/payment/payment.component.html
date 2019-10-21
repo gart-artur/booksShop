@@ -1,0 +1,32 @@
+<h3>Payment Page</h3>
+<div class="cart-item" *ngFor= "let item of shippings">
+    <ul style='display: flex;'>
+      <ul>{{item.name}}</ul>    
+      <ul>{{item.price | currency}}</ul> 
+    </ul>    
+</div>
+
+
+<form  [formGroup]="checkForm">
+  <div>
+      <label for="name">
+        Name
+      </label>
+      <input id="name" type="text" formControlName="name">
+    </div>
+  
+    <div>
+      <label for="address">
+        Address
+      </label>
+      <input id="address" type="text" formControlName="address">
+    </div>
+
+    <div>
+        <label for="address">
+          Phone number
+        </label>
+        <input id="telephone" type="text" formControlName="telephone">
+    </div> 
+    <ul><button class="nav-item nav-link-edit" (click)="onSubmin()">Accept my order </button ></ul>
+</form >

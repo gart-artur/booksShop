@@ -10,6 +10,7 @@ namespace Library.BusinessLogic.Services.Interfaces
         Book Get(int Id);
         void Insert(CreateBookViewModel createBookViewModel);
         void Delete(DeleteBooksViewModel deleteBooksViewModel);
-        void Updata(Book book);
+        void Updata(EditBookViewModel editBookViewModel);
+        void AddToBucket(ShoppingCart shoppingCart);
     }
 }

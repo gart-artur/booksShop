@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Book } from '../models/book';
+import { Book, ProductOrder } from '../models/book';
 import { MatTableDataSource } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 import { BookService } from '../services/books.service';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { CartService } from '../services/cart.service';
 
 
 
@@ -20,8 +21,9 @@ let ELEMENT_DATA : Book[] = [];
 
 export class BookComponent implements OnInit {
 
-  displayedColumns: string[] = ['select', 'id','name','price','dataCreate','text'];
-  dataSource = new MatTableDataSource<Book>(ELEMENT_DATA);
+  displayedColumns: string[] = ['select', 'id','name','price','text'];
+  // displayedColumns1: string[] = ['Book', 'Price'];
+  dataSource = new MatTableDataSource<Book>(ELEMENT_DATA); 
   selection = new SelectionModel<Book>(true, []);
   book:Book;
   tableMode: boolean = true;
@@ -29,19 +31,22 @@ export class BookComponent implements OnInit {
   openPopup: boolean;
   textButton: string;
 
+  productItem = new ProductOrder();
+  //  products : ProductOrder[] = [];
 
   constructor(
-    private formBuilder : FormBuilder,
-    private booksService : BookService)  {   this.editForm = new FormGroup({
+    private _booksService : BookService,
+    private _cartService : CartService) 
+    { this.editForm = new FormGroup({
       name: new FormControl(''),
       price : new FormControl(''),
       dataCreate : new FormControl ('')
   })}
 
-  ngOnInit(){
-  
-     this.loadBooks();
+  ngOnInit(){  
+     this.loadBooks();  
   }
+  
 
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -69,40 +74,49 @@ export class BookComponent implements OnInit {
 
   async loadBooks(){
     ELEMENT_DATA=[];
-    this.booksService.getBooks()
+    this._booksService.getBooks()
     .subscribe((books :any) =>{
       books.books.forEach((element:Book)=>{
         ELEMENT_DATA.push(element);
-        this.dataSource = new MatTableDataSource<Book>(ELEMENT_DATA);
-        
-      })
-      console.log(ELEMENT_DATA)
-      
-    });
+        this.dataSource = new MatTableDataSource<Book>(ELEMENT_DATA);        
+      }) 
+      });
   }
 
-  deleteBook(author : Book) {
-    this.booksService.deleteBook(author.id).subscribe(data => console.log(data)
-    );   
-    console.log('delete')  
+  deleteBook(book : Book) {
+    this._booksService.deleteBook(book.id).subscribe();   
+    return this.loadBooks(); 
   }
     
   add( a  : Book){
-    this.booksService.createBook(this.editForm.value)
+    this._booksService.createBook(this.editForm.value)
        .subscribe(data => console.log(data)
        );        
        ELEMENT_DATA.push(this.editForm.value);
        this.dataSource = new MatTableDataSource<Book>(ELEMENT_DATA);
        console.log(a)
  }
-
+ 
   cancel(){
       this.book = new Book();
       this.tableMode = true;
   }
 
-    add1() {
-      this.cancel();
-      this.tableMode = false;
-  }
+//  edit(b:Book){  
+//    this._booksService.editBooks(b).subscribe(res  => this.dataSource );
+//  }
+
+addBookToCart(item:Book){
+  window.alert("This book succes add to Shoping Cart"); 
+  this.productItem.product.push(item)
+  this.productItem.quantity=1;
+  this._cartService.addItemToCart(this.productItem);
+}
+
+
+getTotalCost() {
+  this.productItem.totalPrice=+this.productItem.product.map(t => t.price).reduce((acc, value) => acc + value, 0);
+  return this.productItem.totalPrice;
+}
+
 }

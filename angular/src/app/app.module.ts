@@ -1,7 +1,6 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule }    from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatTableModule } from '@angular/material'  
 
 
@@ -24,6 +23,12 @@ import { MatListModule} from '@angular/material/list';
 import { DemoMaterialModule} from './material-module';
 import { MatSidenavModule} from '@angular/material';
 import { platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CartComponent } from './cart/cart.component';
+import { PaymentComponent } from './payment/payment.component';
+import { StripeFormComponent } from './stripe-form/stripe-form.component';
+import { NgxStripeModule } from 'ngx-stripe';
+import { CustomFormComponent } from './custom-form/custom-form.component';
 
 
 
@@ -35,6 +40,7 @@ import { platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
 @NgModule({
    imports: [
+      NgxStripeModule.forRoot('pk_test_UYSu39pyn95AcTe5TEGgCcsF00wyTDSaR9'),
       BrowserModule,
       ReactiveFormsModule,
       HttpClientModule,
@@ -49,30 +55,23 @@ import { platformBrowserDynamic} from '@angular/platform-browser-dynamic';
       MatButtonModule,
       MatListModule,
       DemoMaterialModule,
-      MatSidenavModule,
-      
-      
-      
-      
-
-     
+      MatSidenavModule
    ],
    declarations: [
       AppComponent,
       HomeComponent,
       LoginComponent,
       AuthorComponent,
-      BookComponent
-
+      BookComponent,
+      CartComponent,
+      PaymentComponent,
+      StripeFormComponent,
+      CustomFormComponent
    ],
-   providers: [
-      { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
-      { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-      fakeBackendProvider
-
-   ],
-   bootstrap: [AppComponent]
-   
+   providers: [],
+   bootstrap: [
+      AppComponent
+   ]
 })
 
 

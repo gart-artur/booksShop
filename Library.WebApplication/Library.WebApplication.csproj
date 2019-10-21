@@ -12,6 +12,7 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Dapper" Version="2.0.4" />
     <PackageReference Include="Microsoft.AspNet.WebApi" Version="5.2.2" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Cors" Version="5.2.7" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Owin" Version="5.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
@@ -19,7 +20,8 @@
     <PackageReference Include="Microsoft.Owin.Cors" Version="3.0.0" />
     <PackageReference Include="Microsoft.Owin.Host.SystemWeb" Version="3.0.0" />
     <PackageReference Include="Microsoft.Owin.Security.OAuth" Version="3.0.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
+    <PackageReference Include="Stripe.net" Version="32.0.0" />
     <PackageReference Include="Swashbuckle" Version="5.6.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc2" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.5.0" />

@@ -15,6 +15,7 @@ using Library.BusinessLogic.Helper;
 using System.Text;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Stripe;
 
 namespace Library.WebApplication
 {
@@ -24,13 +25,20 @@ namespace Library.WebApplication
         {
             Configuration = configuration;
         }
-
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe")); 
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllPolicy",
+                     b => b.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials().WithExposedHeaders("Token-Expired"));
+            });
 
             services.AddSwaggerGen(c =>
             {
@@ -66,6 +74,7 @@ namespace Library.WebApplication
             BusinessLogic.Startup.ConfigureServices(services, connectionString);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);        
+
             
         }
 
@@ -87,10 +96,14 @@ namespace Library.WebApplication
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
-            }    
-            
+            }
+
+            app.UseCors(MyAllowSpecificOrigins);
+            app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseCors("AllowAllPolicy");
             app.UseStaticFiles();
+            
 
 
         }

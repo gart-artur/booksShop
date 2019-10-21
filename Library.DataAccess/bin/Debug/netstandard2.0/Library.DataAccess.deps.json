@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "3b52c758a211a6edee73bafc81420c6693ed6744"
+    "signature": "47f2a9cefc2edf0cbd9417f5bcd70cb3ef027a1e"
   },
   "compilationOptions": {},
   "targets": {
@@ -21,6 +21,7 @@
           "Microsoft.IdentityModel.Tokens": "5.5.0",
           "NETStandard.Library": "2.0.3",
           "NUnit": "3.12.0",
+          "Stripe.net": "32.0.0",
           "Swashbuckle": "5.6.0",
           "Swashbuckle.AspNetCore": "4.0.1",
           "System.IdentityModel.Tokens.Jwt": "5.5.0"
@@ -950,6 +951,18 @@
       "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
       "runtime.win-x64.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
       "runtime.win-x86.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
+      "Stripe.net/32.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.1",
+          "System.Configuration.ConfigurationManager": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Stripe.net.dll": {
+            "assemblyVersion": "32.0.0.0",
+            "fileVersion": "32.0.0.0"
+          }
+        }
+      },
       "Swashbuckle/5.6.0": {
         "dependencies": {
           "Microsoft.AspNet.WebApi.WebHost": "4.0.20710",
@@ -1068,7 +1081,7 @@
         "runtime": {
           "lib/netstandard1.3/System.Collections.NonGeneric.dll": {
             "assemblyVersion": "4.0.2.0",
-            "fileVersion": "4.6.24705.1"
+            "fileVersion": "4.6.24702.1"
           }
         }
       },
@@ -1117,7 +1130,7 @@
         "runtime": {
           "lib/netstandard1.0/System.ComponentModel.Primitives.dll": {
             "assemblyVersion": "4.1.1.0",
-            "fileVersion": "4.6.24702.1"
+            "fileVersion": "4.6.24705.1"
           }
         }
       },
@@ -1143,6 +1156,18 @@
           "lib/netstandard1.5/System.ComponentModel.TypeConverter.dll": {
             "assemblyVersion": "4.1.1.0",
             "fileVersion": "4.6.24702.1"
+          }
+        }
+      },
+      "System.Configuration.ConfigurationManager/4.5.0": {
+        "dependencies": {
+          "System.Security.Cryptography.ProtectedData": "4.5.0",
+          "System.Security.Permissions": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll": {
+            "assemblyVersion": "4.0.1.0",
+            "fileVersion": "4.6.26515.6"
           }
         }
       },
@@ -1579,6 +1604,17 @@
         },
         "runtime": {
           "lib/netstandard2.0/System.Security.Cryptography.Pkcs.dll": {
+            "assemblyVersion": "4.0.3.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        }
+      },
+      "System.Security.Cryptography.ProtectedData/4.5.0": {
+        "dependencies": {
+          "System.Memory": "4.5.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll": {
             "assemblyVersion": "4.0.3.0",
             "fileVersion": "4.6.26515.6"
           }
@@ -2350,6 +2386,13 @@
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
     },
+    "Stripe.net/32.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KxQK5cohORetJqQ/4gR5o/Qe5uDlfCvzWptxxeu8K12LjnMvS2gElKfTjR3ypTL4+vHho8hA8NkpTgkt3Y50jw==",
+      "path": "stripe.net/32.0.0",
+      "hashPath": "stripe.net.32.0.0.nupkg.sha512"
+    },
     "Swashbuckle/5.6.0": {
       "type": "package",
       "serviceable": true,
@@ -2423,7 +2466,7 @@
     "System.Collections.NonGeneric/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-prtjIEMhGUnQq6RnPEYLpFt8AtLbp9yq2zxOSrY7KJJZrw25Fi97IzBqY7iqssbM61Ek5b8f3MG/sG1N2sN5KA==",
+      "sha512": "sha512-LE/oChpRvkSi3U25u0KnJcI44JeDZ1QJCyN4qFDx2uusEypdqR24w7lKYw21eYe5esuCBuc862wRmpF63Yy1KQ==",
       "path": "system.collections.nongeneric/4.3.0",
       "hashPath": "system.collections.nongeneric.4.3.0.nupkg.sha512"
     },
@@ -2451,7 +2494,7 @@
     "System.ComponentModel.Primitives/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-KMVuoQ+8bMQ/Z59M3s64num5AD74X5YSqVc7ibwGkPTfmmkl2W8VuSxLRJtpw4KzQrSKUgR0BLbF0adPfcTSGQ==",
+      "sha512": "sha512-j8GUkCpM8V4d4vhLIIoBLGey2Z5bCkMVNjEZseyAlm4n5arcsJOeI3zkUP+zvZgzsbLTYh4lYeP/ZD/gdIAPrw==",
       "path": "system.componentmodel.primitives/4.3.0",
       "hashPath": "system.componentmodel.primitives.4.3.0.nupkg.sha512"
     },
@@ -2461,6 +2504,13 @@
       "sha512": "sha512-HZiP0DwTHJ+C+rdFqP47nBYUh5283kcwXIGY2zOVVhsJmVI/2tYiX2zNRdjRQRHsTox58Ydkec6h0pWSh8wAsw==",
       "path": "system.componentmodel.typeconverter/4.3.0",
       "hashPath": "system.componentmodel.typeconverter.4.3.0.nupkg.sha512"
+    },
+    "System.Configuration.ConfigurationManager/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UIFvaFfuKhLr9u5tWMxmVoDPkFeD+Qv8gUuap4aZgVGYSYMdERck4OhLN/2gulAc0nYTEigWXSJNNWshrmxnng==",
+      "path": "system.configuration.configurationmanager/4.5.0",
+      "hashPath": "system.configuration.configurationmanager.4.5.0.nupkg.sha512"
     },
     "System.Data.SqlClient/4.6.1": {
       "type": "package",
@@ -2727,6 +2777,13 @@
       "sha512": "sha512-TGQX51gxpY3K3I6LJlE2LAftVlIMqJf0cBGhz68Y89jjk3LJCB6SrwiD+YN1fkqemBvWGs+GjyMJukl6d6goyQ==",
       "path": "system.security.cryptography.pkcs/4.5.0",
       "hashPath": "system.security.cryptography.pkcs.4.5.0.nupkg.sha512"
+    },
+    "System.Security.Cryptography.ProtectedData/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wLBKzFnDCxP12VL9ANydSYhk59fC4cvOr9ypYQLPnAj48NQIhqnjdD2yhP8yEKyBJEjERWS9DisKL7rX5eU25Q==",
+      "path": "system.security.cryptography.protecteddata/4.5.0",
+      "hashPath": "system.security.cryptography.protecteddata.4.5.0.nupkg.sha512"
     },
     "System.Security.Cryptography.Xml/4.5.0": {
       "type": "package",

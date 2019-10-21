@@ -19,7 +19,11 @@ namespace Library.BusinessLogic.Configuration
             CreateMap<DeleteBooksViewModel, Book>()
                 .ForMember(x => x.BooksAndAuthors, opt => opt.Ignore())
                 .ForMember(x => x.DateModified, opt => opt.Ignore())
-                 .ForMember(x => x.DateCreated, opt => opt.Ignore());
+                 .ForMember(x => x.DateCreated, opt => opt.Ignore());            
+            CreateMap<EditBookViewModel, Book>()
+                .ForMember(x => x.BooksAndAuthors, opt => opt.Ignore())
+                .ForMember(x => x.DateModified, opt => opt.Ignore())
+                .ForMember(x => x.DateCreated, opt => opt.Ignore());
 
 
         }

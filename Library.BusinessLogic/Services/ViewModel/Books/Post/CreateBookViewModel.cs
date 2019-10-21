@@ -9,7 +9,7 @@ namespace Library.BusinessLogic.Services.ViewModel.Books.Post
 {
   public  class CreateBookViewModel
     {
-        public int Id { get; set; }
+        
         [Display(Name = "Enter Book name")]
         public string Name { get; set; }
         [Display(Name = "Enter Price")]

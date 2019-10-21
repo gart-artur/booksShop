@@ -82,15 +82,13 @@ namespace Library.WebApplication.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DateCreated");
-
-                    b.Property<DateTime?>("DateModified");
-
-                    b.Property<string>("FullName");
+                    b.Property<string>("FirstName");
 
                     b.Property<string>("Login");
 
                     b.Property<string>("Password");
+
+                    b.Property<string>("SecondName");
 
                     b.Property<string>("Token");
 

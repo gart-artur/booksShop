@@ -11,4 +11,5 @@ namespace Library.DataAccess.Interfaces
     public interface IBookRepository : IRepository<Book>
     {
     }
+
 }

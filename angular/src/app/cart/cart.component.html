@@ -1,0 +1,15 @@
+<h3>Shopping Cart</h3>
+<div class="cart-item" *ngFor= "let item of items">
+    <ul style='display: flex;'>
+        <ul>{{item.name}}</ul>    
+        <ul>{{item.price | currency}}</ul> 
+    </ul>    
+</div>
+<ul><button class="nav-item nav-link-edit" [routerLink]="['/books']">Back to Books Storege</button ></ul>
+  <ul>  <button class="nav-item nav-link-edit" [routerLink]="['/payment']">BUT IT NOW</button > </ul>
+
+
+
+
+
+     

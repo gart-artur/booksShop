@@ -14,23 +14,23 @@ namespace Library.WebApplication.Controllers
     public class BooksController : Controller
     {
         private readonly IBookService _bookService;
-      
+
         public BooksController(IBookService bookService)
         {
-            _bookService = bookService;            
+            _bookService = bookService;
         }
-        
+
         [HttpGet("books")]
         public IActionResult GetAllBooks()
         {
             var books = _bookService.GetBooks();
             return Ok(books);
-        }                     
+        }
 
         [HttpPost("create")]
         public IActionResult Create([FromBody]CreateBookViewModel createBookViewModel)
         {
-            
+
             _bookService.Insert(createBookViewModel);
             return RedirectToAction("Index");
         }
@@ -41,6 +41,13 @@ namespace Library.WebApplication.Controllers
             _bookService.Delete(deleteBooksViewModel);
             return RedirectToAction("Index");
 
+        }
+
+        [HttpPost("edit")]
+        public IActionResult Edit([FromBody]EditBookViewModel editBookViewModel)
+        {
+            _bookService.Updata(editBookViewModel);
+            return Ok(editBookViewModel);
         }
     }
 }

@@ -19,6 +19,11 @@ namespace Library.BusinessLogic.Services
             _mapper = mapper;
         }
 
+        public void AddToBucket(ShoppingCart shoppingCart)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void Delete(DeleteBooksViewModel deleteBooksViewModel)
         {
             var book = new Book();
@@ -56,9 +61,11 @@ namespace Library.BusinessLogic.Services
         }
 
 
-        public void Updata(Book book)
+        public void Updata(EditBookViewModel editBookViewModel)
         {
+            Book book = _mapper.Map<EditBookViewModel, Book>(editBookViewModel);
             _bookRepository.Update(book);
+            
         }
 
 
