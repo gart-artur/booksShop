@@ -16,9 +16,11 @@ namespace Library.DataAccess
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IAuthorRepository, AuthorRepository>();
             services.AddScoped<IBooksAdnAuthorRepository, BooksAndAuthorRepository>();
-            
+
+
 
         }
     }

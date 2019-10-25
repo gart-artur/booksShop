@@ -17,29 +17,19 @@ namespace Library.BusinessLogic.Services
         {
             _bookRepository = bookRepository;
             _mapper = mapper;
-        }
-
-        public void AddToBucket(ShoppingCart shoppingCart)
-        {
-            throw new System.NotImplementedException();
-        }
+        }    
 
         public void Delete(DeleteBooksViewModel deleteBooksViewModel)
         {
             var book = new Book();
             book.Id = deleteBooksViewModel.Id;
-
             _bookRepository.Delete(book);
-
         }
 
         public Book Get(int Id)
-        {
-             
+        {             
             return _bookRepository.Get(Id);
-        }
-
-    
+        }   
 
         public GetAllBooksViewModelItem GetBooks()
         {
@@ -47,20 +37,14 @@ namespace Library.BusinessLogic.Services
             var bookView = new GetAllBooksViewModelItem();
             bookView.Books = _mapper.Map<IEnumerable<Book>, List<GetAllBooksViewModelItem>>(books); 
             return bookView;
-
         }
 
         public void Insert(CreateBookViewModel createBookViewModel)
-        {
-            
+        {           
             Book book = _mapper.Map<CreateBookViewModel, Book>(createBookViewModel);
-            _bookRepository.Insert(book);
-
-           
+            _bookRepository.Insert(book);          
 
         }
-
-
         public void Updata(EditBookViewModel editBookViewModel)
         {
             Book book = _mapper.Map<EditBookViewModel, Book>(editBookViewModel);

@@ -27,6 +27,8 @@ namespace Library.BusinessLogic
             services.AddScoped<IAuthorService, AuthorService>();
             services.AddScoped<IBooksAndAuthorService, BooksAndAuthorService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IOrderService, OrderService>();
+
 
             DataAccess.Startup.ConfigureServices(services);
             ConfigureAutomapper(services);
@@ -39,6 +41,8 @@ namespace Library.BusinessLogic
                 mc.AddProfile(new BookProfile());
                 mc.AddProfile(new AuthorProfile());
                 mc.AddProfile(new UserProfile());
+                mc.AddProfile(new OrderProfile());
+
             });
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);

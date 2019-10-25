@@ -8,9 +8,9 @@ export class ProductOrder{
     product : Book[];
     quantity : number;
     totalPrice: number;
-    constructor() {
-        this.product = [];
-    }
+     constructor() {
+         this.product = [];
+     }
 }
 
  export class ProductOrders{

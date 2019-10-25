@@ -8,7 +8,5 @@ namespace Library.BusinessLogic.Services.Interfaces
 
         BooksAndAuthor GetAuthorAndBooks(int AuthorId);
 
-
-
     }
 }

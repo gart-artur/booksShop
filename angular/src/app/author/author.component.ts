@@ -7,12 +7,7 @@ import { AuthorService } from '../services/authors.service';
 import {SelectionModel} from '@angular/cdk/collections';
 import { element } from 'protractor';
 
-
-
-
 let ELEMENT_DATA : Author[] = [];
-
-
 @Component({
   selector: 'app-author',
   templateUrl: './author.component.html',
@@ -22,7 +17,6 @@ let ELEMENT_DATA : Author[] = [];
 })
 
 export class AuthorComponent implements OnInit {
-
   displayedColumns: string[] = ['select', 'id', 'name','text'];
   dataSource = new MatTableDataSource<Author>(ELEMENT_DATA);
   selection = new SelectionModel<Author>(true, []);
@@ -37,15 +31,13 @@ export class AuthorComponent implements OnInit {
     private authorServise : AuthorService,
     )  {   this.editForm = new FormGroup({
       name: new FormControl('')
-  })
-  
+  }) 
 
 }
 
   ngOnInit(){
   
-     this.loadAuthors();
-     
+     this.loadAuthors();     
   }
 
   isAllSelected() {

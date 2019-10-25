@@ -11,6 +11,5 @@ namespace Library.BusinessLogic.Services.Interfaces
         void Insert(CreateBookViewModel createBookViewModel);
         void Delete(DeleteBooksViewModel deleteBooksViewModel);
         void Updata(EditBookViewModel editBookViewModel);
-        void AddToBucket(ShoppingCart shoppingCart);
     }
 }

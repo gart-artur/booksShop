@@ -7,16 +7,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
-
-
 namespace Library.DataAccess
 {
     public class MagazineContext : IdentityDbContext<IdentityUser>
-    {
-      
-
+    {    
         public MagazineContext(DbContextOptions<MagazineContext> options):base(options)
         {
         }
@@ -24,15 +18,11 @@ namespace Library.DataAccess
         public DbSet<Book> Books { get; set; }
         public DbSet<BooksAndAuthor> BooksAndAuthors { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<ShoppingCart> Bucket { get; set; }
-        
-
+        public DbSet<Order> Orders { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<BooksAndAuthor>().HasKey(sc => new {sc.BookId, sc.AuthorId });
-            
+            modelBuilder.Entity<BooksAndAuthor>().HasKey(sc => new {sc.BookId, sc.AuthorId });            
         }
-
     }
 }

@@ -26,9 +26,9 @@ import { platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CartComponent } from './cart/cart.component';
 import { PaymentComponent } from './payment/payment.component';
-import { StripeFormComponent } from './stripe-form/stripe-form.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { CustomFormComponent } from './custom-form/custom-form.component';
+import { OrderComponent } from './order/order.component';
 
 
 
@@ -65,8 +65,8 @@ import { CustomFormComponent } from './custom-form/custom-form.component';
       BookComponent,
       CartComponent,
       PaymentComponent,
-      StripeFormComponent,
-      CustomFormComponent
+      CustomFormComponent,
+      OrderComponent
    ],
    providers: [],
    bootstrap: [

@@ -5,6 +5,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { BookService } from '../services/books.service';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { CartService } from '../services/cart.service';
+import { Observable, of } from 'rxjs';
 
 
 
@@ -22,7 +23,6 @@ let ELEMENT_DATA : Book[] = [];
 export class BookComponent implements OnInit {
 
   displayedColumns: string[] = ['select', 'id','name','price','text'];
-  // displayedColumns1: string[] = ['Book', 'Price'];
   dataSource = new MatTableDataSource<Book>(ELEMENT_DATA); 
   selection = new SelectionModel<Book>(true, []);
   book:Book;
@@ -30,9 +30,9 @@ export class BookComponent implements OnInit {
   editForm: FormGroup;
   openPopup: boolean;
   textButton: string;
-
+  
   productItem = new ProductOrder();
-  //  products : ProductOrder[] = [];
+
 
   constructor(
     private _booksService : BookService,
@@ -40,12 +40,16 @@ export class BookComponent implements OnInit {
     { this.editForm = new FormGroup({
       name: new FormControl(''),
       price : new FormControl(''),
-      dataCreate : new FormControl ('')
-  })}
+      dataCreate : new FormControl ('')      
+    })
+    this.productItem.totalPrice=0;
+  }
 
+  
   ngOnInit(){  
      this.loadBooks();  
   }
+  
   
 
   isAllSelected() {
@@ -67,7 +71,7 @@ export class BookComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 
-  openAddAuthorPopup(text) {
+  openAddBookPopup(text) {
     this.openPopup = true
     this.textButton = text;
   }
@@ -102,21 +106,18 @@ export class BookComponent implements OnInit {
       this.tableMode = true;
   }
 
-//  edit(b:Book){  
-//    this._booksService.editBooks(b).subscribe(res  => this.dataSource );
-//  }
-
 addBookToCart(item:Book){
   window.alert("This book succes add to Shoping Cart"); 
   this.productItem.product.push(item)
   this.productItem.quantity=1;
+  this.productItem.totalPrice+= item.price;
   this._cartService.addItemToCart(this.productItem);
 }
 
 
-getTotalCost() {
-  this.productItem.totalPrice=+this.productItem.product.map(t => t.price).reduce((acc, value) => acc + value, 0);
-  return this.productItem.totalPrice;
-}
+// getTotalCost() {
+//   this.productItem.totalPrice=+this.productItem.product.map(t => t.price).reduce((acc, value) => acc + value, 0);
+//   return this.productItem.totalPrice;
+// }
 
 }

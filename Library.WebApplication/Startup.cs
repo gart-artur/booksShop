@@ -1,21 +1,16 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using Library.BusinessLogic.Helper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using AutoMapper;
-using System;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
-using Library.DataAccess;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using Library.BusinessLogic.Helper;
-using System.Text;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Stripe;
+using System;
+using System.Text;
 
 namespace Library.WebApplication
 {
@@ -25,8 +20,8 @@ namespace Library.WebApplication
         {
             Configuration = configuration;
         }
-        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public IConfiguration Configuration { get; }
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -38,6 +33,8 @@ namespace Library.WebApplication
             {
                 options.AddPolicy("AllowAllPolicy",
                      b => b.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials().WithExposedHeaders("Token-Expired"));
+                options.AddPolicy("OriginPolicy",
+                  b => b.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowCredentials());
             });
 
             services.AddSwaggerGen(c =>
@@ -98,14 +95,10 @@ namespace Library.WebApplication
                 app.UseHsts();
             }
 
-            app.UseCors(MyAllowSpecificOrigins);
             app.UseHttpsRedirection();
-            app.UseMvc();
-            app.UseCors("AllowAllPolicy");
             app.UseStaticFiles();
-            
-
-
+            app.UseCors("AllowAllPolicy");
+            app.UseMvc();
         }
     }
 }

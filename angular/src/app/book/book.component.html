@@ -1,5 +1,6 @@
-<button mat-raised-button class='mat-raised-button' style='float: left' (click)="openAddAuthorPopup('Add Book')">Create</button>
+<button mat-raised-button class='mat-raised-button' style='float: left' (click)="openAddBookPopup('Add Book')">Create</button>
 <ul><button class="nav-item nav-link-edit" [routerLink]="['/cart']">Cart</button ></ul>
+  <ul><button class="nav-item nav-link-edit" [routerLink]="['/order']">My Orders</button ></ul>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       
     <!-- Checkbox Column -->
@@ -56,17 +57,20 @@
     </tr>
   </table>
 
-  <!-- FOR CREATE AUTHOR  -->
-  <div class='wrap' *ngIf="this.openPopup">
+<!-- FOR CREATE AUTHOR  -->
+<div class='wrap' *ngIf="this.openPopup">
     <mat-nav-list class="wrap__popup" [formGroup]="editForm">
       <button mat-raised-button class='mat-raised-button ' style='float: right' (click)="this.openPopup = false" style='color: red; float: right; padding: 0; min-width: 25px;
         line-height: 25px;'>X</button>
      
       <a mat-list-item>
-        <input type="text" placeholder="Book name" aria-label="element" matInput formControlName="name">
+        <input type="text" placeholder="Books name" aria-label="element" matInput formControlName="name">
+        <input type="text" placeholder="Price" aria-label="element" matInput formControlName="price">
       </a>
       <a mat-list-item>
-        <input type="text" placeholder="Price" aria-label="element" matInput formControlName="price">
-      </a>      
-      </mat-nav-list>
+        <button mat-raised-button class='mat-raised-button ' style='float: right'
+          (keydown.enter)="textButton === 'Edit' ?  changeSelected(true) : add(element)"
+          (click)="textButton === 'Edit' ?  changeSelected(true) : add(element)">Add</button>
+      </a>
+    </mat-nav-list>
   </div>

@@ -10,15 +10,23 @@ import { MatSidenav } from '@angular/material';
 })
 export class CartComponent implements OnInit {
   items:ProductOrder[]=[];
- 
+  sumOfPrice:ProductOrder;
+
   constructor(private _cartService : CartService) { }
 
   ngOnInit() {    
     this.items = this._cartService.getItemsFromCart().product
-    console.log(this.items);
-    
-
+    this.sumOfPrice = this._cartService.getItemsFromCart().totalPrice
+    console.log(this.sumOfPrice)
+    console.log(this.items)
   }
+ 
+  
+  
+
+  
+
+  
 
 
 

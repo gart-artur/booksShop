@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Library.BusinessLogic.Helper;
+using Library.BusinessLogic.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 using Stripe;
@@ -12,9 +13,18 @@ namespace Library.WebApplication.Controllers
     [Route("api/[controller]")]
     public class StripeController : Controller
     {
-        [HttpPost("charge")]
-        public IActionResult Charge(PayViewModel payViewModel)
+        private readonly IOrderService _orderService;
+        public StripeController(IOrderService orderService)
         {
+            _orderService = orderService;
+        }
+
+        [HttpPost("charge")]
+        public IActionResult Charge([FromBody]PayViewModel payViewModel)
+        {
+            var i = payViewModel.BookName.Length - 1;
+            payViewModel.BookName = payViewModel.BookName.Substring(0, i);
+            payViewModel.Total *= 100;
             var customers = new CustomerService();
             var charges = new ChargeService();
             var customer = customers.Create(new CustomerCreateOptions
@@ -39,15 +49,25 @@ namespace Library.WebApplication.Controllers
             });
             if (charge.Status == "succeeded")
             {
-                string BalanceTransactionId = charge.BalanceTransactionId;
+                payViewModel.Total /= 100;
+                payViewModel.Status = charge.Status;
+                payViewModel.Created = charge.Created;
+                payViewModel.BalanceTransactionId = charge.BalanceTransactionId;
+                _orderService.Add(payViewModel);
                 return Ok();
             }
 
             else{
-                string message = "Sorry, something wrong....";
+                string message = "Sorry, something wrong...";
             }
 
             return View();
+        }
+        [HttpGet("order")]
+        public IActionResult Order()
+        {
+            var orders = _orderService.GetAll();
+            return Ok(orders);
         }
     }
 }

@@ -16,7 +16,6 @@ namespace Library.DataAccess.Entities
        [DisplayFormat(DataFormatString = "{0:MMMM dd, yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateCreated { get; set; } = DateTime.Now;
 
-        public DateTime? DateModified { get; set; }
 
     }
 }

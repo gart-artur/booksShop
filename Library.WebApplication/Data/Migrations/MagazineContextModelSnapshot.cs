@@ -27,8 +27,6 @@ namespace Library.WebApplication.Data.Migrations
 
                     b.Property<DateTime>("DateCreated");
 
-                    b.Property<DateTime?>("DateModified");
-
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
@@ -43,8 +41,6 @@ namespace Library.WebApplication.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("DateCreated");
-
-                    b.Property<DateTime?>("DateModified");
 
                     b.Property<string>("Name");
 
@@ -63,8 +59,6 @@ namespace Library.WebApplication.Data.Migrations
 
                     b.Property<DateTime>("DateCreated");
 
-                    b.Property<DateTime?>("DateModified");
-
                     b.Property<int>("Id");
 
                     b.HasKey("BookId", "AuthorId");
@@ -74,6 +68,31 @@ namespace Library.WebApplication.Data.Migrations
                     b.HasIndex("AuthorId");
 
                     b.ToTable("BooksAndAuthors");
+                });
+
+            modelBuilder.Entity("Library.DataAccess.Entities.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BalanceTransactionId");
+
+                    b.Property<string>("BookName");
+
+                    b.Property<DateTime>("Created");
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Status");
+
+                    b.Property<long>("Total");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Library.DataAccess.Entities.User", b =>
