@@ -6,6 +6,7 @@ import { BookService } from '../services/books.service';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { CartService } from '../services/cart.service';
 import { Observable, of } from 'rxjs';
+import { SortBooksByParamsView } from '../models/sort-books-by-params-view';
 
 
 
@@ -28,6 +29,7 @@ export class BookComponent implements OnInit {
   book:Book;
   tableMode: boolean = true;
   editForm: FormGroup;
+  filterForm:FormGroup;
   openPopup: boolean;
   textButton: string;
   
@@ -36,18 +38,32 @@ export class BookComponent implements OnInit {
 
   constructor(
     private _booksService : BookService,
-    private _cartService : CartService) 
+    private _cartService : CartService,
+    private _formBuilder :FormBuilder) 
     { this.editForm = new FormGroup({
       name: new FormControl(''),
       price : new FormControl(''),
-      dataCreate : new FormControl ('')      
+      dataCreate : new FormControl ('')            
     })
     this.productItem.totalPrice=0;
   }
 
   
   ngOnInit(){  
-     this.loadBooks();  
+     this.loadBooks();
+     this.filterForm = this._formBuilder.group({
+			name: [''],
+      minPrice: [''],
+			maxPrice: ['']      
+    });  
+  }
+
+  sortItem(){
+    let sortparams = new SortBooksByParamsView();
+    sortparams.name = this.filterForm.controls['name'].value;
+    sortparams.minPrice = this.filterForm.controls['minPrice'].value;
+    sortparams.maxPrice = this.filterForm.controls['maxPrice'].value;
+    this._booksService.sortByParams(sortparams);
   }
   
   

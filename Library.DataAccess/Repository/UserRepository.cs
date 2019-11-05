@@ -8,21 +8,18 @@ using System.Text;
 
 namespace Library.DataAccess.Repository
 {
-
+/*
     public class UserRepository : IUserRepository
     {
         protected MagazineContext _context;
         public UserRepository(MagazineContext context)
         {
             _context = context;
-        }
-      
-
+        }     
         public void Create(User user)   
         {
             _context.Users.Add(user);
         }
-
         public User Authenticate(string login, string password)
         {
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
@@ -37,5 +34,5 @@ namespace Library.DataAccess.Repository
             // authentication successful
             return (user);
         }
-    }
+    }*/
 }

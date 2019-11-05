@@ -10,6 +10,7 @@ namespace Library.DataAccess.Interfaces
 {
     public interface IBookRepository : IRepository<Book>
     {
+        IEnumerable<Book> SortByParams(string name, int minPrice, int maxPrice);
     }
 
 }

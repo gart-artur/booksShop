@@ -1,8 +1,5 @@
-﻿using DocumentFormat.OpenXml.Wordprocessing;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Library.BusinessLogic.Services.ViewModel.Books.Post
 {

@@ -8,6 +8,5 @@ namespace Library.BusinessLogic.Services.Interfaces
     {
         IEnumerable<GetAllOrderViewItem> GetAll();
         void Add(PayViewModel payViewModel);
-
     }
 }

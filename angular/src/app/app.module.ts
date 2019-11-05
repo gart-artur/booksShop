@@ -5,14 +5,10 @@ import { MatTableModule } from '@angular/material'
 
 
 // used to create fake backend
-import { fakeBackendProvider } from './helpers/fake-backend';
 
 import { AppComponent }  from './app.component';
 import { routing }        from './app.routing';
-import { BasicAuthInterceptor } from './helpers/basic-auth.interceptor';
-import { ErrorInterceptor } from './helpers/error.interceptor';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
 import { AuthorComponent } from './author/author.component';
 import { BookComponent } from './book/book.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -29,6 +25,10 @@ import { PaymentComponent } from './payment/payment.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { CustomFormComponent } from './custom-form/custom-form.component';
 import { OrderComponent } from './order/order.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { StorageModule } from '@ngx-pwa/local-storage';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 
@@ -55,7 +55,8 @@ import { OrderComponent } from './order/order.component';
       MatButtonModule,
       MatListModule,
       DemoMaterialModule,
-      MatSidenavModule
+      MatSidenavModule,
+      // StorageModule.forRoot(IDBNoWrap)
    ],
    declarations: [
       AppComponent,
@@ -66,7 +67,10 @@ import { OrderComponent } from './order/order.component';
       CartComponent,
       PaymentComponent,
       CustomFormComponent,
-      OrderComponent
+      OrderComponent,
+      RegisterComponent,
+      ForgotPasswordComponent,
+      
    ],
    providers: [],
    bootstrap: [

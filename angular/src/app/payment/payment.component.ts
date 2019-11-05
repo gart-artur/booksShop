@@ -14,8 +14,9 @@ export class PaymentComponent implements OnInit {
 
   bookNameArray:string='';
   shippings :ProductOrder [] = [];
+  shippingsItem :ProductOrder [] = [];
   priceForOrder : ProductOrder;
-  allname :ProductOrder [] = [];
+  // allname :ProductOrder [] = [];
 
   userpPayModel = new UserPayViewModel;
   
@@ -33,6 +34,7 @@ export class PaymentComponent implements OnInit {
     
   ngOnInit() {
     this.shippings = this._cartService.getItemsFromCart().product
+    this.shippingsItem = this._cartService.getItemsFromCart().product.name;
     this.priceForOrder = this._cartService.getItemsFromCart().totalPrice
   }  
   
@@ -69,21 +71,14 @@ export class PaymentComponent implements OnInit {
     });    
   }
 
-      // getNameOfAllBook (){
-      //   for(let i=0; i<this.shippings.length;i++){
-      //     this.bookNameArray+=(this.shippings[i].name)+','
-      //   }    
-      //   return this.bookNameArray
-      // }
+  getNameOfAllBook (){
+    for(let i=0; i<this.shippings.length;i++){
+      this.bookNameArray+=(this.shippings[i].name)+','
+    }    
+    return this.bookNameArray
+  }
      
-getNameOfAllBook (){
-  for(let i=0; i<this.shippings.length;i++){
-    for (let j=0; j<this.shippings.length;j++){
-      this.bookNameArray+=(this.shippings[i].product[j].name)+''}
 
-  }  
-  return this.bookNameArray;
- }
 
   async sendUserModel(){
     await this.getToken()    

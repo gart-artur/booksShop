@@ -16,3 +16,7 @@ export class ProductOrder{
  export class ProductOrders{
      productOrders : ProductOrder[] = [];
  }
+
+ export class FilterBooksListView{
+     books :Book[];
+ }

@@ -30,7 +30,6 @@ namespace Library.DataAccess.Repository
         }
 
         public IEnumerable<T> GetAll()
-
         {
             return _entities.ToList();
         }
@@ -49,6 +48,7 @@ namespace Library.DataAccess.Repository
         public void Update(T entity)
         {
             _entities.Update(entity);
-        }
+        }     
+
     }
 }

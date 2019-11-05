@@ -4,18 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-
-
 namespace Library.DataAccess.Entities
 {
     public class BaseEntity
     {
         [Key]
         public int Id { get; set; }
+        public string Name { get; set; }
 
-       [DisplayFormat(DataFormatString = "{0:MMMM dd, yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:MMMM dd, yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateCreated { get; set; } = DateTime.Now;
-
-
     }
 }

@@ -9,16 +9,17 @@ using System.Text;
 using System.Threading.Tasks;
 namespace Library.DataAccess
 {
-    public class MagazineContext : IdentityDbContext<IdentityUser>
+    public class MagazineContext : IdentityDbContext<User>
     {    
         public MagazineContext(DbContextOptions<MagazineContext> options):base(options)
         {
+            Database.EnsureCreated();
         }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<BooksAndAuthor> BooksAndAuthors { get; set; }
-        public DbSet<User> Users { get; set; }
         public DbSet<Order> Orders { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

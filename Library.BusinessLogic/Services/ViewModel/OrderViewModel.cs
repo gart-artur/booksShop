@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Library.BusinessLogic.Services.ViewModel
 {
     public class OrderViewModel
     {
         public List<GetAllOrderViewItem> Orders { get; set; }
-
         public OrderViewModel()
         {
             Orders = new List<GetAllOrderViewItem>();

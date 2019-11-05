@@ -4,17 +4,14 @@ using Library.BusinessLogic.Services.Interfaces;
 using Library.BusinessLogic.Services.ViewModel;
 using Library.DataAccess.Entities;
 using Library.DataAccess.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Library.BusinessLogic.Services
 {
     public class OrderService : IOrderService
     {
         private readonly IOrderRepository _orderRepository;
-        private IMapper _mapper;
-        
+        private IMapper _mapper;        
         public OrderService(IOrderRepository orderRepository, IMapper mapper)
         {
             _orderRepository = orderRepository;
@@ -25,24 +22,11 @@ namespace Library.BusinessLogic.Services
             Order order = _mapper.Map<PayViewModel, Order>(payViewModel);
             _orderRepository.Insert(order);
         }
-
         public IEnumerable<GetAllOrderViewItem> GetAll()
         {
             var orders = _orderRepository.GetAll();            
             var returnedModel = _mapper.Map<IEnumerable<Order>,IEnumerable<GetAllOrderViewItem>>(orders);
             return returnedModel;
         }
-
-        /*  public OrderViewModel GetAll()
-          {
-              IEnumerable<Order> orders = _orderRepository.GetAll();
-                         var orderView = new OrderViewModel();
-                        List<OrderViewModel> orderView = _mapper.Map<IEnumerable<Order>, List<OrderViewModel>>(orders);
-                 return orderView;
-          }*/
-
-
-
     }
-
 }

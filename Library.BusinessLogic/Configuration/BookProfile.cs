@@ -2,9 +2,6 @@
 using Library.BusinessLogic.Services.ViewModel.Books.Get;
 using Library.BusinessLogic.Services.ViewModel.Books.Post;
 using Library.DataAccess.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Library.BusinessLogic.Configuration
 {
@@ -22,8 +19,6 @@ namespace Library.BusinessLogic.Configuration
             CreateMap<EditBookViewModel, Book>()
                 .ForMember(x => x.BooksAndAuthors, opt => opt.Ignore())
                 .ForMember(x => x.DateCreated, opt => opt.Ignore());
-
-
         }
     }
 }

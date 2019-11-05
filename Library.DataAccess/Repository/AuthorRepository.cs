@@ -13,8 +13,6 @@ namespace Library.DataAccess.Repository
     {
          public AuthorRepository(MagazineContext context) : base(context)
          {   
-
-
          }
     }
 }

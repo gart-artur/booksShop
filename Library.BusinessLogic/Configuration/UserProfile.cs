@@ -1,9 +1,4 @@
 ﻿using AutoMapper;
-using Library.BusinessLogic.Services.ViewModel.Users.GET;
-using Library.DataAccess.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Library.BusinessLogic.Configuration
 {
@@ -11,7 +6,7 @@ namespace Library.BusinessLogic.Configuration
     {
         public UserProfile()
         {
-            CreateMap<UserViewModel, User>();
+            
         }
     }
 }

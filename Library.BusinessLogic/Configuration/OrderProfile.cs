@@ -2,9 +2,6 @@
 using Library.BusinessLogic.Helper;
 using Library.BusinessLogic.Services.ViewModel;
 using Library.DataAccess.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Library.BusinessLogic.Configuration
 {
@@ -18,7 +15,6 @@ namespace Library.BusinessLogic.Configuration
             CreateMap<PayViewModel, Order>()
              .ForMember(x => x.Id, opt => opt.Ignore())
              .ForMember(x => x.Created, opt => opt.Ignore());
-
         }
     }
 }

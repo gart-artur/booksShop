@@ -1,8 +1,6 @@
 ﻿using Library.BusinessLogic.Services.Interfaces;
 using Library.BusinessLogic.Services.ViewModel.Books.Get;
 using Library.BusinessLogic.Services.ViewModel.Books.Post;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -30,7 +28,6 @@ namespace Library.WebApplication.Controllers
         [HttpPost("create")]
         public IActionResult Create([FromBody]CreateBookViewModel createBookViewModel)
         {
-
             _bookService.Insert(createBookViewModel);
             return RedirectToAction("Index");
         }
@@ -40,7 +37,6 @@ namespace Library.WebApplication.Controllers
         {
             _bookService.Delete(deleteBooksViewModel);
             return RedirectToAction("Index");
-
         }
 
         [HttpPost("edit")]
@@ -48,6 +44,12 @@ namespace Library.WebApplication.Controllers
         {
             _bookService.Updata(editBookViewModel);
             return Ok(editBookViewModel);
+        }
+        [HttpPost("sort")]
+        public IActionResult Sort (SortBooksByParamsView model)
+        {
+            _bookService.SortByParams(model);
+            return Ok();
         }
     }
 }

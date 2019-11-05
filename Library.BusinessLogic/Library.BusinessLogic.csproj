@@ -11,6 +11,7 @@
     <PackageReference Include="DocumentFormat.OpenXml" Version="2.9.1" />
     <PackageReference Include="EO.Pdf" Version="19.2.42" />
     <PackageReference Include="linq2db" Version="2.9.0" />
+    <PackageReference Include="MailKit" Version="2.3.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />

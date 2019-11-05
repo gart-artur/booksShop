@@ -1,8 +1,5 @@
 ﻿using Library.DataAccess.Entities;
 using Library.DataAccess.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Library.DataAccess.Repository
 {
@@ -10,7 +7,6 @@ namespace Library.DataAccess.Repository
     {
         public OrderRepository(MagazineContext context) : base(context)
         {
-
         }
     }
 }

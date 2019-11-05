@@ -11,13 +11,13 @@ namespace Library.DataAccess.Repository
 {
     public class BooksAndAuthorRepository : Repository<BooksAndAuthor>, IBooksAdnAuthorRepository
     {
+        private readonly MagazineContext context;
+        private DbSet<BooksAndAuthor> entities;
         public BooksAndAuthorRepository(MagazineContext context) : base(context)
         {
             this.context = context;
             entities = context.Set<BooksAndAuthor>();
         }
-        private readonly MagazineContext context;
-        private DbSet<BooksAndAuthor> entities;
 
         public BooksAndAuthor GetAuthorAndBooks(int AuthorId)
         {

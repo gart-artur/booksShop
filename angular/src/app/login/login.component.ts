@@ -1,59 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
-import { AuthenticationService } from '../services/authentication.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { LoginModel } from '../models/login-model';
+import { RegisterService } from '../services/register.service';
+import { JwtView } from '../models/JwtView';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
-
-@Component({templateUrl: 'login.component.html'})
-
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
 export class LoginComponent implements OnInit {
-    loginForm: FormGroup;
-    loading = false;
-    submitted = false;
-    returnUrl: string;
-    error = '';
 
-    constructor(
-        private formBuilder: FormBuilder,
-        private route: ActivatedRoute,
-        private router: Router,
-        private authenticationService: AuthenticationService) {}
+  loginForm: FormGroup;
 
-    ngOnInit() {
-        this.loginForm = this.formBuilder.group({
-            username: ['', Validators.required],
-            password: ['', Validators.required]
-        });
+  constructor(private _formBuilder :FormBuilder,
+    private _accountService:RegisterService,
+    private _authService : AuthService,
+    private _router:Router) { }
 
-        // reset login status
-        this.authenticationService.logout();
+  ngOnInit() {
+		this.loginForm = this._formBuilder.group({
+			email: [''],
+			password: ['']
+    });
+  }
 
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-    }
+  login() {
+    let loginModel = new LoginModel();
+    loginModel.email = this.loginForm.controls['email'].value;
+    loginModel.password = this.loginForm.controls['password'].value;
 
-    // convenience getter for easy access to form fields
-    get f() { return this.loginForm.controls; }
+    this._accountService.login(loginModel).subscribe((response: JwtView) => {
+      this._authService.login(response);
+      this._router.navigate(['books']);
+    });
+  }
 
-    onSubmit() {
-        this.submitted = true;
-
-        // stop here if form is invalid
-        if (this.loginForm.invalid) {
-            return;
-        }
-
-        this.loading = true;
-        this.authenticationService.login(this.f.username.value, this.f.password.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.router.navigate([this.returnUrl]);
-                },
-                error => {
-                    this.error = error;
-                    this.loading = false;
-                });
-    }
 }

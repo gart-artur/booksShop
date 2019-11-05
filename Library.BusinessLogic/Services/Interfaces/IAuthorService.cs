@@ -11,10 +11,7 @@ namespace Library.BusinessLogic.Services.Interfaces
         Author Get(int Id);
         void Insert(CreateAuthorViewModel createAuthorViewModel);
         void Delete(DeleteAuthorsViewModel deleteAuthorsViewModel);
-
-        void Updata(Author author);
-
-        
+        void Updata(Author author);        
     }
 }
 

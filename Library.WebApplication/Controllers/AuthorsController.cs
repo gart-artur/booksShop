@@ -1,13 +1,7 @@
-﻿
-using AutoMapper;
-using Library.BusinessLogic.Services.Interfaces;
+﻿using Library.BusinessLogic.Services.Interfaces;
 using Library.BusinessLogic.Services.ViewModel.Authors.Get;
 using Library.BusinessLogic.Services.ViewModel.Authors.Post;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Library.WebApplication.Controllers
 {
@@ -39,9 +33,6 @@ namespace Library.WebApplication.Controllers
         {
             _authorService.Delete(deleteAuthorsViewModel);
             return RedirectToAction("Index");
-
         }
-
-
     }
 }
