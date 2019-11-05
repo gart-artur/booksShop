@@ -49,7 +49,7 @@ namespace Library.BusinessLogic.Services
         {
            var booksView = new FilterBooksListView();            
                 var chekName = string.IsNullOrEmpty(model.Name) ? "" : model.Name;
-                var chekMaxPrice = model.MaxParice > 0 ? model.MaxParice : int.MaxValue;
+                var chekMaxPrice = model.MaxPrice > 0 ? model.MaxPrice : int.MaxValue;
             if (!(model.MinPrice > chekMaxPrice))
             {
                 booksView.Books = _bookRepository.SortByParams(chekName, model.MinPrice, chekMaxPrice);

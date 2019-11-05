@@ -8,23 +8,19 @@ import { CartService } from '../services/cart.service';
 import { Observable, of } from 'rxjs';
 import { SortBooksByParamsView } from '../models/sort-books-by-params-view';
 
-
-
-let ELEMENT_DATA : Book[] = [];
-
+let BOOKS_ARRAY : Book[] = [];
 
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.scss'],
-  providers: [BookService]
-  
+  providers: [BookService]  
 })
 
 export class BookComponent implements OnInit {
 
   displayedColumns: string[] = ['select', 'id','name','price','text'];
-  dataSource = new MatTableDataSource<Book>(ELEMENT_DATA); 
+  dataSource = new MatTableDataSource<Book>(BOOKS_ARRAY); 
   selection = new SelectionModel<Book>(true, []);
   book:Book;
   tableMode: boolean = true;
@@ -32,9 +28,8 @@ export class BookComponent implements OnInit {
   filterForm:FormGroup;
   openPopup: boolean;
   textButton: string;
-  
-  productItem = new ProductOrder();
 
+  productItem = new ProductOrder();
 
   constructor(
     private _booksService : BookService,
@@ -47,27 +42,16 @@ export class BookComponent implements OnInit {
     })
     this.productItem.totalPrice=0;
   }
-
   
-  ngOnInit(){  
-     this.loadBooks();
+  ngOnInit(){      
      this.filterForm = this._formBuilder.group({
 			name: [''],
       minPrice: [''],
 			maxPrice: ['']      
-    });  
-  }
-
-  sortItem(){
-    let sortparams = new SortBooksByParamsView();
-    sortparams.name = this.filterForm.controls['name'].value;
-    sortparams.minPrice = this.filterForm.controls['minPrice'].value;
-    sortparams.maxPrice = this.filterForm.controls['maxPrice'].value;
-    this._booksService.sortByParams(sortparams);
+    });
+    this.loadBooksByFilters();  
   }
   
-  
-
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
@@ -92,29 +76,38 @@ export class BookComponent implements OnInit {
     this.textButton = text;
   }
 
-  async loadBooks(){
-    ELEMENT_DATA=[];
-    this._booksService.getBooks()
-    .subscribe((books :any) =>{
-      books.books.forEach((element:Book)=>{
-        ELEMENT_DATA.push(element);
-        this.dataSource = new MatTableDataSource<Book>(ELEMENT_DATA);        
+  sortItem(){
+    let sortparams = new SortBooksByParamsView();
+    sortparams.name = this.filterForm.controls['name'].value==null ? '' : this.filterForm.controls['name'].value
+    sortparams.minPrice = this.filterForm.controls['minPrice'].value == 0 ? 0 : this.filterForm.controls['minPrice'].value 
+    sortparams.maxPrice = this.filterForm.controls['maxPrice'].value == 0 ? 0 : this.filterForm.controls['maxPrice'].value 
+    return sortparams;
+  }
+
+  async loadBooksByFilters(){
+    BOOKS_ARRAY=[];
+    let getNullFilters = await this.sortItem()
+    this._booksService.sortByParams(getNullFilters)
+    .subscribe((item :any) =>{
+      let checkItemInArray = item.books.length == 0 ? window.alert("We haven`t books like you search.") : 
+      item.books.forEach((element:Book)=>{
+        BOOKS_ARRAY.push(element);
+        this.dataSource = new MatTableDataSource<Book>(BOOKS_ARRAY);    
       }) 
-      });
+    });
   }
 
   deleteBook(book : Book) {
     this._booksService.deleteBook(book.id).subscribe();   
-    return this.loadBooks(); 
+    return this.loadBooksByFilters(); 
   }
     
   add( a  : Book){
     this._booksService.createBook(this.editForm.value)
        .subscribe(data => console.log(data)
        );        
-       ELEMENT_DATA.push(this.editForm.value);
-       this.dataSource = new MatTableDataSource<Book>(ELEMENT_DATA);
-       console.log(a)
+       BOOKS_ARRAY.push(this.editForm.value);
+       this.dataSource = new MatTableDataSource<Book>(BOOKS_ARRAY);
  }
  
   cancel(){
@@ -129,11 +122,4 @@ addBookToCart(item:Book){
   this.productItem.totalPrice+= item.price;
   this._cartService.addItemToCart(this.productItem);
 }
-
-
-// getTotalCost() {
-//   this.productItem.totalPrice=+this.productItem.product.map(t => t.price).reduce((acc, value) => acc + value, 0);
-//   return this.productItem.totalPrice;
-// }
-
 }

@@ -57,7 +57,6 @@
     </tr>
   </table>
 
-<!-- FOR CREATE AUTHOR  -->
 <div class='wrap' *ngIf="this.openPopup">
     <mat-nav-list class="wrap__popup" [formGroup]="editForm">
       <button mat-raised-button class='mat-raised-button ' style='float: right' (click)="this.openPopup = false" style='color: red; float: right; padding: 0; min-width: 25px;
@@ -65,7 +64,7 @@
      
       <a mat-list-item>
         <input type="text" placeholder="Books name" aria-label="element" matInput formControlName="name">
-        <input type="text" placeholder="Price" aria-label="element" matInput formControlName="price">
+        <input type="number" placeholder="Price" aria-label="element" matInput formControlName="price">
       </a>
       <a mat-list-item>
         <button (click)="add(element)">Add</button>
@@ -73,7 +72,7 @@
     </mat-nav-list>
   </div>
   <div class="main_wrapper">
-    <span>Login page</span>
+    <span>Filters</span>
     <div class="w3-container align-center w3-card login-card">
       <form [formGroup]="filterForm">   
         <div class="form-group">
@@ -96,6 +95,6 @@
   
         <br />
         <button class="w3-btn w3-blue"            
-                (click)="login()">
+                (click)="loadBooksByFilters()">
           Search <i class="w3-medium fa fa-check"></i>
         </button>

@@ -32,7 +32,7 @@ namespace Library.WebApplication.Controllers
         public IActionResult Delete(DeleteAuthorsViewModel deleteAuthorsViewModel)
         {
             _authorService.Delete(deleteAuthorsViewModel);
-            return RedirectToAction("Index");
+            return Ok();
         }
     }
 }

@@ -58,7 +58,7 @@ namespace Library.BusinessLogic.Services
                 JwtView jwtModel = await GenerateJwtToken(model.Email, appUser);
                 return jwtModel;
             }
-            throw new ApplicationException("INVALID LOGIN");
+            throw new ApplicationException("Incorrect login or password. User : " + model.Email);
         }
 
         private async Task<JwtView> GenerateJwtToken(string email, User user)
@@ -89,7 +89,6 @@ namespace Library.BusinessLogic.Services
                 AccessToken = encodedAccess,
             };
         }
-
         public async Task SendEmailAsync(string email, string encodedCode, string userId, string message,string nameActionOnController)
         {
             try
@@ -156,7 +155,6 @@ namespace Library.BusinessLogic.Services
                 Console.WriteLine("Error" + e.Message);
             }
         }
-
         public async Task ForgotPassword(ForgotPasswordView model)
         {
             try { 

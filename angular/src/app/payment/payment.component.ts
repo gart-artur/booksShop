@@ -73,7 +73,7 @@ export class PaymentComponent implements OnInit {
 
   getNameOfAllBook (){
     for(let i=0; i<this.shippings.length;i++){
-      this.bookNameArray+=(this.shippings[i].name)+','
+      this.bookNameArray+=[i+1] + ')' +(this.shippings[i].name)+'.  '
     }    
     return this.bookNameArray
   }

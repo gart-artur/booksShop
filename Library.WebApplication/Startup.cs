@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Library.BusinessLogic.Helper;
+using Library.WebApplication.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -90,7 +91,7 @@ namespace Library.WebApplication
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
             app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseStaticFiles();

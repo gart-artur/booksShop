@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Library.BusinessLogic.Services.Interfaces;
 using Library.BusinessLogic.Services.ViewModel.Users;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.WebApplication.Controllers
 {
     [Route("api/[controller]")]
     public class AccountController : Controller
-    {
-        private readonly IAccountService _accountService;
-
+    {        
+        private readonly IAccountService _accountService;      
         public AccountController(IAccountService accountService)
         {
             _accountService = accountService;
@@ -22,9 +17,8 @@ namespace Library.WebApplication.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-
             var result = await _accountService.RegisterUser(model);
-            return Ok();
+            return Ok(result);
         }
 
         [HttpPost("login")]

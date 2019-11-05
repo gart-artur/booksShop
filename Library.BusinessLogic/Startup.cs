@@ -24,6 +24,7 @@ namespace Library.BusinessLogic
             services.AddScoped<IBooksAndAuthorService, BooksAndAuthorService>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IStripeService, StripeService>();
 
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<MagazineContext>()

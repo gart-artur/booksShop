@@ -14,55 +14,20 @@ namespace Library.WebApplication.Controllers
     public class StripeController : Controller
     {
         private readonly IOrderService _orderService;
-        public StripeController(IOrderService orderService)
+        private readonly IStripeService _stripeService;
+        public StripeController(IOrderService orderService, IStripeService stripeService)
         {
             _orderService = orderService;
+            _stripeService = stripeService;
         }
 
         [HttpPost("charge")]
-        public IActionResult Charge([FromBody]PayViewModel payViewModel)
+        public IActionResult Charge([FromBody]PayViewModel model)
         {
-            var i = payViewModel.BookName.Length - 1;
-            payViewModel.BookName = payViewModel.BookName.Substring(0, i);
-            payViewModel.Total *= 100;
-            var customers = new CustomerService();
-            var charges = new ChargeService();
-            var customer = customers.Create(new CustomerCreateOptions
-            {
-                Email = payViewModel.Email,
-                Source = payViewModel.Token,                
-            });
-
-            var charge = charges.Create(new ChargeCreateOptions
-            {
-                Amount = payViewModel.Total,
-                Description = "Test customer for artur.hart@nure.ua",
-                Currency="usd",
-                Customer = customer.Id,
-                ReceiptEmail = payViewModel.Email,
-                Metadata = new Dictionary<string, string>()
-                {
-                    { "OrderId", "111"},
-                    {"Postcode","LEE111" },
-                }
-
-            });
-            if (charge.Status == "succeeded")
-            {
-                payViewModel.Total /= 100;
-                payViewModel.Status = charge.Status;
-                payViewModel.Created = charge.Created;
-                payViewModel.BalanceTransactionId = charge.BalanceTransactionId;
-                _orderService.Add(payViewModel);
-                return Ok();
-            }
-
-            else{
-                string message = "Sorry, something wrong...";
-            }
-
-            return View();
+            _stripeService.PayOrder(model);  
+             return Ok(); 
         }
+
         [HttpGet("order")]
         public IActionResult Order()
         {
