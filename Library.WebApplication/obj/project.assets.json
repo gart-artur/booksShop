@@ -37,6 +37,15 @@
           "lib/net45/AWSSDK.dll": {}
         }
       },
+      "BrockAllen.MembershipReboot/8.4.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/BrockAllen.MembershipReboot.dll": {}
+        },
+        "runtime": {
+          "lib/net45/BrockAllen.MembershipReboot.dll": {}
+        }
+      },
       "Dapper/2.0.4": {
         "type": "package",
         "dependencies": {
@@ -76,6 +85,35 @@
           "lib/EO.Pdf.dll": {},
           "lib/EO.WebBrowser.dll": {},
           "lib/EO.WebEngine.dll": {}
+        }
+      },
+      "IdentityModel/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/IdentityModel.Net45.dll": {}
+        },
+        "runtime": {
+          "lib/net45/IdentityModel.Net45.dll": {}
+        }
+      },
+      "IdentityServer3/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Owin": "1.0.0"
+        },
+        "compile": {
+          "lib/net45/IdentityServer3.dll": {}
+        },
+        "runtime": {
+          "lib/net45/IdentityServer3.dll": {}
+        }
+      },
+      "IdentityServer3.MembershipReboot/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "BrockAllen.MembershipReboot": "8.4.0",
+          "IdentityModel": "1.0.0",
+          "IdentityServer3": "2.0.0"
         }
       },
       "linq2db/2.9.0": {
@@ -2168,7 +2206,7 @@
           "lib/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.dll": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/2.2.0": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/3.0.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
@@ -2489,12 +2527,12 @@
           "lib/netstandard2.0/Microsoft.Extensions.ObjectPool.dll": {}
         }
       },
-      "Microsoft.Extensions.Options/2.2.0": {
+      "Microsoft.Extensions.Options/3.0.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.2.0",
-          "Microsoft.Extensions.Primitives": "2.2.0",
-          "System.ComponentModel.Annotations": "4.5.0"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.0.0",
+          "Microsoft.Extensions.Primitives": "3.0.0",
+          "System.ComponentModel.Annotations": "4.6.0"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Options.dll": {}
@@ -2532,11 +2570,11 @@
           "lib/netstandard2.0/Microsoft.Extensions.Options.DataAnnotations.dll": {}
         }
       },
-      "Microsoft.Extensions.Primitives/2.2.0": {
+      "Microsoft.Extensions.Primitives/3.0.0": {
         "type": "package",
         "dependencies": {
-          "System.Memory": "4.5.1",
-          "System.Runtime.CompilerServices.Unsafe": "4.5.1"
+          "System.Memory": "4.5.2",
+          "System.Runtime.CompilerServices.Unsafe": "4.6.0"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll": {}
@@ -2572,7 +2610,7 @@
           "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Logging/5.5.0": {
+      "Microsoft.IdentityModel.Logging/5.6.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll": {}
@@ -2627,10 +2665,10 @@
           "lib/netstandard2.0/Microsoft.IdentityModel.Protocols.WsFederation.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Tokens/5.5.0": {
+      "Microsoft.IdentityModel.Tokens/5.6.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Logging": "5.5.0",
+          "Microsoft.IdentityModel.Logging": "5.6.0",
           "Newtonsoft.Json": "10.0.1",
           "System.Security.Cryptography.Cng": "4.5.0"
         },
@@ -3158,21 +3196,6 @@
           "lib/netstandard1.6/NuGet.Frameworks.dll": {}
         }
       },
-      "NUnit/3.12.0": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "2.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/nunit.framework.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/nunit.framework.dll": {}
-        },
-        "build": {
-          "build/_._": {}
-        }
-      },
       "Owin/1.0.0": {
         "type": "package",
         "compile": {
@@ -3180,6 +3203,15 @@
         },
         "runtime": {
           "lib/net40/Owin.dll": {}
+        }
+      },
+      "PasswordGenerator/2.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/PasswordGenerator.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/PasswordGenerator.dll": {}
         }
       },
       "Portable.BouncyCastle/1.8.5": {
@@ -3622,13 +3654,13 @@
           "lib/netstandard1.3/System.Collections.Specialized.dll": {}
         }
       },
-      "System.ComponentModel.Annotations/4.5.0": {
+      "System.ComponentModel.Annotations/4.6.0": {
         "type": "package",
         "compile": {
-          "ref/netcoreapp2.0/_._": {}
+          "ref/netstandard2.0/System.ComponentModel.Annotations.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp2.0/_._": {}
+          "lib/netstandard2.0/System.ComponentModel.Annotations.dll": {}
         }
       },
       "System.Composition/1.0.31": {
@@ -4191,7 +4223,7 @@
           "lib/netstandard1.3/System.Linq.Queryable.dll": {}
         }
       },
-      "System.Memory/4.5.1": {
+      "System.Memory/4.5.2": {
         "type": "package",
         "compile": {
           "ref/netcoreapp2.1/_._": {}
@@ -4530,7 +4562,7 @@
           "ref/netstandard1.5/System.Runtime.dll": {}
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.5.1": {
+      "System.Runtime.CompilerServices.Unsafe/4.6.0": {
         "type": "package",
         "compile": {
           "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
@@ -5305,15 +5337,19 @@
         "dependencies": {
           "AWSSDK": "2.3.55.2",
           "AutoMapper": "9.0.0",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "7.0.0",
           "Dapper": "2.0.4",
           "DocumentFormat.OpenXml": "2.9.1",
           "EO.Pdf": "19.2.42",
+          "IdentityServer3.MembershipReboot": "2.0.0",
           "Library.DataAccess": "1.0.0",
           "MailKit": "2.3.2",
           "Microsoft.EntityFrameworkCore": "2.2.6",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.6",
-          "Microsoft.Extensions.DependencyInjection": "2.2.0",
-          "Microsoft.IdentityModel.Tokens": "5.5.0",
+          "Microsoft.Extensions.Options": "3.0.0",
+          "Microsoft.Extensions.Primitives": "3.0.0",
+          "Microsoft.IdentityModel.Tokens": "5.6.0",
+          "PasswordGenerator": "2.0.1",
           "Stripe.net": "32.0.0",
           "Swashbuckle": "5.6.0",
           "Swashbuckle.AspNetCore": "5.0.0-rc2",
@@ -5333,16 +5369,20 @@
         "dependencies": {
           "AWSSDK": "2.3.55.2",
           "AutoMapper": "9.0.0",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "7.0.0",
           "Dapper": "2.0.4",
+          "IdentityServer3.MembershipReboot": "2.0.0",
           "MailKit": "2.3.2",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.2.0",
           "Microsoft.EntityFrameworkCore": "2.2.6",
           "Microsoft.EntityFrameworkCore.Relational": "2.2.6",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.6",
-          "Microsoft.Extensions.DependencyInjection": "2.2.0",
           "Microsoft.Extensions.Identity.Stores": "2.2.0",
-          "Microsoft.IdentityModel.Tokens": "5.5.0",
-          "NUnit": "3.12.0",
+          "Microsoft.Extensions.Options": "3.0.0",
+          "Microsoft.Extensions.Primitives": "3.0.0",
+          "Microsoft.IdentityModel.Tokens": "5.6.0",
+          "NETStandard.Library": "2.0.3",
+          "PasswordGenerator": "2.0.1",
           "Stripe.net": "32.0.0",
           "Swashbuckle": "5.6.0",
           "Swashbuckle.AspNetCore": "4.0.1",
@@ -5410,6 +5450,19 @@
         "tools/net45/install.ps1"
       ]
     },
+    "BrockAllen.MembershipReboot/8.4.0": {
+      "sha512": "LUup/auHY3tiomBHzvYIAS+LGWBi37ITC47L2LeoDFISB74vvXhlQXn0SrE5V2G3uxOrd6j0rbXMzyeOx7A9Jw==",
+      "type": "package",
+      "path": "brockallen.membershipreboot/8.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "brockallen.membershipreboot.8.4.0.nupkg.sha512",
+        "brockallen.membershipreboot.nuspec",
+        "lib/net45/BrockAllen.MembershipReboot.dll",
+        "lib/net45/BrockAllen.MembershipReboot.pdb"
+      ]
+    },
     "Dapper/2.0.4": {
       "sha512": "DrNPDqK3nR4RpwAPX2R0R34YhlT+k5Fbw7UnqxQ2aH+wSWvEIj+fCDXB8RJWgw6fGFZLavq7nuJ6J/eAqSrIpw==",
       "type": "package",
@@ -5461,6 +5514,47 @@
         "lib/EO.WebEngine.xml",
         "lib/GACTools.exe",
         "lib/eowp.exe"
+      ]
+    },
+    "IdentityModel/1.0.0": {
+      "sha512": "vDVPapP4kiSMl3iU5DYiGbGWIvapK6rpvjNDdl2ax/izBfcz90vDcWl9p6lPOzrVMgn0fXCewbNp8PNRSYbaKg==",
+      "type": "package",
+      "path": "identitymodel/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "identitymodel.1.0.0.nupkg.sha512",
+        "identitymodel.nuspec",
+        "lib/net45/IdentityModel.Net45.dll",
+        "lib/net45/IdentityModel.Net45.pdb",
+        "lib/portable-net45+win8+wpa81/IdentityModel.Portable.dll",
+        "lib/portable-net45+win8+wpa81/IdentityModel.Portable.pdb"
+      ]
+    },
+    "IdentityServer3/2.0.0": {
+      "sha512": "0XhESZpeSjNTtUbQw1WjcxEfIMDcXIzCnXUedo04k1AvdwXrrCMcg3I6aVIgdcVQsdMYVb9fwDeDs2SKQlLbmw==",
+      "type": "package",
+      "path": "identityserver3/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "identityserver3.2.0.0.nupkg.sha512",
+        "identityserver3.nuspec",
+        "lib/net45/IdentityServer3.dll",
+        "lib/net45/IdentityServer3.pdb",
+        "lib/net45/IdentityServer3.xml"
+      ]
+    },
+    "IdentityServer3.MembershipReboot/2.0.0": {
+      "sha512": "Y4cqUmUb6BPKAZ9lVz3LoROllf6ldSkM6SxtVZqOsoAPUyvMVEtRQ2mmwFoE9kteAbHkp1YS5yuSJr01zIOdRA==",
+      "type": "package",
+      "path": "identityserver3.membershipreboot/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/App_Packages/IdentityServer3.MembershipReboot/IdentityServer3.MembershipReboot.cs.pp",
+        "identityserver3.membershipreboot.2.0.0.nupkg.sha512",
+        "identityserver3.membershipreboot.nuspec"
       ]
     },
     "linq2db/2.9.0": {
@@ -7395,16 +7489,16 @@
         "microsoft.extensions.dependencyinjection.nuspec"
       ]
     },
-    "Microsoft.Extensions.DependencyInjection.Abstractions/2.2.0": {
-      "sha512": "f9hstgjVmr6rmrfGSpfsVOl2irKAgr1QjrSi3FgnS7kulxband50f2brRLwySAQTADPZeTdow0mpSMcoAdadCw==",
+    "Microsoft.Extensions.DependencyInjection.Abstractions/3.0.0": {
+      "sha512": "ofQRroDlzJ0xKOtzNuaVt6QKNImFkhkG0lIMpGl7PtXnIf5SuLWBeiQZAP8DNSxDBJJdcsPkiJiMYK2WA5H8dQ==",
       "type": "package",
-      "path": "microsoft.extensions.dependencyinjection.abstractions/2.2.0",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/3.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
-        "microsoft.extensions.dependencyinjection.abstractions.2.2.0.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.3.0.0.nupkg.sha512",
         "microsoft.extensions.dependencyinjection.abstractions.nuspec"
       ]
     },
@@ -7733,16 +7827,18 @@
         "microsoft.extensions.objectpool.nuspec"
       ]
     },
-    "Microsoft.Extensions.Options/2.2.0": {
-      "sha512": "UpZLNLBpIZ0GTebShui7xXYh6DmBHjWM8NxGxZbdQh/bPZ5e6YswqI+bru6BnEL5eWiOdodsXtEz3FROcgi/qg==",
+    "Microsoft.Extensions.Options/3.0.0": {
+      "sha512": "aZuVhN/TC872Yb55nrb7an82sfSAdNYxIyzu3zbYHOnhwal5hdkBUxzuoYj1khI2sw0tWq6i82i624zEFmiJhg==",
       "type": "package",
-      "path": "microsoft.extensions.options/2.2.0",
+      "path": "microsoft.extensions.options/3.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "lib/netcoreapp3.0/Microsoft.Extensions.Options.dll",
+        "lib/netcoreapp3.0/Microsoft.Extensions.Options.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Options.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Options.xml",
-        "microsoft.extensions.options.2.2.0.nupkg.sha512",
+        "microsoft.extensions.options.3.0.0.nupkg.sha512",
         "microsoft.extensions.options.nuspec"
       ]
     },
@@ -7772,16 +7868,18 @@
         "microsoft.extensions.options.dataannotations.nuspec"
       ]
     },
-    "Microsoft.Extensions.Primitives/2.2.0": {
-      "sha512": "azyQtqbm4fSaDzZHD/J+V6oWMFaf2tWP4WEGIYePLCMw3+b2RQdj9ybgbQyjCshcitQKQ4lEDOZjmSlTTrHxUg==",
+    "Microsoft.Extensions.Primitives/3.0.0": {
+      "sha512": "6gwewTbmOh+ZVBicVkL1XRp79sx4O7BVY6Yy+7OYZdwn3pyOKe9lOam+3gXJ3TZMjhJZdV0Ub8hxHt2vkrmN5Q==",
       "type": "package",
-      "path": "microsoft.extensions.primitives/2.2.0",
+      "path": "microsoft.extensions.primitives/3.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll",
+        "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
-        "microsoft.extensions.primitives.2.2.0.nupkg.sha512",
+        "microsoft.extensions.primitives.3.0.0.nupkg.sha512",
         "microsoft.extensions.primitives.nuspec"
       ]
     },
@@ -7819,10 +7917,10 @@
         "microsoft.identitymodel.jsonwebtokens.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Logging/5.5.0": {
-      "sha512": "1w/Hz/7+al+ugQn+6y0tAPmpN8U0u1aBtl1QXYCVkiJfbCC4tgyroFOuhdztOq48rgeM+3JW9bGqOtkfVurW8w==",
+    "Microsoft.IdentityModel.Logging/5.6.0": {
+      "sha512": "zEDrfEVW5x5w2hbTV94WwAcWvtue5hNTXYqoPh3ypF6U8csm09JazEYy+VPp2RtczkyMfcsvWY9Fea17e+isYQ==",
       "type": "package",
-      "path": "microsoft.identitymodel.logging/5.5.0",
+      "path": "microsoft.identitymodel.logging/5.6.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -7836,7 +7934,7 @@
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.xml",
         "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.Logging.xml",
-        "microsoft.identitymodel.logging.5.5.0.nupkg.sha512",
+        "microsoft.identitymodel.logging.5.6.0.nupkg.sha512",
         "microsoft.identitymodel.logging.nuspec"
       ]
     },
@@ -7918,10 +8016,10 @@
         "microsoft.identitymodel.protocols.wsfederation.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Tokens/5.5.0": {
-      "sha512": "cu1klZiuCwVYbXHs0QdnseuoRGG1/85VX9d1Sk0vbJlKp+HJUN/4pAS/fe2m9bTOYyIPdeCHeksMiVHgo1EfAA==",
+    "Microsoft.IdentityModel.Tokens/5.6.0": {
+      "sha512": "C3OqR3QfBQ7wcC7yAsdMQqay87OsV6yWPYG/Ai3n7dvmWIGkouQhXoVxRP0xz3cAFL4hxZBXyw4aLTC421PaMg==",
       "type": "package",
-      "path": "microsoft.identitymodel.tokens/5.5.0",
+      "path": "microsoft.identitymodel.tokens/5.6.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -7935,7 +8033,7 @@
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.xml",
         "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.xml",
-        "microsoft.identitymodel.tokens.5.5.0.nupkg.sha512",
+        "microsoft.identitymodel.tokens.5.6.0.nupkg.sha512",
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
@@ -9128,36 +9226,6 @@
         "nuget.frameworks.nuspec"
       ]
     },
-    "NUnit/3.12.0": {
-      "sha512": "3oJTrcUcT9wmweBUwgUf0f1XIYy6RZq2ziV+RM95HMKAJGsHPN2i3MKK1dAPvDPMRLz799Llj4eyu/STB9Q7OA==",
-      "type": "package",
-      "path": "nunit/3.12.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "CHANGES.md",
-        "LICENSE.txt",
-        "NOTICES.txt",
-        "build/NUnit.props",
-        "lib/net35/nunit.framework.dll",
-        "lib/net35/nunit.framework.pdb",
-        "lib/net35/nunit.framework.xml",
-        "lib/net40/nunit.framework.dll",
-        "lib/net40/nunit.framework.pdb",
-        "lib/net40/nunit.framework.xml",
-        "lib/net45/nunit.framework.dll",
-        "lib/net45/nunit.framework.pdb",
-        "lib/net45/nunit.framework.xml",
-        "lib/netstandard1.4/nunit.framework.dll",
-        "lib/netstandard1.4/nunit.framework.pdb",
-        "lib/netstandard1.4/nunit.framework.xml",
-        "lib/netstandard2.0/nunit.framework.dll",
-        "lib/netstandard2.0/nunit.framework.pdb",
-        "lib/netstandard2.0/nunit.framework.xml",
-        "nunit.3.12.0.nupkg.sha512",
-        "nunit.nuspec"
-      ]
-    },
     "Owin/1.0.0": {
       "sha512": "OseTFniKmyp76mEzOBwIKGBRS5eMoYNkMKaMXOpxx9jv88+b6mh1rSaw43vjBOItNhaLFG3d0a20PfHyibH5sw==",
       "type": "package",
@@ -9168,6 +9236,19 @@
         "lib/net40/Owin.dll",
         "owin.1.0.0.nupkg.sha512",
         "owin.nuspec"
+      ]
+    },
+    "PasswordGenerator/2.0.1": {
+      "sha512": "Acqzy2H0/YboZQMTqDZWyBq+XkhxAFFJ739b5xJdIbbEOWi52YFkyEN6CrLoqEe22gFGQ/eHPQiEkTTOcRde6Q==",
+      "type": "package",
+      "path": "passwordgenerator/2.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/PasswordGenerator.dll",
+        "passwordgenerator.2.0.1.nupkg.sha512",
+        "passwordgenerator.nuspec",
+        "readme.txt"
       ]
     },
     "Portable.BouncyCastle/1.8.5": {
@@ -9920,10 +10001,10 @@
         "system.collections.specialized.nuspec"
       ]
     },
-    "System.ComponentModel.Annotations/4.5.0": {
-      "sha512": "UxYQ3FGUOtzJ7LfSdnYSFd7+oEv6M8NgUatatIN2HxNtDdlcvFAf+VIq4Of9cDMJEJC0aSRv/x898RYhB4Yppg==",
+    "System.ComponentModel.Annotations/4.6.0": {
+      "sha512": "pOd+UhZ3X8xfwKDlgAzowUJNjp8VYVmOHZm++vCd0kq1HZ0zK3mNo2yRXjYgv7Ik/Xi43fmJfND2PLEsQSALCg==",
       "type": "package",
-      "path": "system.componentmodel.annotations/4.5.0",
+      "path": "system.componentmodel.annotations/4.6.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -9934,11 +10015,11 @@
         "lib/net45/_._",
         "lib/net461/System.ComponentModel.Annotations.dll",
         "lib/netcore50/System.ComponentModel.Annotations.dll",
-        "lib/netcoreapp2.0/_._",
         "lib/netstandard1.4/System.ComponentModel.Annotations.dll",
         "lib/netstandard2.0/System.ComponentModel.Annotations.dll",
+        "lib/netstandard2.1/System.ComponentModel.Annotations.dll",
+        "lib/netstandard2.1/System.ComponentModel.Annotations.xml",
         "lib/portable-net45+win8/_._",
-        "lib/uap10.0.16299/_._",
         "lib/win8/_._",
         "lib/xamarinios10/_._",
         "lib/xamarinmac20/_._",
@@ -9960,7 +10041,6 @@
         "ref/netcore50/ru/System.ComponentModel.Annotations.xml",
         "ref/netcore50/zh-hans/System.ComponentModel.Annotations.xml",
         "ref/netcore50/zh-hant/System.ComponentModel.Annotations.xml",
-        "ref/netcoreapp2.0/_._",
         "ref/netstandard1.1/System.ComponentModel.Annotations.dll",
         "ref/netstandard1.1/System.ComponentModel.Annotations.xml",
         "ref/netstandard1.1/de/System.ComponentModel.Annotations.xml",
@@ -9996,14 +10076,15 @@
         "ref/netstandard1.4/zh-hant/System.ComponentModel.Annotations.xml",
         "ref/netstandard2.0/System.ComponentModel.Annotations.dll",
         "ref/netstandard2.0/System.ComponentModel.Annotations.xml",
+        "ref/netstandard2.1/System.ComponentModel.Annotations.dll",
+        "ref/netstandard2.1/System.ComponentModel.Annotations.xml",
         "ref/portable-net45+win8/_._",
-        "ref/uap10.0.16299/_._",
         "ref/win8/_._",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.componentmodel.annotations.4.5.0.nupkg.sha512",
+        "system.componentmodel.annotations.4.6.0.nupkg.sha512",
         "system.componentmodel.annotations.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -11467,10 +11548,10 @@
         "system.linq.queryable.nuspec"
       ]
     },
-    "System.Memory/4.5.1": {
-      "sha512": "sDJYJpGtTgx+23Ayu5euxG5mAXWdkDb4+b0rD0Cab0M1oQS9H0HXGPriKcqpXuiJDTV7fTp/d+fMDJmnr6sNvA==",
+    "System.Memory/4.5.2": {
+      "sha512": "fvq1GNmUFwbKv+aLVYYdgu/+gc8Nu9oFujOxIjPrsf+meis9JBzTPDL6aP/eeGOz9yPj6rRLUbOjKMpsMEWpNg==",
       "type": "package",
-      "path": "system.memory/4.5.1",
+      "path": "system.memory/4.5.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -11482,11 +11563,7 @@
         "lib/netstandard2.0/System.Memory.dll",
         "lib/netstandard2.0/System.Memory.xml",
         "ref/netcoreapp2.1/_._",
-        "ref/netstandard1.1/System.Memory.dll",
-        "ref/netstandard1.1/System.Memory.xml",
-        "ref/netstandard2.0/System.Memory.dll",
-        "ref/netstandard2.0/System.Memory.xml",
-        "system.memory.4.5.1.nupkg.sha512",
+        "system.memory.4.5.2.nupkg.sha512",
         "system.memory.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -12413,10 +12490,10 @@
         "system.runtime.nuspec"
       ]
     },
-    "System.Runtime.CompilerServices.Unsafe/4.5.1": {
-      "sha512": "Zh8t8oqolRaFa9vmOZfdQm/qKejdqz0J9kr7o2Fu0vPeoH3BL1EOXipKWwkWtLT1JPzjByrF19fGuFlNbmPpiw==",
+    "System.Runtime.CompilerServices.Unsafe/4.6.0": {
+      "sha512": "HxozeSlipUK7dAroTYwIcGwKDeOVpQnJlpVaOkBz7CM4TsE5b/tKlQBZecTjh6FzcSbxndYaxxpsBMz+wMJeyw==",
       "type": "package",
-      "path": "system.runtime.compilerservices.unsafe/4.5.1",
+      "path": "system.runtime.compilerservices.unsafe/4.6.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -12432,7 +12509,7 @@
         "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
         "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
         "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
-        "system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512",
         "system.runtime.compilerservices.unsafe.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -14448,6 +14525,7 @@
       "AutoMapper >= 9.0.0",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 7.0.0",
       "Dapper >= 2.0.4",
+      "IdentityServer3.MembershipReboot >= 2.0.0",
       "Library.BusinessLogic >= 1.0.0",
       "MailKit >= 2.3.2",
       "Microsoft.AspNet.WebApi >= 5.2.2",
@@ -14455,12 +14533,16 @@
       "Microsoft.AspNet.WebApi.Owin >= 5.2.2",
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
-      "Microsoft.IdentityModel.Tokens >= 5.5.0",
+      "Microsoft.Extensions.DependencyInjection.Abstractions >= 3.0.0",
+      "Microsoft.Extensions.Options >= 3.0.0",
+      "Microsoft.Extensions.Primitives >= 3.0.0",
+      "Microsoft.IdentityModel.Tokens >= 5.6.0",
       "Microsoft.NETCore.App >= 2.2.0",
       "Microsoft.Owin.Cors >= 3.0.0",
       "Microsoft.Owin.Host.SystemWeb >= 3.0.0",
       "Microsoft.Owin.Security.OAuth >= 3.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.2.4",
+      "PasswordGenerator >= 2.0.1",
       "Stripe.net >= 32.0.0",
       "Swashbuckle >= 5.6.0",
       "Swashbuckle.AspNetCore >= 5.0.0-rc2",
@@ -14525,6 +14607,10 @@
             "target": "Package",
             "version": "[2.0.4, )"
           },
+          "IdentityServer3.MembershipReboot": {
+            "target": "Package",
+            "version": "[2.0.0, )"
+          },
           "MailKit": {
             "target": "Package",
             "version": "[2.3.2, )"
@@ -14552,9 +14638,21 @@
             "target": "Package",
             "version": "[2.2.0, )"
           },
+          "Microsoft.Extensions.DependencyInjection.Abstractions": {
+            "target": "Package",
+            "version": "[3.0.0, )"
+          },
+          "Microsoft.Extensions.Options": {
+            "target": "Package",
+            "version": "[3.0.0, )"
+          },
+          "Microsoft.Extensions.Primitives": {
+            "target": "Package",
+            "version": "[3.0.0, )"
+          },
           "Microsoft.IdentityModel.Tokens": {
             "target": "Package",
-            "version": "[5.5.0, )"
+            "version": "[5.6.0, )"
           },
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
@@ -14577,6 +14675,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[2.2.4, )"
+          },
+          "PasswordGenerator": {
+            "target": "Package",
+            "version": "[2.0.1, )"
           },
           "Stripe.net": {
             "target": "Package",
@@ -14609,6 +14711,36 @@
   },
   "logs": [
     {
+      "code": "NU1608",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package version outside of dependency constraint: Microsoft.AspNetCore.App 2.2.0 requires Microsoft.Extensions.DependencyInjection.Abstractions (>= 2.2.0 && < 2.3.0) but version Microsoft.Extensions.DependencyInjection.Abstractions 3.0.0 was resolved.",
+      "libraryId": "Microsoft.Extensions.DependencyInjection.Abstractions",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.2"
+      ]
+    },
+    {
+      "code": "NU1608",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package version outside of dependency constraint: Microsoft.AspNetCore.App 2.2.0 requires Microsoft.Extensions.Options (>= 2.2.0 && < 2.3.0) but version Microsoft.Extensions.Options 3.0.0 was resolved.",
+      "libraryId": "Microsoft.Extensions.Options",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.2"
+      ]
+    },
+    {
+      "code": "NU1608",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package version outside of dependency constraint: Microsoft.AspNetCore.App 2.2.0 requires Microsoft.Extensions.Primitives (>= 2.2.0 && < 2.3.0) but version Microsoft.Extensions.Primitives 3.0.0 was resolved.",
+      "libraryId": "Microsoft.Extensions.Primitives",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.2"
+      ]
+    },
+    {
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
@@ -14622,8 +14754,38 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
+      "message": "Package 'BrockAllen.MembershipReboot 8.4.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.2'. This package may not be fully compatible with your project.",
+      "libraryId": "BrockAllen.MembershipReboot",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.2"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
       "message": "Package 'EO.Pdf 19.2.42' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.2'. This package may not be fully compatible with your project.",
       "libraryId": "EO.Pdf",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.2"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'IdentityModel 1.0.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.2'. This package may not be fully compatible with your project.",
+      "libraryId": "IdentityModel",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.2"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'IdentityServer3 2.0.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.2'. This package may not be fully compatible with your project.",
+      "libraryId": "IdentityServer3",
       "targetGraphs": [
         ".NETCoreApp,Version=v2.2"
       ]

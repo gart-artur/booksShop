@@ -1,9 +1,7 @@
-﻿using Library.BusinessLogic.Helper;
-using Library.BusinessLogic.Services.Interfaces;
+﻿using Library.BusinessLogic.Services.Interfaces;
+using Library.BusinessLogic.Services.ViewModel.Stripe;
 using Stripe;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Library.BusinessLogic.Services
 {
@@ -16,8 +14,6 @@ namespace Library.BusinessLogic.Services
         }
         public void PayOrder(PayViewModel payViewModel)
         {
-/*            var i = payViewModel.BookName.Length - 1;
-            payViewModel.BookName = payViewModel.BookName.Substring(0, i);*/
             payViewModel.Total *= 100;
             var customers = new CustomerService();
             var charges = new ChargeService();

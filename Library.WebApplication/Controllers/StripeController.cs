@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Library.BusinessLogic.Helper;
-using Library.BusinessLogic.Services.Interfaces;
+﻿using Library.BusinessLogic.Services.Interfaces;
+using Library.BusinessLogic.Services.ViewModel.Stripe;
 using Microsoft.AspNetCore.Mvc;
-
-using Stripe;
 
 namespace Library.WebApplication.Controllers
 {

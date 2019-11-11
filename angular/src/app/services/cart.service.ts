@@ -32,10 +32,6 @@ getTotlaPrice(){
   return myObject.totalPrice;
 }
 
-// getArrayBookId(){
-//   let BookId = JSON.parse(localStorage.getItem('products'));
-// }
-
 clearCart(){
   localStorage.clear();
 }

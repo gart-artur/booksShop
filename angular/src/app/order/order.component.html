@@ -1,5 +1,4 @@
-<div class="panel panel-primary">
-    <ul><button class="nav-item nav-link-edit" [routerLink]="['/books']">To books list</button ></ul>
+<div class="panel panel-primary">   
   <div class="panel-heading">
     <h2>List of orders</h2>
   </div>
@@ -7,7 +6,7 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>DateCreated</th>
+          <th>Date of order</th>
           <th>Email</th>
           <th>Book name</th>
           <th>Amount</th>
@@ -16,10 +15,10 @@
       </thead>
       <tbody>
         <tr *ngFor="let order of orders | async">
-          <td>{{order.dateCreated}}</td>
+          <td>{{order.dateCreated | date: 'EEEE, MMMM d, y'}}</td>
           <td>{{order.email}}</td>
           <td>{{order.bookName}}</td>
-          <td>{{order.total}}</td>
+          <td>{{order.total}} $</td>
           <td>{{order.status}}</td>        
         </tr>
       </tbody>

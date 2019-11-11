@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
     private _router:Router) { }
 
   ngOnInit() {
+    this._authService.logout();
 		this.loginForm = this._formBuilder.group({
 			email: [''],
 			password: ['']
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
     loginModel.password = this.loginForm.controls['password'].value;
 
     this._accountService.login(loginModel).subscribe((response: JwtView) => {
+      localStorage.setItem('currentEmail', loginModel.email);
       this._authService.login(response);
       this._router.navigate(['books']);
     });

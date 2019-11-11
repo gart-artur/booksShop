@@ -53,6 +53,10 @@
               "target": "Package",
               "version": "[9.0.0, )"
             },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Dapper": {
               "target": "Package",
               "version": "[2.0.4, )"
@@ -64,6 +68,10 @@
             "EO.Pdf": {
               "target": "Package",
               "version": "[19.2.42, )"
+            },
+            "IdentityServer3.MembershipReboot": {
+              "target": "Package",
+              "version": "[2.0.0, )"
             },
             "MailKit": {
               "target": "Package",
@@ -77,19 +85,27 @@
               "target": "Package",
               "version": "[2.2.6, )"
             },
-            "Microsoft.Extensions.DependencyInjection": {
+            "Microsoft.Extensions.Options": {
               "target": "Package",
-              "version": "[2.2.0, )"
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.Extensions.Primitives": {
+              "target": "Package",
+              "version": "[3.0.0, )"
             },
             "Microsoft.IdentityModel.Tokens": {
               "target": "Package",
-              "version": "[5.5.0, )"
+              "version": "[5.6.0, )"
             },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "PasswordGenerator": {
+              "target": "Package",
+              "version": "[2.0.1, )"
             },
             "Stripe.net": {
               "target": "Package",
@@ -165,9 +181,17 @@
               "target": "Package",
               "version": "[9.0.0, )"
             },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Dapper": {
               "target": "Package",
               "version": "[2.0.4, )"
+            },
+            "IdentityServer3.MembershipReboot": {
+              "target": "Package",
+              "version": "[2.0.0, )"
             },
             "MailKit": {
               "target": "Package",
@@ -189,27 +213,29 @@
               "target": "Package",
               "version": "[2.2.6, )"
             },
-            "Microsoft.Extensions.DependencyInjection": {
-              "target": "Package",
-              "version": "[2.2.0, )"
-            },
             "Microsoft.Extensions.Identity.Stores": {
               "target": "Package",
               "version": "[2.2.0, )"
             },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.Extensions.Primitives": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
             "Microsoft.IdentityModel.Tokens": {
               "target": "Package",
-              "version": "[5.5.0, )"
+              "version": "[5.6.0, )"
             },
             "NETStandard.Library": {
-              "suppressParent": "All",
               "target": "Package",
-              "version": "[2.0.3, )",
-              "autoReferenced": true
+              "version": "[2.0.3, )"
             },
-            "NUnit": {
+            "PasswordGenerator": {
               "target": "Package",
-              "version": "[3.12.0, )"
+              "version": "[2.0.1, )"
             },
             "Stripe.net": {
               "target": "Package",
@@ -289,6 +315,10 @@
               "target": "Package",
               "version": "[2.0.4, )"
             },
+            "IdentityServer3.MembershipReboot": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
             "MailKit": {
               "target": "Package",
               "version": "[2.3.2, )"
@@ -316,9 +346,21 @@
               "target": "Package",
               "version": "[2.2.0, )"
             },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.Extensions.Primitives": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
             "Microsoft.IdentityModel.Tokens": {
               "target": "Package",
-              "version": "[5.5.0, )"
+              "version": "[5.6.0, )"
             },
             "Microsoft.NETCore.App": {
               "suppressParent": "All",
@@ -341,6 +383,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[2.2.4, )"
+            },
+            "PasswordGenerator": {
+              "target": "Package",
+              "version": "[2.0.1, )"
             },
             "Stripe.net": {
               "target": "Package",

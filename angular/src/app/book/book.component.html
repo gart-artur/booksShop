@@ -1,8 +1,5 @@
-<button mat-raised-button class='mat-raised-button' style='float: left' (click)="openAddBookPopup('Add Book')">Create</button>
-<ul><button class="nav-item nav-link-edit" [routerLink]="['/cart']">Cart</button ></ul>
-  <ul><button class="nav-item nav-link-edit" [routerLink]="['/order']">My Orders</button ></ul>
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      
+<button mat-raised-button class='mat-raised-button' mat-raised-button color="primary"  style='float: left' (click)="openAddBookPopup('Add Book')">Create</button>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">      
     <!-- Checkbox Column -->
     <ng-container matColumnDef="select">
       <th mat-header-cell *matHeaderCellDef>
@@ -71,8 +68,8 @@
       </a>
     </mat-nav-list>
   </div>
+  
   <div class="main_wrapper">
-    <span>Filters</span>
     <div class="w3-container align-center w3-card login-card">
       <form [formGroup]="filterForm">   
         <div class="form-group">
@@ -80,21 +77,19 @@
           <input type="text"
                  formControlName="name"
                  class="w3-input w3-border form-control" />
-        </div>
-        <div class="form-group">
+        
           <label class="w3-text-blue"><b>Min Price</b></label>
           <input type="text"
                  formControlName="minPrice"
                  class="w3-input w3-border form-control" />
-        </div>  
-        <div class="form-group">
+        
           <label class="w3-text-blue"><b>Max Price</b></label>
           <input formControlName="maxPrice"
                  class="w3-input w3-border form-control" />
         </div>
   
         <br />
-        <button class="w3-btn w3-blue"            
+        <button class="w3-btn w3-blue"  mat-raised-button color="primary"          
                 (click)="loadBooksByFilters()">
           Search <i class="w3-medium fa fa-check"></i>
         </button>

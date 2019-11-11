@@ -1,5 +1,4 @@
 <div class="main_wrapper">
-  <span>Login page</span>
   <div class="w3-container align-center w3-card login-card">
     <form [formGroup]="loginForm">   
       <div class="form-group">
@@ -16,14 +15,11 @@
                class="w3-input w3-border form-control" />
       </div>
 
-      <br />
-      <button class="w3-btn w3-blue"
-              [disabled]="!loginForm.controls['password'].value"
-              (click)="login()">
-        Login <i class="w3-medium fa fa-check"></i>
-      </button>
-      <ul><button class="nav-item nav-link-edit" [routerLink]="['/forgot']">Forgot password</button ></ul>
-        <ul><button class="nav-item nav-link-edit" [routerLink]="['/register']">Register page</button ></ul>
+      <br />    
+      <button mat-raised-button color="primary" [disabled]="!loginForm.controls['password'].value"
+      (click)="login()">Login</button>
+      <a class="nav-item nav-link-edit" [routerLink]="['/forgot']">Forgot password?</a >
+      <th><button mat-raised-button color="primary" [routerLink]="['/register']">Register page</button ></th>
     </form>
   </div>
 </div>

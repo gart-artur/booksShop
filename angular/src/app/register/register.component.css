@@ -16,4 +16,9 @@
     font-weight: 700;
     font-family: "Lato", sans-serif;
   }
-  
+  .have_account{
+    margin: 10px;
+  }
+  .register_button{
+    margin: 10px;
+  }

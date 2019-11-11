@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Http.ModelBinding;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
@@ -16,6 +15,8 @@ using Library.BusinessLogic.Helper;
 using MimeKit;
 using MailKit.Net.Smtp;
 using System.Web;
+using PasswordGenerator;
+using Microsoft.Extensions.Options;
 
 namespace Library.BusinessLogic.Services
 {
@@ -24,31 +25,37 @@ namespace Library.BusinessLogic.Services
         public readonly UserManager<User> _userManager;
         public readonly SignInManager<User> _signInManager;
         private readonly IConfiguration _configuration;
-        public AccountService(UserManager<User> userManager, SignInManager<User> signInManager, IConfiguration configuration)
+        private readonly IOptions<JwtOptions> _jwtOption;
+        private readonly IOptions<SmtpOptions> _SmtpOptions;
+        public AccountService(UserManager<User> userManager, SignInManager<User> signInManager, IConfiguration configuration, IOptions<JwtOptions> jwtOption, IOptions<SmtpOptions> SmtpOptions)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _configuration = configuration;
+            _jwtOption = jwtOption;
+            _SmtpOptions = SmtpOptions;
         }
-
-
         public async Task<User> RegisterUser(RegisterViewModel model)
         {
-            User user = new User { Email = model.Email, UserName = model.Email, NormalizedUserName = model.UserName };
+            User user = new User
+            {
+                Email = model.Email,
+                UserName = model.Email,
+                NormalizedUserName = model.UserName
+            };
+
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
-                string themOfMessage = "Confirm your Email";
+                string themeOfMessage = "Confirm your Email";
                 string nameActionOnController = "confirm";
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 string encodedCode = HttpUtility.UrlEncode(code);
-                var userId = user.Id;
-                await SendEmailAsync(user.Email, encodedCode, userId, themOfMessage, nameActionOnController);
+                await SendEmailAsync(user.Email, encodedCode, user.Id, themeOfMessage, nameActionOnController);
                 await _signInManager.SignInAsync(user, false);
             }
             return user;
         }
-
         public async Task<JwtView> Login(LoginViewModel model)
         {
             var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
@@ -60,7 +67,6 @@ namespace Library.BusinessLogic.Services
             }
             throw new ApplicationException("Incorrect login or password. User : " + model.Email);
         }
-
         private async Task<JwtView> GenerateJwtToken(string email, User user)
         {
             var claims = new List<Claim>
@@ -70,13 +76,13 @@ namespace Library.BusinessLogic.Services
                 new Claim(ClaimTypes.NameIdentifier, user.Id)
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtKey"]));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtOption.Value.JwtKey));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            var expires = DateTime.Now.AddDays(Convert.ToDouble(_configuration["JwtExpireDays"]));
+            var expires = DateTime.Now.AddDays(Convert.ToDouble(_jwtOption.Value.JwtExpireDays));
 
             var token = new JwtSecurityToken(
-                _configuration["JwtIssuer"],
-                _configuration["JwtIssuer"],
+                _jwtOption.Value.JwtIssuer,
+                _jwtOption.Value.JwtIssuer,
                 claims,
                 expires: expires,
                 signingCredentials: creds
@@ -89,13 +95,13 @@ namespace Library.BusinessLogic.Services
                 AccessToken = encodedAccess,
             };
         }
-        public async Task SendEmailAsync(string email, string encodedCode, string userId, string message,string nameActionOnController)
+        public async Task SendEmailAsync(string email, string encodedCode, string userId, string message, string nameActionOnController)
         {
             try
             {
                 var emailMessage = new MimeMessage();
 
-                emailMessage.From.Add(new MailboxAddress("Site administration", "artur.gart99@gmail.com"));
+                emailMessage.From.Add(new MailboxAddress("Site administration", _SmtpOptions.Value.FromEmail));
                 emailMessage.To.Add(new MailboxAddress("", email));
                 emailMessage.Subject = message;
                 emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
@@ -105,8 +111,8 @@ namespace Library.BusinessLogic.Services
                 };
                 using (var client = new SmtpClient())
                 {
-                    await client.ConnectAsync("smtp.gmail.com", 587, false);
-                    await client.AuthenticateAsync("artur.gart99@gmail.com", "z1x5c9v8");
+                    await client.ConnectAsync(_SmtpOptions.Value.Host, _SmtpOptions.Value.Port, false);
+                    await client.AuthenticateAsync(_SmtpOptions.Value.AuthEmail, _SmtpOptions.Value.Password);
                     await client.SendAsync(emailMessage);
                     await client.DisconnectAsync(true);
                 }
@@ -120,27 +126,32 @@ namespace Library.BusinessLogic.Services
         {
             try
             {
-                var emailMessage = new MimeMessage();
-
-                emailMessage.From.Add(new MailboxAddress("Site administration", "artur.gart99@gmail.com"));
-                emailMessage.To.Add(new MailboxAddress("", email));
-                emailMessage.Subject = message;
-                emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
-                {
-                    Text = $"New password:{password}"
-
-                };
-                using (var client = new SmtpClient())
-                {
-                    await client.ConnectAsync("smtp.gmail.com", 587, false);
-                    await client.AuthenticateAsync("artur.gart99@gmail.com", "z1x5c9v8");
-                    await client.SendAsync(emailMessage);
-                    await client.DisconnectAsync(true);
-                }
+                await SendMail(email, message, password);
             }
             catch (Exception e)
             {
                 Console.WriteLine("Error" + e.Message);
+            }
+        }
+
+        private async Task SendMail(string email, string message, string password)
+        {
+            var emailMessage = new MimeMessage();
+
+            emailMessage.From.Add(new MailboxAddress("Site administration", _SmtpOptions.Value.FromEmail));
+            emailMessage.To.Add(new MailboxAddress("", email));
+            emailMessage.Subject = message;
+            emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
+            {
+                Text = $"New password: {password}"
+
+            };
+            using (var client = new SmtpClient())
+            {
+                await client.ConnectAsync(_SmtpOptions.Value.Host, _SmtpOptions.Value.Port, false);
+                await client.AuthenticateAsync(_SmtpOptions.Value.AuthEmail, _SmtpOptions.Value.Password);
+                await client.SendAsync(emailMessage);
+                await client.DisconnectAsync(true);
             }
         }
 
@@ -157,18 +168,18 @@ namespace Library.BusinessLogic.Services
         }
         public async Task ForgotPassword(ForgotPasswordView model)
         {
-            try { 
-            var user = await _userManager.FindByEmailAsync(model.Email);
-            bool isConfirmEmail = await _userManager.IsEmailConfirmedAsync(user);
-            if (user != null || isConfirmEmail)
-            {
-                string themOfMessage = "Reset your password";
-                string nameActionOnController = "reset";
-                var code = await _userManager.GeneratePasswordResetTokenAsync(user);
-                string encodedCode = HttpUtility.UrlEncode(code);
-                var userId = user.Id;
-                await SendEmailAsync(user.Email, encodedCode, userId, themOfMessage, nameActionOnController);
-            }
+            try {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                bool isConfirmEmail = await _userManager.IsEmailConfirmedAsync(user);
+                if (user != null || isConfirmEmail)
+                {
+                    string themOfMessage = "Reset your password";
+                    string nameActionOnController = "reset";
+                    var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+                    string encodedCode = HttpUtility.UrlEncode(code);
+                    var userId = user.Id;
+                    await SendEmailAsync(user.Email, encodedCode, userId, themOfMessage, nameActionOnController);
+                }
             }
             catch (Exception e)
             {
@@ -184,53 +195,80 @@ namespace Library.BusinessLogic.Services
             var result = await _userManager.ResetPasswordAsync(user, code, randomPassword);
             SendNewPasswordOnEmail(user.Email, message, randomPassword);
         }
-        public async Task<string>  GenerateRandomPassword(PasswordOptions opts = null)
+        public async Task<string> GenerateRandomPassword()
         {
-            if (opts == null) opts = new PasswordOptions()
+            var pwd = new Password(12);
+            string newPassword = pwd.ToString();
+            return newPassword;
+        }
+        public async Task ChangeEmail(ChangeEmailView model)
+        {
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            bool isConfirmEmail = await _userManager.IsEmailConfirmedAsync(user);
+            try
             {
-                RequiredLength = 8,
-                RequiredUniqueChars = 4,
-                RequireDigit = true,
-                RequireLowercase = true,
-                RequireNonAlphanumeric = true,
-                RequireUppercase = true
-            };
-            string[] randomChars = new[] {
-            "ABCDEFGHJKLMNOPQRSTUVWXYZ",    // uppercase 
-            "abcdefghijkmnopqrstuvwxyz",    // lowercase
-            "0123456789",                   // digits
-            "!@?"                        // non-alphanumeric
-            };
-
-            Random rand = new Random(Environment.TickCount);
-            List<char> chars = new List<char>();
-
-            if (opts.RequireUppercase)
-                chars.Insert(rand.Next(0, chars.Count),
-                    randomChars[0][rand.Next(0, randomChars[0].Length)]);
-
-            if (opts.RequireLowercase)
-                chars.Insert(rand.Next(0, chars.Count),
-                    randomChars[1][rand.Next(0, randomChars[1].Length)]);
-
-            if (opts.RequireDigit)
-                chars.Insert(rand.Next(0, chars.Count),
-                    randomChars[2][rand.Next(0, randomChars[2].Length)]);
-
-            if (opts.RequireNonAlphanumeric)
-                chars.Insert(rand.Next(0, chars.Count),
-                    randomChars[3][rand.Next(0, randomChars[3].Length)]);
-
-            for (int i = chars.Count; i < opts.RequiredLength
-                || chars.Distinct().Count() < opts.RequiredUniqueChars; i++)
-            {
-                string rcs = randomChars[rand.Next(0, randomChars.Length)];
-                chars.Insert(rand.Next(0, chars.Count),
-                    rcs[rand.Next(0, rcs.Length)]);
+                if (user != null || isConfirmEmail)
+                {
+                    string themOfMessage = "Change your Email";
+                    string nameActionOnController = "AcceptNewEmail";
+                    var code = await _userManager.GenerateChangeEmailTokenAsync(user, model.NewEmail);
+                    string encodedCode = HttpUtility.UrlEncode(code);
+                    var userId = user.Id;
+                    await SendConfirmForChangeEmail(model.NewEmail, encodedCode, userId, themOfMessage, nameActionOnController);
+                }
             }
-            var password = new string(chars.ToArray());
-            return password;
+            catch (Exception e)
+            {
+                Console.WriteLine("Error" + e.Message);
+            }
+        }
+        public async Task SendConfirmForChangeEmail(string newEmail, string encodedCode, string userId, string message, string nameActionOnController)
+        {
+            try
+            {
+                var emailMessage = new MimeMessage();
+
+                emailMessage.From.Add(new MailboxAddress("Site administration", _SmtpOptions.Value.FromEmail));
+                emailMessage.To.Add(new MailboxAddress("", newEmail));
+                emailMessage.Subject = message;
+                emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
+                {
+                    Text = $"https://localhost:44348/api/Account/{nameActionOnController}?userId={userId}&newEmail={newEmail}&code={encodedCode}"
+
+                };
+                using (var client = new SmtpClient())
+                {
+                    await client.ConnectAsync(_SmtpOptions.Value.Host, _SmtpOptions.Value.Port, false);
+                    await client.AuthenticateAsync(_SmtpOptions.Value.AuthEmail, _SmtpOptions.Value.Password);
+                    await client.SendAsync(emailMessage);
+                    await client.DisconnectAsync(true);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error" + e.Message);
+            }
+        }
+        public async Task ResetEmail(string userId,string newEmail,string code)
+        {         
+            var user = await _userManager.FindByIdAsync(userId);
+            var result = await _userManager.ChangeEmailAsync(user, newEmail, code);            
         }
 
+        public async Task<IdentityResult> ChangePassword(ChangePasswordView model)
+        {
+            var user = await _userManager.FindByEmailAsync(model.Email);            
+            bool isCorrectPassword = await _userManager.CheckPasswordAsync(user, model.CurrentPassword);
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            if (user != null || isCorrectPassword)
+            {
+                var result = await _userManager.ResetPasswordAsync(user, token, model.NewPassword);
+                return result;
+            }
+            
+            
+            
+        }
     }
 }
+

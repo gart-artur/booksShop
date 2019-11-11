@@ -23,7 +23,9 @@ export class ForgotPasswordComponent implements OnInit {
   resetPassword(){
     let model = new ForgotPasswordView();
     model.email = this.resetForm.controls['email'].value
-    this._accountService.forgotPassword(model);
+    this._accountService.forgotPassword(model).subscribe(() =>{
+      window.alert("New password send to the Email address")
+    });
   }
 
 

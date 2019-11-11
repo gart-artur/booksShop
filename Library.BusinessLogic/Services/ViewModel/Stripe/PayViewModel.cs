@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Library.BusinessLogic.Helper
+namespace Library.BusinessLogic.Services.ViewModel.Stripe
 {
     public class PayViewModel
     {

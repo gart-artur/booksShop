@@ -42,6 +42,7 @@ namespace Library.WebApplication.Controllers
             _bookService.Updata(editBookViewModel);
             return Ok(editBookViewModel);
         }
+
         [HttpPost("sort")]
         public IActionResult Sort ([FromBody]SortBooksByParamsView model)
         {

@@ -2,6 +2,7 @@
 using Library.BusinessLogic.Helper;
 using Library.BusinessLogic.Services.Interfaces;
 using Library.BusinessLogic.Services.ViewModel;
+using Library.BusinessLogic.Services.ViewModel.Stripe;
 using Library.DataAccess.Entities;
 using Library.DataAccess.Interfaces;
 using System.Collections.Generic;

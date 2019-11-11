@@ -1,9 +1,4 @@
-export class orderViewModels {
-    // email :string;
-    // total : number;
-    // bookName : string;
-    // status : string;
-    // dateCreated : Date;
+export class orderViewModels {    
     orderViewModels:Array<Order>[];
 }
 

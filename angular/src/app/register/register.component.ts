@@ -17,24 +17,28 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      userName:[''],
+      userName:['',Validators.required],
       email:['',[Validators.required,Validators.email]],
       password:['',[Validators.required,Validators.minLength(6)]],
-      confirmPassword:['',[Validators.required,Validators.minLength(6)]]  
+      passwordConfirm:['',[Validators.required,Validators.minLength(6)]]  
 
     })
   }
 
   register(){    
-    if(this.registerForm.valid && this.registerForm.value.password==this.registerForm.value.confirmPassword){
+    if(this.registerForm.valid && this.registerForm.value.password==this.registerForm.value.passwordConfirm){
       this.user.userName = this.registerForm.value.userName,
       this.user.email = this.registerForm.value.email,
       this.user.password = this.registerForm.value.password,
-      this.user.confirmPassword = this.registerForm.value.confirmPassword          
-      this._registerService.registerModel(this.user);
-      window.alert("User successed created!")
-    } 
+      this.user.passwordConfirm = this.registerForm.value.passwordConfirm          
+      this._registerService.registerModel(this.user).subscribe(() => {
+        window.alert("User successed created!");
+      });
+      
+    }
+    else{
     window.alert("Something wrong...try again.") 
+    }
       
   }
 }

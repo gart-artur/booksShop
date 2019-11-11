@@ -1,0 +1,13 @@
+<div class="main_wrapper">  
+  <div class="w3-container align-center w3-card login-card">
+    <form [formGroup]="changeForm">   
+      <div class="form-group">
+        <label class="w3-text-blue"><b>New Email</b></label>
+        <input type="text"
+               formControlName="newEmail"
+               class="w3-input w3-border form-control" />
+      </div>
+      <button mat-raised-button color="primary"     
+      (click)="changeEmail()">
+Change<i class="w3-medium fa fa-check"></i>
+</button>

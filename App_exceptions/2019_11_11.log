@@ -1,0 +1,2 @@
+15:54:32 /api/Account/changePassword
+Self referencing loop detected for property 'task' with type 'System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[System.Threading.Tasks.VoidTaskResult,System.Runtime.CompilerServices.IAsyncStateMachine]'. Path 'stateMachine.<>t__builder'.

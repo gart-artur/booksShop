@@ -9,12 +9,9 @@ export class AuthorService {
 
  
     constructor(private http: HttpClient) {
-    }
-    
+    }    
  
-    createAuthor(author:Author) {
-        console.log(author);
-        
+    createAuthor(author:Author) {     
         return this.http.post(`${environment.apiUrl}api/Authors/create`, author,{ observe: 'response' });
     }
 

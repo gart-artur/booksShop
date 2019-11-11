@@ -45,7 +45,6 @@ export class PaymentComponent implements OnInit {
   }
   async getToken() {
     this.message = 'Loading...';
-
     (<any>window).Stripe.card.createToken({
       number: this.cardNumber,
       exp_month: this.expiryMonth,
@@ -76,8 +75,7 @@ export class PaymentComponent implements OnInit {
       this.bookNameArray+=[i+1] + ')' +(this.shippings[i].name)+'.  '
     }    
     return this.bookNameArray
-  }
-     
+  }  
 
 
   async sendUserModel(){

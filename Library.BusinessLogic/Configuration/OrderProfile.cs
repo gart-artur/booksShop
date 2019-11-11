@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Library.BusinessLogic.Helper;
 using Library.BusinessLogic.Services.ViewModel;
+using Library.BusinessLogic.Services.ViewModel.Stripe;
 using Library.DataAccess.Entities;
 
 namespace Library.BusinessLogic.Configuration

@@ -28,7 +28,10 @@ namespace Library.WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
-            services.Configure<StripeSettings>(Configuration.GetSection("Stripe")); 
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
+            services.Configure<SmtpOptions>(Configuration.GetSection("SmtpOptions"));
+            services.Configure<JwtOptions>(Configuration.GetSection("JwtOptions"));
+
 
             services.AddCors(options =>
             {
@@ -62,9 +65,9 @@ namespace Library.WebApplication
                     cfg.SaveToken = true;
                     cfg.TokenValidationParameters = new TokenValidationParameters
                     {
-                        ValidIssuer = Configuration["JwtIssuer"],
-                        ValidAudience = Configuration["JwtIssuer"],
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtKey"])),
+                        ValidIssuer = Configuration.GetSection("JwtOptions")["JwtIssuer"],
+                        ValidAudience = Configuration.GetSection("JwtOptions")["JwtIssuer"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection("JwtOptions")["JwtKey"])),
                         ClockSkew = TimeSpan.Zero // remove delay of token when expire
                     };
                 });

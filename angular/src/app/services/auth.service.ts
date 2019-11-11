@@ -43,5 +43,23 @@ export class AuthService {
     });
   }
 
+  public getAccessToken(): string {
+    if (this._currentUserData) {
+      return this._currentUserData.accessToken;
+    }
+    return undefined;
+  }
+  isAuthenticated(): Promise<boolean> {
+    return new Promise((resolve) => {
+      if (!this._currentUserData) {
+        this.storage.getItem<JwtView>(this._userDataKey).subscribe((data) => {
+          resolve(!!data);
+        });
+      }
+      else {
+        resolve(!!this._currentUserData);
+      }
+    });
+  }
 
 }
