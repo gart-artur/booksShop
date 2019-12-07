@@ -42,13 +42,13 @@ namespace Library.BusinessLogic.Services
                 payViewModel.Status = charge.Status;
                 payViewModel.Created = charge.Created;
                 payViewModel.BalanceTransactionId = charge.BalanceTransactionId;
-                _orderService.Add(payViewModel);               
+                _orderService.Add(payViewModel);
             }
             else
             {
                 string message = "Sorry, something wrong...";
             }
 
-        } 
+        }
     }
 }

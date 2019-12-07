@@ -23,7 +23,11 @@ namespace Library.DataAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<BooksAndAuthor>().HasKey(sc => new {sc.BookId, sc.AuthorId });            
+            modelBuilder.Entity<BooksAndAuthor>().HasKey(sc => new {sc.BookId, sc.AuthorId });
+            modelBuilder.Entity<User>()
+                .HasMany(p => p.Orders)
+                .WithOne(p => p.User)
+                .HasForeignKey(p => p.UserId);
         }
     }
 }

@@ -23,9 +23,9 @@ namespace Library.BusinessLogic.Services
             Order order = _mapper.Map<PayViewModel, Order>(payViewModel);
             _orderRepository.Insert(order);
         }
-        public IEnumerable<GetAllOrderViewItem> GetAll()
+        public IEnumerable<GetAllOrderViewItem> GetAll(string id)
         {
-            var orders = _orderRepository.GetAll();            
+            var orders = _orderRepository.GetAllOrdersByUserId(id);            
             var returnedModel = _mapper.Map<IEnumerable<Order>,IEnumerable<GetAllOrderViewItem>>(orders);
             return returnedModel;
         }

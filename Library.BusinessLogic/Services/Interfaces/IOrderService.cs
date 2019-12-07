@@ -7,7 +7,7 @@ namespace Library.BusinessLogic.Services.Interfaces
 {
     public interface IOrderService
     {
-        IEnumerable<GetAllOrderViewItem> GetAll();
+        IEnumerable<GetAllOrderViewItem> GetAll(string id);
         void Add(PayViewModel payViewModel);
     }
 }

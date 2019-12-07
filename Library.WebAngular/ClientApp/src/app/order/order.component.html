@@ -1,0 +1,27 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>List of orders</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Date of order</th>
+          <th>Email</th>
+          <th>Book name</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders | async">
+          <td>{{order.dateCreated | date: 'EEEE, MMMM d, y'}}</td>
+          <td>{{order.email}}</td>
+          <td>{{order.bookName}}</td>
+          <td>{{order.total}} $</td>
+          <td>{{order.status}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

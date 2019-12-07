@@ -43,7 +43,7 @@ namespace Library.WebApplication
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "BooksMagazine-API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "BooksShop-API", Version = "v1" });
             });
 
             var connectionString = Configuration.GetConnectionString("DefaultConnection");

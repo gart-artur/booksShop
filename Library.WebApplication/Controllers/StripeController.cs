@@ -1,6 +1,9 @@
 ﻿using Library.BusinessLogic.Services.Interfaces;
 using Library.BusinessLogic.Services.ViewModel.Stripe;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace Library.WebApplication.Controllers
 {
@@ -18,6 +21,9 @@ namespace Library.WebApplication.Controllers
         [HttpPost("charge")]
         public IActionResult Charge([FromBody]PayViewModel model)
         {
+            model.Email = HttpContext.User.FindFirst(JwtRegisteredClaimNames.Sub).Value;
+            model.UserId= HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
             _stripeService.PayOrder(model);  
              return Ok(); 
         }
@@ -25,7 +31,8 @@ namespace Library.WebApplication.Controllers
         [HttpGet("order")]
         public IActionResult Order()
         {
-            var orders = _orderService.GetAll();
+            var id = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var orders = _orderService.GetAll(id);
             return Ok(orders);
         }
     }

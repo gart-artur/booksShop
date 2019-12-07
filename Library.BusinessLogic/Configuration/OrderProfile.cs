@@ -12,8 +12,7 @@ namespace Library.BusinessLogic.Configuration
             CreateMap<Order, OrderViewModel>();
             CreateMap<Order, GetAllOrderViewItem>();
             CreateMap<GetAllOrderViewItem,Order>();
-            CreateMap<PayViewModel, Order>()
-             .ForMember(x => x.Id, opt => opt.Ignore())
+            CreateMap<PayViewModel, Order>()             
              .ForMember(x => x.Created, opt => opt.Ignore());
         }
     }

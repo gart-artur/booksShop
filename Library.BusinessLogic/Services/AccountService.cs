@@ -91,6 +91,7 @@ namespace Library.BusinessLogic.Services
             var encodedAccess = new JwtSecurityTokenHandler().WriteToken(token);
             return new JwtView
             {
+                UserId = user.Id,
                 Email = user.Email,
                 AccessToken = encodedAccess,
             };
@@ -124,15 +125,9 @@ namespace Library.BusinessLogic.Services
         }
         public async Task SendNewPasswordOnEmail(string email, string message, string password)
         {
-            try
-            {
-                await SendMail(email, message, password);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error" + e.Message);
-            }
+            await SendMail(email, message, password);
         }
+
 
         private async Task SendMail(string email, string message, string password)
         {
@@ -157,33 +152,21 @@ namespace Library.BusinessLogic.Services
 
         public async Task Confirm(string userId, string code)
         {
-            try {
-                var user = await _userManager.FindByIdAsync(userId);
-                var result = await _userManager.ConfirmEmailAsync(user, code);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error" + e.Message);
-            }
+            var user = await _userManager.FindByIdAsync(userId);
+            var result = await _userManager.ConfirmEmailAsync(user, code);
         }
         public async Task ForgotPassword(ForgotPasswordView model)
         {
-            try {
-                var user = await _userManager.FindByEmailAsync(model.Email);
-                bool isConfirmEmail = await _userManager.IsEmailConfirmedAsync(user);
-                if (user != null || isConfirmEmail)
-                {
-                    string themOfMessage = "Reset your password";
-                    string nameActionOnController = "reset";
-                    var code = await _userManager.GeneratePasswordResetTokenAsync(user);
-                    string encodedCode = HttpUtility.UrlEncode(code);
-                    var userId = user.Id;
-                    await SendEmailAsync(user.Email, encodedCode, userId, themOfMessage, nameActionOnController);
-                }
-            }
-            catch (Exception e)
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            bool isConfirmEmail = await _userManager.IsEmailConfirmedAsync(user);
+            if (user != null || isConfirmEmail)
             {
-                Console.WriteLine("Error" + e.Message);
+                string themOfMessage = "Reset your password";
+                string nameActionOnController = "reset";
+                var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+                string encodedCode = HttpUtility.UrlEncode(code);
+                var userId = user.Id;
+                await SendEmailAsync(user.Email, encodedCode, userId, themOfMessage, nameActionOnController);
             }
         }
         public async Task ResetPassword(string userId, string code)
@@ -205,69 +188,50 @@ namespace Library.BusinessLogic.Services
         {
             var user = await _userManager.FindByEmailAsync(model.Email);
             bool isConfirmEmail = await _userManager.IsEmailConfirmedAsync(user);
-            try
+            if (user != null || isConfirmEmail)
             {
-                if (user != null || isConfirmEmail)
-                {
-                    string themOfMessage = "Change your Email";
-                    string nameActionOnController = "AcceptNewEmail";
-                    var code = await _userManager.GenerateChangeEmailTokenAsync(user, model.NewEmail);
-                    string encodedCode = HttpUtility.UrlEncode(code);
-                    var userId = user.Id;
-                    await SendConfirmForChangeEmail(model.NewEmail, encodedCode, userId, themOfMessage, nameActionOnController);
-                }
+                string themOfMessage = "Change your Email";
+                string nameActionOnController = "AcceptNewEmail";
+                var code = await _userManager.GenerateChangeEmailTokenAsync(user, model.NewEmail);
+                string encodedCode = HttpUtility.UrlEncode(code);
+                var userId = user.Id;
+                await SendConfirmForChangeEmail(model.NewEmail, encodedCode, userId, themOfMessage, nameActionOnController);
             }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error" + e.Message);
-            }
+
         }
         public async Task SendConfirmForChangeEmail(string newEmail, string encodedCode, string userId, string message, string nameActionOnController)
         {
-            try
-            {
-                var emailMessage = new MimeMessage();
+            var emailMessage = new MimeMessage();
 
-                emailMessage.From.Add(new MailboxAddress("Site administration", _SmtpOptions.Value.FromEmail));
-                emailMessage.To.Add(new MailboxAddress("", newEmail));
-                emailMessage.Subject = message;
-                emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
-                {
-                    Text = $"https://localhost:44348/api/Account/{nameActionOnController}?userId={userId}&newEmail={newEmail}&code={encodedCode}"
-
-                };
-                using (var client = new SmtpClient())
-                {
-                    await client.ConnectAsync(_SmtpOptions.Value.Host, _SmtpOptions.Value.Port, false);
-                    await client.AuthenticateAsync(_SmtpOptions.Value.AuthEmail, _SmtpOptions.Value.Password);
-                    await client.SendAsync(emailMessage);
-                    await client.DisconnectAsync(true);
-                }
-            }
-            catch (Exception e)
+            emailMessage.From.Add(new MailboxAddress("Site administration", _SmtpOptions.Value.FromEmail));
+            emailMessage.To.Add(new MailboxAddress("", newEmail));
+            emailMessage.Subject = message;
+            emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
             {
-                Console.WriteLine("Error" + e.Message);
+                Text = $"https://localhost:44348/api/Account/{nameActionOnController}?userId={userId}&newEmail={newEmail}&code={encodedCode}"
+            };
+            using (var client = new SmtpClient())
+            {
+                await client.ConnectAsync(_SmtpOptions.Value.Host, _SmtpOptions.Value.Port, false);
+                await client.AuthenticateAsync(_SmtpOptions.Value.AuthEmail, _SmtpOptions.Value.Password);
+                await client.SendAsync(emailMessage);
+                await client.DisconnectAsync(true);
+
             }
         }
-        public async Task ResetEmail(string userId,string newEmail,string code)
-        {         
+        public async Task ResetEmail(string userId, string newEmail, string code)
+        {
             var user = await _userManager.FindByIdAsync(userId);
-            var result = await _userManager.ChangeEmailAsync(user, newEmail, code);            
+            var result = await _userManager.ChangeEmailAsync(user, newEmail, code);
         }
 
         public async Task<IdentityResult> ChangePassword(ChangePasswordView model)
         {
-            var user = await _userManager.FindByEmailAsync(model.Email);            
+            var user = await _userManager.FindByEmailAsync(model.Email);
             bool isCorrectPassword = await _userManager.CheckPasswordAsync(user, model.CurrentPassword);
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-            if (user != null || isCorrectPassword)
-            {
-                var result = await _userManager.ResetPasswordAsync(user, token, model.NewPassword);
-                return result;
-            }
-            
-            
-            
+            var result = await _userManager.ResetPasswordAsync(user, token, model.NewPassword);
+            return result;
         }
     }
 }

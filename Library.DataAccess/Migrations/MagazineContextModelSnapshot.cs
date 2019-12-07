@@ -94,7 +94,11 @@ namespace Library.DataAccess.Migrations
 
                     b.Property<long>("Total");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Orders");
                 });
@@ -273,6 +277,13 @@ namespace Library.DataAccess.Migrations
                         .WithMany("BooksAndAuthors")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Library.DataAccess.Entities.Order", b =>
+                {
+                    b.HasOne("Library.DataAccess.Entities.User", "User")
+                        .WithMany("Orders")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
