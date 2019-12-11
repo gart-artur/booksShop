@@ -26,7 +26,7 @@ namespace Library.WebApplication
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        {           
             StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
             services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
             services.Configure<SmtpOptions>(Configuration.GetSection("SmtpOptions"));
@@ -46,9 +46,12 @@ namespace Library.WebApplication
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BooksShop-API", Version = "v1" });
             });
 
-            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");/*
+            bool isDapperEnable = bool.Parse(Configuration["RepositoryPattern"].Value);*/
+            bool isDapperEnable = bool.Parse(Configuration.GetSection("RepositoryPattern")["isDapper"]);
+
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            BusinessLogic.Startup.ConfigureServices(services, connectionString);
+            BusinessLogic.Startup.ConfigureServices(services, connectionString, isDapperEnable);
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // => remove default claims
             services

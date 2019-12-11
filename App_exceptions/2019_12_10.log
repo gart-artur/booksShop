@@ -1,0 +1,2 @@
+18:25:36 /api/Account/changePassword
+Self referencing loop detected for property 'task' with type 'System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[Microsoft.AspNetCore.Identity.IdentityResult,System.Runtime.CompilerServices.IAsyncStateMachine]'. Path 'stateMachine.<>t__builder'.

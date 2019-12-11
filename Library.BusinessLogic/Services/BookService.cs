@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using Library.BusinessLogic.Services.Interfaces;
 using Library.BusinessLogic.Services.ViewModel.Books.Get;
@@ -45,7 +46,7 @@ namespace Library.BusinessLogic.Services
             Book book = _mapper.Map<EditBookViewModel, Book>(editBookViewModel);
             _bookRepository.Update(book);            
         }   
-        public FilterBooksListView SortByParams(SortBooksByParamsView model)
+        public FilterBooksListView SortByParamsAsync(SortBooksByParamsView model)
         {
            var booksView = new FilterBooksListView();            
                 var chekName = string.IsNullOrEmpty(model.Name) ? "" : model.Name;

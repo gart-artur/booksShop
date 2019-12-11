@@ -46,7 +46,7 @@ namespace Library.WebApplication.Controllers
         [HttpPost("sort")]
         public IActionResult Sort ([FromBody]SortBooksByParamsView model)
         {
-            var books = _bookService.SortByParams(model);
+            var books = _bookService.SortByParamsAsync(model);
             return Ok(books);
         }
     }

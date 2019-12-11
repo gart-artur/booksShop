@@ -1,10 +1,11 @@
 ﻿using Library.DataAccess.Entities;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Library.DataAccess.Interfaces
 {
     public interface IOrderRepository : IRepository<Order>
     {
-        IEnumerable<Order> GetAllOrdersByUserId(string id);
+        Task<IEnumerable<Order>> GetAllOrdersByUserId(string id);
     }    
 }

@@ -6,6 +6,7 @@ using Library.BusinessLogic.Services.ViewModel.Stripe;
 using Library.DataAccess.Entities;
 using Library.DataAccess.Interfaces;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Library.BusinessLogic.Services
 {
@@ -23,11 +24,14 @@ namespace Library.BusinessLogic.Services
             Order order = _mapper.Map<PayViewModel, Order>(payViewModel);
             _orderRepository.Insert(order);
         }
-        public IEnumerable<GetAllOrderViewItem> GetAll(string id)
+        public async Task<OrderViewModel> GetAll(string id)
         {
-            var orders = _orderRepository.GetAllOrdersByUserId(id);            
-            var returnedModel = _mapper.Map<IEnumerable<Order>,IEnumerable<GetAllOrderViewItem>>(orders);
-            return returnedModel;
+            IEnumerable<Order> orders = await _orderRepository.GetAllOrdersByUserId(id);
+            var model = new OrderViewModel()
+            {
+                Orders = _mapper.Map<IEnumerable<Order>, List<GetAllOrderViewItem>>(orders)
+            };
+            return model;
         }
     }
 }

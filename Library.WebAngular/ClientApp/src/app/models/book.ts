@@ -2,6 +2,11 @@ export class Book {
     id: number;
     price: number;
     name: string;
+    dateCreated = Date.now();
+
+    constructor(){
+        this.dateCreated = Date.now()
+    }
 }
 
 export class ProductOrder {

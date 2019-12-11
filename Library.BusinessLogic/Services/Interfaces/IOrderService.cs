@@ -2,12 +2,13 @@
 using Library.BusinessLogic.Services.ViewModel;
 using Library.BusinessLogic.Services.ViewModel.Stripe;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Library.BusinessLogic.Services.Interfaces
 {
     public interface IOrderService
     {
-        IEnumerable<GetAllOrderViewItem> GetAll(string id);
+        Task<OrderViewModel> GetAll(string id);
         void Add(PayViewModel payViewModel);
     }
 }

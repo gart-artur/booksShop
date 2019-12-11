@@ -1,5 +1,8 @@
-export class orderViewModels {
-    orderViewModels: Array<Order>[];
+export class OrderViewModels {
+    orders : Order[];
+    constructor(){
+        this.orders = [];
+    }
 }
 
 export class Order {

@@ -1,5 +1,9 @@
-﻿namespace Library.DataAccess.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Library.DataAccess.Entities
 {
+    [Table("BooksAndAuthors")]
+
     public class BooksAndAuthor : BaseEntity
     {
         public  int BookId {get;set;}

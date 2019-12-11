@@ -10,13 +10,15 @@ using Library.DataAccess;
 using Library.DataAccess.Entities;
 using Microsoft.AspNetCore.Identity;
 using Library.BusinessLogic.Helper;
+using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration;
 
 namespace Library.BusinessLogic
 {
     public static class Startup
     {
-        public static void ConfigureServices(IServiceCollection services, string connectionString)
-        {           
+        public static void ConfigureServices(IServiceCollection services, string connectionString, bool isDapperEnable)
+        {
             services.AddScoped<IDbConnection, SqlConnection>(x => new SqlConnection(connectionString));
           
             services.AddDbContext<MagazineContext>(options => options.UseSqlServer(connectionString, b => b.MigrationsAssembly("Library.DataAccess")));
@@ -31,7 +33,7 @@ namespace Library.BusinessLogic
                 .AddEntityFrameworkStores<MagazineContext>()
                 .AddDefaultTokenProviders();
 
-            DataAccess.Startup.ConfigureServices(services);
+            DataAccess.Startup.ConfigureServices(services, isDapperEnable);
             ConfigureAutomapper(services);
         }
         public static void ConfigureAutomapper(IServiceCollection services)

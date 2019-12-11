@@ -1,0 +1,2 @@
+18:50:01 /api/Books/sort
+Self referencing loop detected for property 'task' with type 'System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[Library.BusinessLogic.Services.ViewModel.Books.Post.FilterBooksListView,Library.BusinessLogic.Services.BookService+<SortByParamsAsync>d__8]'. Path 'stateMachine.<>t__builder'.

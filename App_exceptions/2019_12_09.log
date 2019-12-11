@@ -1,0 +1,2 @@
+18:33:30 /api/Stripe/charge
+Your card was declined. Your request was in test mode, but used a non test (live) card. For a list of valid test cards, visit: https://stripe.com/docs/testing.

@@ -42,7 +42,6 @@
       <th mat-header-cell *matHeaderCellDef>  </th>
       <td mat-cell *matCellDef="let element"> {{element.text}}
         <button mat-raised-button class='mat-raised-button mat-warn' style='float: right'(click)="deleteBook(element)">Delete</button>
-        <!-- <button mat-raised-button class='mat-raised-button ' style='float: right'(click)="edit(element)">Edit(not work)</button> -->
         <button mat-raised-button class='mat-raised-button ' style='float: right'(click)="addBookToCart(element)">Add to Cart</button>          
       </td>    
     </ng-container>

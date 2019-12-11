@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let order of orders | async">
+        <tr *ngFor="let order of dataModel">
           <td>{{order.dateCreated | date: 'EEEE, MMMM d, y'}}</td>
           <td>{{order.email}}</td>
           <td>{{order.bookName}}</td>

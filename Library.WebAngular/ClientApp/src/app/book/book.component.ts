@@ -38,7 +38,7 @@ export class BookComponent implements OnInit {
     this.editForm = new FormGroup({
       name: new FormControl(''),
       price: new FormControl(''),
-      dataCreate: new FormControl('')
+      dateCreated: new FormControl('')
     })
     this.productItem.totalPrice = 0;
   }
@@ -50,6 +50,8 @@ export class BookComponent implements OnInit {
       maxPrice: ['']
     });
     this.loadBooksByFilters();
+    const currentDate = new Date().toISOString().substring(0, 10);
+    this.editForm.controls['dateCreated'].setValue(currentDate);
   }
 
   isAllSelected() {
@@ -89,7 +91,6 @@ export class BookComponent implements OnInit {
     let getNullFilters = await this.sortItem()
     this._booksService.sortByParams(getNullFilters)
       .subscribe((item: any) => {
-        let checkItemInArray = item.books.length == 0 ? window.alert("We haven`t books like you search."):
           item.books.forEach((element: Book) => {
             BOOKS_ARRAY.push(element);
             this.dataSource = new MatTableDataSource<Book>(BOOKS_ARRAY);

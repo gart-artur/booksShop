@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Order, orderViewModels } from '../models/order';
+import { Order, OrderViewModels } from '../models/order';
 import { OrderService } from '../services/order.service';
 import { Observable } from 'rxjs';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-order',
@@ -10,16 +11,32 @@ import { Observable } from 'rxjs';
 })
 export class OrderComponent implements OnInit {
 
-  orders: Observable<orderViewModels[]>;
+  searchModel: OrderViewModels;
+  dataModel : Order [] = [];
 
   constructor(private _orderService: OrderService) { }
 
   ngOnInit() {
     this.loadOrders()
+  }  
+
+  loadOrders(): void {
+    this._orderService.getAllOrders().subscribe(response => {
+      this.initialDataAfterSearch(response);
+    })
   }
 
-  loadOrders() {
-    this.orders = this._orderService.getAllOrders()
+  initialDataAfterSearch(data: OrderViewModels) {
+    this.searchModel = data;
+    this.search();
+  }
+
+  search() : void{
+    this.searchModel.orders.forEach((el:Order)=>{
+      console.log(el)
+      this.dataModel.push(el)
+    })
   }
 
 }
+

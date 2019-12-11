@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Library.DataAccess.Entities;
 using Library.DataAccess.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -20,8 +17,8 @@ namespace Library.DataAccess.Repository
 
         public IEnumerable<Book> SortByParams(string name,int minPrice,int maxPrice)
         {
-            var listOfBooks = _entities.Where(e => e.Name.Contains(name.ToLower()) && e.Price >= minPrice && e.Price <= maxPrice);         
-            return listOfBooks.ToList();
+            var listOfBooks = _entities.Where(e => e.Name.Contains(name.ToLower()) && e.Price >= minPrice && e.Price <= maxPrice);
+            return listOfBooks.ToList<Book>();
         }
     }
 }

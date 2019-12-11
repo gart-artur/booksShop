@@ -1,9 +1,11 @@
 ﻿using Library.BusinessLogic.Services.Interfaces;
+using Library.BusinessLogic.Services.ViewModel;
 using Library.BusinessLogic.Services.ViewModel.Stripe;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Library.WebApplication.Controllers
 {
@@ -29,11 +31,11 @@ namespace Library.WebApplication.Controllers
         }
 
         [HttpGet("order")]
-        public IActionResult Order()
+        public async Task<IActionResult> Order()
         {
             var id = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var orders = _orderService.GetAll(id);
-            return Ok(orders);
+            OrderViewModel model = await _orderService.GetAll(id);
+            return Ok(model);
         }
     }
 }

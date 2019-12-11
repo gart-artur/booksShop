@@ -3,6 +3,7 @@ using Library.DataAccess.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Library.DataAccess.Repository
 {
@@ -14,10 +15,10 @@ namespace Library.DataAccess.Repository
             _entities = context.Set<Order>();
         }
 
-        public IEnumerable<Order> GetAllOrdersByUserId(string id)
+        public async Task<IEnumerable<Order>> GetAllOrdersByUserId(string id)
         {
-            var listOfOrders = _entities.Where(e => e.UserId.Contains(id));
-            return listOfOrders.ToList();
+            IEnumerable<Order> orders = _entities.Where(e => e.UserId.Contains(id));
+            return orders;
         }
     }
 }
