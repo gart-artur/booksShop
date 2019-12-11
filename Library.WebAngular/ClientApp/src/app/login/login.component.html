@@ -5,13 +5,11 @@
         <label class="w3-text-blue"><b>Email</b></label>
         <input type="text" formControlName="email" class="w3-input w3-border form-control" />
       </div>
-
       <div class="form-group">
         <label class="w3-text-blue"><b>Password</b></label>
         <input type="password" formControlName="password" class="w3-input w3-border form-control" />
       </div>
-
-      <br />
+      <br/>
       <button mat-raised-button color="primary" [disabled]="!loginForm.controls['password'].value"
         (click)="login()">Login</button>
       <a class="nav-item nav-link-edit" [routerLink]="['/forgot']">Forgot password?</a>

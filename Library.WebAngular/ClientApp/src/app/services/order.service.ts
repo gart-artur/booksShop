@@ -11,7 +11,7 @@ export class OrderService {
 
   constructor(private http: HttpClient) { }
 
-  getAllOrders() : Observable<OrderViewModels>  {
+  getAllOrders(): Observable<OrderViewModels> {
     return this.http.get<OrderViewModels>(`${environment.apiUrl}api/Stripe/order`);
   }
 

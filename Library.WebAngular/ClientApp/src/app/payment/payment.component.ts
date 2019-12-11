@@ -61,8 +61,8 @@ export class PaymentComponent implements OnInit {
           this.userpPayModel.token = response.id
           this.userpPayModel.total = this._cartService.getItemsFromCart().totalPrice
           this.userpPayModel.bookName = this.getNameOfAllBook();
-          this._cartService.sendStripePayment(this.userpPayModel).subscribe((response=>this.router.navigateByUrl("/order")))
-          this.bookNameArray = '';          
+          this._cartService.sendStripePayment(this.userpPayModel).subscribe((response => this.router.navigateByUrl("/order")))
+          this.bookNameArray = '';
         } else {
           this.message = response.error.message;
         }

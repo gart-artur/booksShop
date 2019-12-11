@@ -5,9 +5,6 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class AuthorService {
-
-
-
     constructor(private http: HttpClient) {
     }
 

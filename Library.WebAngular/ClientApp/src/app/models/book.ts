@@ -4,7 +4,7 @@ export class Book {
     name: string;
     dateCreated = Date.now();
 
-    constructor(){
+    constructor() {
         this.dateCreated = Date.now()
     }
 }
