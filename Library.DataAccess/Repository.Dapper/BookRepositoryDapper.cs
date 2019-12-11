@@ -16,7 +16,6 @@ namespace Library.DataAccess.Repository.Dapper
         public BookRepositoryDapper(IConfiguration configuration) : base(configuration)
         {
         }
-
         public IEnumerable<Book> SortByParams(string name, int minPrice, int maxPrice)
         {
             string encodeNameForLike = "%" + name + "%";

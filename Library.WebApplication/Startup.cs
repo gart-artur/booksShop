@@ -46,8 +46,7 @@ namespace Library.WebApplication
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BooksShop-API", Version = "v1" });
             });
 
-            var connectionString = Configuration.GetConnectionString("DefaultConnection");/*
-            bool isDapperEnable = bool.Parse(Configuration["RepositoryPattern"].Value);*/
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
             bool isDapperEnable = bool.Parse(Configuration.GetSection("RepositoryPattern")["isDapper"]);
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -75,8 +74,7 @@ namespace Library.WebApplication
                     };
                 });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);  
-                        
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);                          
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
