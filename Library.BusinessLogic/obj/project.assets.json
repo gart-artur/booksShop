@@ -72,10 +72,11 @@
           "lib/netstandard1.3/DocumentFormat.OpenXml.dll": {}
         }
       },
-      "Elasticsearch.Net/7.0.0": {
+      "Elasticsearch.Net/7.4.2": {
         "type": "package",
         "dependencies": {
           "System.Buffers": "4.5.0",
+          "System.Diagnostics.DiagnosticSource": "4.5.1",
           "System.Reflection.Emit": "4.3.0",
           "System.Reflection.Emit.Lightweight": "4.3.0"
         },
@@ -1098,6 +1099,18 @@
           "lib/netstandard2.0/MimeKit.dll": {}
         }
       },
+      "NEST/7.4.2": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "[7.4.2, 8.0.0)"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {}
+        }
+      },
       "NETStandard.Library/2.0.3": {
         "type": "package",
         "dependencies": {
@@ -1412,6 +1425,19 @@
         },
         "runtime": {
           "lib/netstandard2.0/Serilog.dll": {}
+        }
+      },
+      "Serilog.Exceptions/5.3.1": {
+        "type": "package",
+        "dependencies": {
+          "Serilog": "2.8.0",
+          "System.Reflection.TypeExtensions": "4.5.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Serilog.Exceptions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Serilog.Exceptions.dll": {}
         }
       },
       "Serilog.Extensions.Logging/3.0.1": {
@@ -2319,17 +2345,13 @@
           "ref/netstandard1.0/System.Reflection.Primitives.dll": {}
         }
       },
-      "System.Reflection.TypeExtensions/4.3.0": {
+      "System.Reflection.TypeExtensions/4.5.1": {
         "type": "package",
-        "dependencies": {
-          "System.Reflection": "4.3.0",
-          "System.Runtime": "4.3.0"
-        },
         "compile": {
-          "ref/netstandard1.5/System.Reflection.TypeExtensions.dll": {}
+          "ref/netstandard2.0/System.Reflection.TypeExtensions.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.5/System.Reflection.TypeExtensions.dll": {}
+          "lib/netstandard2.0/System.Reflection.TypeExtensions.dll": {}
         }
       },
       "System.Resources.ResourceManager/4.3.0": {
@@ -3075,6 +3097,7 @@
           "NETStandard.Library": "2.0.3",
           "PasswordGenerator": "2.0.1",
           "Serilog": "2.9.0",
+          "Serilog.Exceptions": "5.3.1",
           "Serilog.Extensions.Logging": "3.0.1",
           "Serilog.Sinks.Elasticsearch": "8.0.1",
           "Stripe.net": "32.0.0",
@@ -3189,18 +3212,21 @@
         "lib/netstandard1.3/DocumentFormat.OpenXml.xml"
       ]
     },
-    "Elasticsearch.Net/7.0.0": {
-      "sha512": "2rLkJUu0c6xh/IVGRcIlvsZSA6pv9ach2K3xuTZpWcaB6WHFdIW/ot+cmyALF4SFvk6uKHPesUN5M3Pd8wI86g==",
+    "Elasticsearch.Net/7.4.2": {
+      "sha512": "GtEHQwsBrmwWoBysTC0J0nmPfCipdvXnI39/gH3FjE7/lhbuPL0dsMIZfx7w0krv+q/uE7AewxewhmtDrU7T7Q==",
       "type": "package",
-      "path": "elasticsearch.net/7.0.0",
+      "path": "elasticsearch.net/7.4.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "elasticsearch.net.7.0.0.nupkg.sha512",
+        "elasticsearch.net.7.4.2.nupkg.sha512",
         "elasticsearch.net.nuspec",
+        "images/nuget-icon.png",
         "lib/net461/Elasticsearch.Net.dll",
+        "lib/net461/Elasticsearch.Net.pdb",
         "lib/net461/Elasticsearch.Net.xml",
         "lib/netstandard2.0/Elasticsearch.Net.dll",
+        "lib/netstandard2.0/Elasticsearch.Net.pdb",
         "lib/netstandard2.0/Elasticsearch.Net.xml",
         "license.txt"
       ]
@@ -4442,6 +4468,25 @@
         "mimekit.nuspec"
       ]
     },
+    "NEST/7.4.2": {
+      "sha512": "uBWDI/66cOTWiU6jnKYO7ZrYmZXLPbls+mdLRlxw5cDazzGjTJ0OG1UgsY4XfT+K09+a1YubXbtJAghvg1hbXA==",
+      "type": "package",
+      "path": "nest/7.4.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "images/nuget-icon.png",
+        "lib/net461/Nest.dll",
+        "lib/net461/Nest.pdb",
+        "lib/net461/Nest.xml",
+        "lib/netstandard2.0/Nest.dll",
+        "lib/netstandard2.0/Nest.pdb",
+        "lib/netstandard2.0/Nest.xml",
+        "license.txt",
+        "nest.7.4.2.nupkg.sha512",
+        "nest.nuspec"
+      ]
+    },
     "NETStandard.Library/2.0.3": {
       "sha512": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "type": "package",
@@ -4963,6 +5008,32 @@
         "lib/netstandard2.0/Serilog.xml",
         "serilog.2.9.0.nupkg.sha512",
         "serilog.nuspec"
+      ]
+    },
+    "Serilog.Exceptions/5.3.1": {
+      "sha512": "IEwtxKbXqcxQJrtYiDZb0dfnIJEnGQmj2YzhAT7ZWvLyxkDBgv7ViTDgFZfOsDd4okafCAqWCY6aBNBDSu58rg==",
+      "type": "package",
+      "path": "serilog.exceptions/5.3.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net461/Serilog.Exceptions.dll",
+        "lib/net461/Serilog.Exceptions.pdb",
+        "lib/net461/Serilog.Exceptions.xml",
+        "lib/net472/Serilog.Exceptions.dll",
+        "lib/net472/Serilog.Exceptions.pdb",
+        "lib/net472/Serilog.Exceptions.xml",
+        "lib/netstandard1.3/Serilog.Exceptions.dll",
+        "lib/netstandard1.3/Serilog.Exceptions.pdb",
+        "lib/netstandard1.3/Serilog.Exceptions.xml",
+        "lib/netstandard1.6/Serilog.Exceptions.dll",
+        "lib/netstandard1.6/Serilog.Exceptions.pdb",
+        "lib/netstandard1.6/Serilog.Exceptions.xml",
+        "lib/netstandard2.0/Serilog.Exceptions.dll",
+        "lib/netstandard2.0/Serilog.Exceptions.pdb",
+        "lib/netstandard2.0/Serilog.Exceptions.xml",
+        "serilog.exceptions.5.3.1.nupkg.sha512",
+        "serilog.exceptions.nuspec"
       ]
     },
     "Serilog.Extensions.Logging/3.0.1": {
@@ -7375,20 +7446,26 @@
         "system.reflection.primitives.nuspec"
       ]
     },
-    "System.Reflection.TypeExtensions/4.3.0": {
-      "sha512": "7u6ulLcZbyxB5Gq0nMkQttcdBTx57ibzw+4IOXEfR+sXYQoHvjW5LTLyNr8O22UIMrqYbchJQJnos4eooYzYJA==",
+    "System.Reflection.TypeExtensions/4.5.1": {
+      "sha512": "fO8GMEkgoKioJ7cglZbhcnBgkCWWn9poS3G2jevS+fuwW9xJXMx7/1kr7dkwOJfo0pWqxLFWVcxlOr+WeK5ipA==",
       "type": "package",
-      "path": "system.reflection.typeextensions/4.3.0",
+      "path": "system.reflection.typeextensions/4.5.1",
       "files": [
         ".nupkg.metadata",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
         "lib/MonoAndroid10/_._",
         "lib/MonoTouch10/_._",
         "lib/net46/System.Reflection.TypeExtensions.dll",
-        "lib/net462/System.Reflection.TypeExtensions.dll",
+        "lib/net461/System.Reflection.TypeExtensions.dll",
         "lib/netcore50/System.Reflection.TypeExtensions.dll",
+        "lib/netcoreapp1.0/System.Reflection.TypeExtensions.dll",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.3/System.Reflection.TypeExtensions.dll",
         "lib/netstandard1.5/System.Reflection.TypeExtensions.dll",
+        "lib/netstandard2.0/System.Reflection.TypeExtensions.dll",
+        "lib/uap10.0.16299/_._",
         "lib/xamarinios10/_._",
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
@@ -7396,7 +7473,9 @@
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net46/System.Reflection.TypeExtensions.dll",
-        "ref/net462/System.Reflection.TypeExtensions.dll",
+        "ref/net461/System.Reflection.TypeExtensions.dll",
+        "ref/net461/System.Reflection.TypeExtensions.xml",
+        "ref/netcoreapp2.0/_._",
         "ref/netstandard1.3/System.Reflection.TypeExtensions.dll",
         "ref/netstandard1.3/System.Reflection.TypeExtensions.xml",
         "ref/netstandard1.3/de/System.Reflection.TypeExtensions.xml",
@@ -7419,13 +7498,19 @@
         "ref/netstandard1.5/ru/System.Reflection.TypeExtensions.xml",
         "ref/netstandard1.5/zh-hans/System.Reflection.TypeExtensions.xml",
         "ref/netstandard1.5/zh-hant/System.Reflection.TypeExtensions.xml",
+        "ref/netstandard2.0/System.Reflection.TypeExtensions.dll",
+        "ref/netstandard2.0/System.Reflection.TypeExtensions.xml",
+        "ref/uap10.0.16299/_._",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
         "runtimes/aot/lib/netcore50/System.Reflection.TypeExtensions.dll",
-        "system.reflection.typeextensions.4.3.0.nupkg.sha512",
-        "system.reflection.typeextensions.nuspec"
+        "runtimes/aot/lib/uap10.0.16299/_._",
+        "system.reflection.typeextensions.4.5.1.nupkg.sha512",
+        "system.reflection.typeextensions.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Resources.ResourceManager/4.3.0": {
@@ -9453,9 +9538,11 @@
       "Microsoft.Extensions.Options >= 3.0.0",
       "Microsoft.Extensions.Primitives >= 3.0.0",
       "Microsoft.IdentityModel.Tokens >= 5.6.0",
+      "NEST >= 7.4.2",
       "NETStandard.Library >= 2.0.3",
       "PasswordGenerator >= 2.0.1",
       "Serilog >= 2.9.0",
+      "Serilog.Exceptions >= 5.3.1",
       "Serilog.Extensions.Logging >= 3.0.1",
       "Serilog.Sinks.Elasticsearch >= 8.0.1",
       "Stripe.net >= 32.0.0",
@@ -9562,6 +9649,10 @@
             "target": "Package",
             "version": "[5.6.0, )"
           },
+          "NEST": {
+            "target": "Package",
+            "version": "[7.4.2, )"
+          },
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",
@@ -9575,6 +9666,10 @@
           "Serilog": {
             "target": "Package",
             "version": "[2.9.0, )"
+          },
+          "Serilog.Exceptions": {
+            "target": "Package",
+            "version": "[5.3.1, )"
           },
           "Serilog.Extensions.Logging": {
             "target": "Package",

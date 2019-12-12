@@ -1,4 +1,3 @@
-C:\Users\Anuitex-11\source\repos\booksShop\Library.WebAngular\obj\Debug\netcoreapp2.2\Library.WebAngular.csprojAssemblyReference.cache
 C:\Users\Anuitex-11\source\repos\booksShop\Library.WebAngular\bin\Debug\netcoreapp2.2\Library.WebAngular.deps.json
 C:\Users\Anuitex-11\source\repos\booksShop\Library.WebAngular\bin\Debug\netcoreapp2.2\Library.WebAngular.runtimeconfig.json
 C:\Users\Anuitex-11\source\repos\booksShop\Library.WebAngular\bin\Debug\netcoreapp2.2\Library.WebAngular.runtimeconfig.dev.json

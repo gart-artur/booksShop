@@ -1,7 +1,10 @@
 ﻿using Library.BusinessLogic.Services.Interfaces;
 using Library.BusinessLogic.Services.ViewModel.Books.Get;
 using Library.BusinessLogic.Services.ViewModel.Books.Post;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System;
 
 namespace Library.WebApplication.Controllers
 {
@@ -10,9 +13,18 @@ namespace Library.WebApplication.Controllers
     public class BooksController : Controller
     {
         private readonly IBookService _bookService;
-        public BooksController(IBookService bookService)
+        private ILogger<BooksController> _logger;
+        public BooksController(IBookService bookService, ILogger<BooksController> logger)
         {
             _bookService = bookService;
+            _logger = logger;
+        }
+
+        [HttpGet("index")]
+        public IActionResult Index()
+        {
+            _logger.LogInformation($"TIME LOG HERE : {DateTime.UtcNow}");
+            return Ok();
         }
 
         [HttpGet("books")]

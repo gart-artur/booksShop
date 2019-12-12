@@ -7,8 +7,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Serilog;
+using Serilog.Exceptions;
+using Serilog.Sinks.Elasticsearch;
 using Stripe;
 using System;
 using System.IdentityModel.Tokens.Jwt;
@@ -18,8 +22,26 @@ namespace Library.WebApplication
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment hostingEnvironment)
         {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(hostingEnvironment.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{hostingEnvironment.EnvironmentName}.json", reloadOnChange: true, optional: true)
+                .AddEnvironmentVariables();
+
+            Configuration = builder.Build();
+
+            var elasticUri = Configuration["ESUri"];
+
+            Log.Logger = new LoggerConfiguration()
+                .Enrich.WithExceptionDetails()
+                .Enrich.FromLogContext()
+                .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elasticUri))
+                {
+                    AutoRegisterTemplate = true,
+                })
+            .CreateLogger();
             Configuration = configuration;
         }
         public IConfiguration Configuration { get; }
@@ -31,7 +53,7 @@ namespace Library.WebApplication
             services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
             services.Configure<SmtpOptions>(Configuration.GetSection("SmtpOptions"));
             services.Configure<JwtOptions>(Configuration.GetSection("JwtOptions"));
-
+            services.Configure<ElasticsearchOption>(Configuration.GetSection("ESUri"));
 
             services.AddCors(options =>
             {
@@ -74,10 +96,10 @@ namespace Library.WebApplication
                     };
                 });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);                          
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
@@ -95,6 +117,7 @@ namespace Library.WebApplication
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+            loggerFactory.AddSerilog();
             app.UseMiddleware<ExceptionHandlerMiddleware>();
             app.UseAuthentication();
             app.UseHttpsRedirection();

@@ -28,6 +28,8 @@ namespace Library.BusinessLogic
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IStripeService, StripeService>();
+            services.AddScoped<IElasticsearchService, ElasticsearchService>();
+            services.AddScoped<IEsClientProvider, EsClientProvider>();
 
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<MagazineContext>()

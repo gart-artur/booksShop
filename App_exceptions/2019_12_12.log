@@ -1,0 +1,2 @@
+16:48:39 /api/Elastic/index
+Index name is null for the given type and no default index is set. Map an index name using ConnectionSettings.DefaultMappingFor<TDocument>() or set a default index using ConnectionSettings.DefaultIndex().

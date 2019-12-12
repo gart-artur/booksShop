@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "e6fc16cad69b69557d2a9b94f5fac0a44d7e27b5"
+    "signature": "3baf4823fd471efb0bd1a6c1dddc64895496bf43"
   },
   "compilationOptions": {
     "defines": [
@@ -44,8 +44,11 @@
           "Microsoft.Owin.Host.SystemWeb": "3.0.0",
           "Microsoft.Owin.Security.OAuth": "3.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.4",
+          "NEST": "7.4.2",
           "PasswordGenerator": "2.0.1",
           "Serilog": "2.9.0",
+          "Serilog.Exceptions": "5.3.1",
+          "Serilog.Extensions.Logging": "3.0.1",
           "Serilog.Sinks.Elasticsearch": "8.0.1",
           "Stripe.net": "32.0.0",
           "Swashbuckle": "5.6.0",
@@ -142,16 +145,17 @@
           "lib/netstandard1.3/DocumentFormat.OpenXml.dll": {}
         }
       },
-      "Elasticsearch.Net/7.0.0": {
+      "Elasticsearch.Net/7.4.2": {
         "dependencies": {
           "System.Buffers": "4.5.0",
+          "System.Diagnostics.DiagnosticSource": "4.5.1",
           "System.Reflection.Emit": "4.3.0",
           "System.Reflection.Emit.Lightweight": "4.3.0"
         },
         "runtime": {
           "lib/netstandard2.0/Elasticsearch.Net.dll": {
             "assemblyVersion": "7.0.0.0",
-            "fileVersion": "7.0.0.0"
+            "fileVersion": "7.4.2.0"
           }
         },
         "compile": {
@@ -753,7 +757,7 @@
           "Portable.BouncyCastle": "1.8.5",
           "System.Data.Common": "4.3.0",
           "System.Globalization.Extensions": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.5.1",
           "System.Text.Encoding.CodePages": "4.5.0"
         },
         "runtime": {
@@ -764,6 +768,20 @@
         },
         "compile": {
           "lib/netstandard2.0/MimeKit.dll": {}
+        }
+      },
+      "NEST/7.4.2": {
+        "dependencies": {
+          "Elasticsearch.Net": "7.4.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.4.2.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {}
         }
       },
       "NuGet.Frameworks/4.7.0": {
@@ -982,6 +1000,36 @@
           "lib/netstandard2.0/Serilog.dll": {}
         }
       },
+      "Serilog.Exceptions/5.3.1": {
+        "dependencies": {
+          "Serilog": "2.9.0",
+          "System.Reflection.TypeExtensions": "4.5.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Serilog.Exceptions.dll": {
+            "assemblyVersion": "5.3.1.0",
+            "fileVersion": "5.3.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Serilog.Exceptions.dll": {}
+        }
+      },
+      "Serilog.Extensions.Logging/3.0.1": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging": "2.2.0",
+          "Serilog": "2.9.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Serilog.Extensions.Logging.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "3.0.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Serilog.Extensions.Logging.dll": {}
+        }
+      },
       "Serilog.Formatting.Compact/1.0.0": {
         "dependencies": {
           "Serilog": "2.9.0"
@@ -1012,7 +1060,7 @@
       },
       "Serilog.Sinks.Elasticsearch/8.0.1": {
         "dependencies": {
-          "Elasticsearch.Net": "7.0.0",
+          "Elasticsearch.Net": "7.4.2",
           "Microsoft.CSharp": "4.5.0",
           "Serilog": "2.9.0",
           "Serilog.Formatting.Compact": "1.0.0",
@@ -1519,7 +1567,7 @@
           "System.Reflection.Emit.Lightweight": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.5.1",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -1535,6 +1583,7 @@
           "System.Xml.XmlSerializer": "4.3.0"
         }
       },
+      "System.Reflection.TypeExtensions/4.5.1": {},
       "System.Runtime.CompilerServices.Unsafe/4.6.0": {
         "runtime": {
           "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll": {
@@ -1641,7 +1690,7 @@
           "System.Reflection.Emit.ILGeneration": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.5.1",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -1692,8 +1741,11 @@
           "Microsoft.Extensions.Options": "3.0.0",
           "Microsoft.Extensions.Primitives": "3.0.0",
           "Microsoft.IdentityModel.Tokens": "5.6.0",
+          "NEST": "7.4.2",
           "PasswordGenerator": "2.0.1",
           "Serilog": "2.9.0",
+          "Serilog.Exceptions": "5.3.1",
+          "Serilog.Extensions.Logging": "3.0.1",
           "Serilog.Sinks.Elasticsearch": "8.0.1",
           "Stripe.net": "32.0.0",
           "Swashbuckle": "5.6.0",
@@ -1727,6 +1779,8 @@
           "NETStandard.Library": "2.0.3",
           "PasswordGenerator": "2.0.1",
           "Serilog": "2.9.0",
+          "Serilog.Exceptions": "5.3.1",
+          "Serilog.Extensions.Logging": "3.0.1",
           "Serilog.Sinks.Elasticsearch": "8.0.1",
           "Stripe.net": "32.0.0",
           "Swashbuckle": "5.6.0",
@@ -3056,7 +3110,7 @@
           "System.Collections": "4.3.0",
           "System.IO": "4.3.0",
           "System.IO.FileSystem": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.5.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
           "System.Runtime.InteropServices.RuntimeInformation": "4.0.0"
@@ -3934,7 +3988,7 @@
           "System.Reflection.Emit": "4.3.0",
           "System.Reflection.Emit.ILGeneration": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.5.1",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -4049,7 +4103,7 @@
           "System.Reflection.Emit.Lightweight": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.5.1",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -4169,13 +4223,6 @@
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.2.0",
           "Microsoft.NETCore.Targets": "2.0.0",
-          "System.Runtime": "4.3.0"
-        },
-        "compileOnly": true
-      },
-      "System.Reflection.TypeExtensions/4.3.0": {
-        "dependencies": {
-          "System.Reflection": "4.3.0",
           "System.Runtime": "4.3.0"
         },
         "compileOnly": true
@@ -4619,12 +4666,12 @@
       "path": "documentformat.openxml/2.9.1",
       "hashPath": "documentformat.openxml.2.9.1.nupkg.sha512"
     },
-    "Elasticsearch.Net/7.0.0": {
+    "Elasticsearch.Net/7.4.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-2rLkJUu0c6xh/IVGRcIlvsZSA6pv9ach2K3xuTZpWcaB6WHFdIW/ot+cmyALF4SFvk6uKHPesUN5M3Pd8wI86g==",
-      "path": "elasticsearch.net/7.0.0",
-      "hashPath": "elasticsearch.net.7.0.0.nupkg.sha512"
+      "sha512": "sha512-GtEHQwsBrmwWoBysTC0J0nmPfCipdvXnI39/gH3FjE7/lhbuPL0dsMIZfx7w0krv+q/uE7AewxewhmtDrU7T7Q==",
+      "path": "elasticsearch.net/7.4.2",
+      "hashPath": "elasticsearch.net.7.4.2.nupkg.sha512"
     },
     "EO.Pdf/19.2.42": {
       "type": "package",
@@ -4927,6 +4974,13 @@
       "path": "mimekit/2.3.2",
       "hashPath": "mimekit.2.3.2.nupkg.sha512"
     },
+    "NEST/7.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uBWDI/66cOTWiU6jnKYO7ZrYmZXLPbls+mdLRlxw5cDazzGjTJ0OG1UgsY4XfT+K09+a1YubXbtJAghvg1hbXA==",
+      "path": "nest/7.4.2",
+      "hashPath": "nest.7.4.2.nupkg.sha512"
+    },
     "NuGet.Frameworks/4.7.0": {
       "type": "package",
       "serviceable": true,
@@ -5080,6 +5134,20 @@
       "sha512": "sha512-QzcrD33A3+CsVvwi1I5CSei67ikQnkGrw7SscgL+vZTghaC2aNYg8fiUcedXHzKJFNjgje9rBjzwYGQTKEaXaA==",
       "path": "serilog/2.9.0",
       "hashPath": "serilog.2.9.0.nupkg.sha512"
+    },
+    "Serilog.Exceptions/5.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IEwtxKbXqcxQJrtYiDZb0dfnIJEnGQmj2YzhAT7ZWvLyxkDBgv7ViTDgFZfOsDd4okafCAqWCY6aBNBDSu58rg==",
+      "path": "serilog.exceptions/5.3.1",
+      "hashPath": "serilog.exceptions.5.3.1.nupkg.sha512"
+    },
+    "Serilog.Extensions.Logging/3.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-U0xbGoZuxJRjE3C5vlCfrf9a4xHTmbrCXKmaA14cHAqiT1Qir0rkV7Xss9GpPJR3MRYH19DFUUqZ9hvWeJrzdQ==",
+      "path": "serilog.extensions.logging/3.0.1",
+      "hashPath": "serilog.extensions.logging.3.0.1.nupkg.sha512"
     },
     "Serilog.Formatting.Compact/1.0.0": {
       "type": "package",
@@ -5318,6 +5386,13 @@
       "sha512": "sha512-yDaJ2x3mMmjdZEDB4IbezSnCsnjQ4BxinKhRAaP6kEgL6Bb6jANWphs5SzyD8imqeC/3FxgsuXT6ykkiH1uUmA==",
       "path": "system.private.datacontractserialization/4.3.0",
       "hashPath": "system.private.datacontractserialization.4.3.0.nupkg.sha512"
+    },
+    "System.Reflection.TypeExtensions/4.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fO8GMEkgoKioJ7cglZbhcnBgkCWWn9poS3G2jevS+fuwW9xJXMx7/1kr7dkwOJfo0pWqxLFWVcxlOr+WeK5ipA==",
+      "path": "system.reflection.typeextensions/4.5.1",
+      "hashPath": "system.reflection.typeextensions.4.5.1.nupkg.sha512"
     },
     "System.Runtime.CompilerServices.Unsafe/4.6.0": {
       "type": "package",
@@ -6833,13 +6908,6 @@
       "sha512": "sha512-5RXItQz5As4xN2/YUDxdpsEkMhvw3e6aNveFXUn4Hl/udNTCNhnKp8lT9fnc3MhvGKh1baak5CovpuQUXHAlIA==",
       "path": "system.reflection.primitives/4.3.0",
       "hashPath": "system.reflection.primitives.4.3.0.nupkg.sha512"
-    },
-    "System.Reflection.TypeExtensions/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-7u6ulLcZbyxB5Gq0nMkQttcdBTx57ibzw+4IOXEfR+sXYQoHvjW5LTLyNr8O22UIMrqYbchJQJnos4eooYzYJA==",
-      "path": "system.reflection.typeextensions/4.3.0",
-      "hashPath": "system.reflection.typeextensions.4.3.0.nupkg.sha512"
     },
     "System.Resources.ResourceManager/4.3.0": {
       "type": "package",
