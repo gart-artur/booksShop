@@ -107,6 +107,18 @@
               "target": "Package",
               "version": "[2.0.1, )"
             },
+            "Serilog": {
+              "target": "Package",
+              "version": "[2.9.0, )"
+            },
+            "Serilog.Extensions.Logging": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "Serilog.Sinks.Elasticsearch": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
             "Stripe.net": {
               "target": "Package",
               "version": "[32.0.0, )"
@@ -236,6 +248,18 @@
             "PasswordGenerator": {
               "target": "Package",
               "version": "[2.0.1, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[2.9.0, )"
+            },
+            "Serilog.Extensions.Logging": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "Serilog.Sinks.Elasticsearch": {
+              "target": "Package",
+              "version": "[8.0.1, )"
             },
             "Stripe.net": {
               "target": "Package",
@@ -387,6 +411,18 @@
             "PasswordGenerator": {
               "target": "Package",
               "version": "[2.0.1, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[2.9.0, )"
+            },
+            "Serilog.Extensions.Logging": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "Serilog.Sinks.Elasticsearch": {
+              "target": "Package",
+              "version": "[8.0.1, )"
             },
             "Stripe.net": {
               "target": "Package",
