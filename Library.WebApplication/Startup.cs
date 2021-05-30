@@ -32,47 +32,58 @@ namespace Library.WebApplication
 
             Configuration = builder.Build();
 
-            var elasticUri = Configuration["ESUri"];
+            //var elasticUri = Configuration["ESUri"];
 
-            Log.Logger = new LoggerConfiguration()
-                .Enrich.WithExceptionDetails()
-                .Enrich.FromLogContext()
-                .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elasticUri))
-                {
-                    AutoRegisterTemplate = true,
-                })
-            .CreateLogger();
+            //Log.Logger = new LoggerConfiguration()
+            //    .Enrich.WithExceptionDetails()
+            //    .Enrich.FromLogContext()
+            //    .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elasticUri))
+            //    {
+            //        AutoRegisterTemplate = true,
+            //    })
+            //.CreateLogger();
             Configuration = configuration;
         }
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {           
+        {
             StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
             services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
             services.Configure<SmtpOptions>(Configuration.GetSection("SmtpOptions"));
             services.Configure<JwtOptions>(Configuration.GetSection("JwtOptions"));
-            services.Configure<ElasticsearchOption>(Configuration.GetSection("ESUri"));
+            //services.Configure<ElasticsearchOption>(Configuration.GetSection("ESUri"));
+
+            //services.AddCors(options =>
+            //{
+            //    options.AddDefaultPolicy(policyBuilder => policyBuilder
+            //        .AllowAnyOrigin()
+            //        .AllowAnyHeader()
+            //        .AllowAnyMethod());
+            //});
 
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowAllPolicy",
-                     b => b.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials().WithExposedHeaders("Token-Expired"));
-                options.AddPolicy("OriginPolicy",
-                  b => b.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+                options.AddPolicy("foo",
+                builder =>
+                {
+                    // Not a permanent solution, but just trying to isolate the problem
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                });
             });
+
+            services.AddControllers();
 
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BooksShop-API", Version = "v1" });
             });
 
-            var connectionString = Configuration.GetConnectionString("DefaultConnection");
-            bool isDapperEnable = bool.Parse(Configuration.GetSection("RepositoryPattern")["isDapper"]);
+            string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            BusinessLogic.Startup.ConfigureServices(services, connectionString, isDapperEnable);
+            BusinessLogic.Startup.ConfigureServices(services, connectionString, isDapperEnable: true);
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // => remove default claims
             services
@@ -83,6 +94,7 @@ namespace Library.WebApplication
                     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 
                 })
+                 
                 .AddJwtBearer(cfg =>
                 {
                     cfg.RequireHttpsMetadata = false;
@@ -99,31 +111,32 @@ namespace Library.WebApplication
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "BooksMagazine-API");
-                    c.RoutePrefix = string.Empty;
-                });
-                app.UseDatabaseErrorPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
-            }
             loggerFactory.AddSerilog();
             app.UseMiddleware<ExceptionHandlerMiddleware>();
             app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCors("AllowAllPolicy");
-            app.UseMvc();
+
+            app.UseRouting();
+
+            app.UseCors("foo");
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "BooksMagazine-API");
+                c.RoutePrefix = string.Empty;
+            });
         }
     }
 }
+

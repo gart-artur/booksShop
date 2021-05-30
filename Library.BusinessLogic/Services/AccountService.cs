@@ -24,14 +24,12 @@ namespace Library.BusinessLogic.Services
     {
         public readonly UserManager<User> _userManager;
         public readonly SignInManager<User> _signInManager;
-        private readonly IConfiguration _configuration;
         private readonly IOptions<JwtOptions> _jwtOption;
         private readonly IOptions<SmtpOptions> _SmtpOptions;
         public AccountService(UserManager<User> userManager, SignInManager<User> signInManager, IConfiguration configuration, IOptions<JwtOptions> jwtOption, IOptions<SmtpOptions> SmtpOptions)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _configuration = configuration;
             _jwtOption = jwtOption;
             _SmtpOptions = SmtpOptions;
         }
@@ -58,10 +56,10 @@ namespace Library.BusinessLogic.Services
         }
         public async Task<JwtView> Login(LoginViewModel model)
         {
-            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
+            SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
             if (result.Succeeded)
             {
-                var appUser = _userManager.Users.SingleOrDefault(r => r.Email == model.Email);
+                User appUser = _userManager.Users.SingleOrDefault(r => r.Email == model.Email);
                 JwtView jwtModel = await GenerateJwtToken(model.Email, appUser);
                 return jwtModel;
             }

@@ -1,0 +1,11 @@
+C:\Users\Anuitex-154\Desktop\booksShop\Library.WebAngular\obj\Debug\netcoreapp3.0\Library.WebAngular.csprojAssemblyReference.cache
+C:\Users\Anuitex-154\Desktop\booksShop\Library.WebAngular\obj\Debug\netcoreapp3.0\Library.WebAngular.AssemblyInfoInputs.cache
+C:\Users\Anuitex-154\Desktop\booksShop\Library.WebAngular\obj\Debug\netcoreapp3.0\Library.WebAngular.AssemblyInfo.cs
+C:\Users\Anuitex-154\Desktop\booksShop\Library.WebAngular\obj\Debug\netcoreapp3.0\Library.WebAngular.TagHelpers.input.cache
+C:\Users\Anuitex-154\Desktop\booksShop\Library.WebAngular\obj\Debug\netcoreapp3.0\Library.WebAngular.TagHelpers.output.cache
+C:\Users\Anuitex-154\Desktop\booksShop\Library.WebAngular\obj\Debug\netcoreapp3.0\Library.WebAngular.csproj.AssemblyReference.cache
+C:\Users\Anuitex-154\Desktop\booksShop\Library.WebAngular\obj\Debug\netcoreapp3.0\Library.WebAngular.csproj.CoreCompileInputs.cache
+C:\Users\Anuitex-154\Desktop\booksShop\Library.WebAngular\obj\Debug\netcoreapp3.0\Library.WebAngular.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Anuitex-154\Desktop\booksShop\Library.WebAngular\obj\Debug\netcoreapp3.0\Library.WebAngular.dll
+C:\Users\Anuitex-154\Desktop\booksShop\Library.WebAngular\obj\Debug\netcoreapp3.0\Library.WebAngular.pdb
+C:\Users\Anuitex-154\Desktop\booksShop\Library.WebAngular\obj\Debug\netcoreapp3.0\Library.WebAngular.RazorCoreGenerate.cache

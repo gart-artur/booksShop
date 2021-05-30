@@ -1,37 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.BusinessLogic\\Library.BusinessLogic.csproj": {}
+    "C:\\Users\\Anuitex-154\\Desktop\\booksShop\\Library.BusinessLogic\\Library.BusinessLogic.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.BusinessLogic\\Library.BusinessLogic.csproj": {
+    "C:\\Users\\Anuitex-154\\Desktop\\booksShop\\Library.BusinessLogic\\Library.BusinessLogic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.BusinessLogic\\Library.BusinessLogic.csproj",
+        "projectUniqueName": "C:\\Users\\Anuitex-154\\Desktop\\booksShop\\Library.BusinessLogic\\Library.BusinessLogic.csproj",
         "projectName": "Library.BusinessLogic",
-        "projectPath": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.BusinessLogic\\Library.BusinessLogic.csproj",
-        "packagesPath": "C:\\Users\\Anuitex-11\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.BusinessLogic\\obj\\",
+        "projectPath": "C:\\Users\\Anuitex-154\\Desktop\\booksShop\\Library.BusinessLogic\\Library.BusinessLogic.csproj",
+        "packagesPath": "C:\\Users\\Anuitex-154\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Anuitex-154\\Desktop\\booksShop\\Library.BusinessLogic\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Anuitex-11\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Anuitex-154\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netstandard2.0"
+          "netcoreapp3.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netstandard2.0": {
+          "netcoreapp3.0": {
+            "targetAlias": "netcoreapp3.0",
             "projectReferences": {
-              "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.DataAccess\\Library.DataAccess.csproj": {
-                "projectPath": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.DataAccess\\Library.DataAccess.csproj"
+              "C:\\Users\\Anuitex-154\\Desktop\\booksShop\\Library.DataAccess\\Library.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\Anuitex-154\\Desktop\\booksShop\\Library.DataAccess\\Library.DataAccess.csproj"
               }
             }
           }
@@ -43,7 +41,8 @@
         }
       },
       "frameworks": {
-        "netstandard2.0": {
+        "netcoreapp3.0": {
+          "targetAlias": "netcoreapp3.0",
           "dependencies": {
             "AWSSDK": {
               "target": "Package",
@@ -77,13 +76,35 @@
               "target": "Package",
               "version": "[2.3.2, )"
             },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[2.2.6, )"
+              "version": "[3.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[2.2.6, )"
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.Extensions.Identity.Core": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.Extensions.Identity.Stores": {
+              "target": "Package",
+              "version": "[3.0.0, )"
             },
             "Microsoft.Extensions.Options": {
               "target": "Package",
@@ -101,11 +122,9 @@
               "target": "Package",
               "version": "[7.4.2, )"
             },
-            "NETStandard.Library": {
-              "suppressParent": "All",
+            "NuGet.Configuration": {
               "target": "Package",
-              "version": "[2.0.3, )",
-              "autoReferenced": true
+              "version": "[5.9.1, )"
             },
             "PasswordGenerator": {
               "target": "Package",
@@ -149,38 +168,61 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.0.1, 3.0.1]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.DataAccess\\Library.DataAccess.csproj": {
+    "C:\\Users\\Anuitex-154\\Desktop\\booksShop\\Library.DataAccess\\Library.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.DataAccess\\Library.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\Anuitex-154\\Desktop\\booksShop\\Library.DataAccess\\Library.DataAccess.csproj",
         "projectName": "Library.DataAccess",
-        "projectPath": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.DataAccess\\Library.DataAccess.csproj",
-        "packagesPath": "C:\\Users\\Anuitex-11\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Anuitex-11\\source\\repos\\booksShop\\Library.DataAccess\\obj\\",
+        "projectPath": "C:\\Users\\Anuitex-154\\Desktop\\booksShop\\Library.DataAccess\\Library.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\Anuitex-154\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Anuitex-154\\Desktop\\booksShop\\Library.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Anuitex-11\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Anuitex-154\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netstandard2.0"
+          "netcoreapp3.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netstandard2.0": {
+          "netcoreapp3.0": {
+            "targetAlias": "netcoreapp3.0",
             "projectReferences": {}
           }
         },
@@ -191,7 +233,8 @@
         }
       },
       "frameworks": {
-        "netstandard2.0": {
+        "netcoreapp3.0": {
+          "targetAlias": "netcoreapp3.0",
           "dependencies": {
             "AWSSDK": {
               "target": "Package",
@@ -219,23 +262,33 @@
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[2.2.0, )"
+              "version": "[3.0.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[2.2.6, )"
+              "version": "[3.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
-              "version": "[2.2.6, )"
+              "version": "[3.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[2.2.6, )"
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.Extensions.Identity.Core": {
+              "target": "Package",
+              "version": "[3.0.0, )"
             },
             "Microsoft.Extensions.Identity.Stores": {
               "target": "Package",
-              "version": "[2.2.0, )"
+              "version": "[3.0.0, )"
             },
             "Microsoft.Extensions.Options": {
               "target": "Package",
@@ -252,6 +305,10 @@
             "NETStandard.Library": {
               "target": "Package",
               "version": "[2.0.3, )"
+            },
+            "NuGet.Configuration": {
+              "target": "Package",
+              "version": "[5.9.1, )"
             },
             "PasswordGenerator": {
               "target": "Package",
@@ -291,10 +348,35 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.0.1, 3.0.1]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

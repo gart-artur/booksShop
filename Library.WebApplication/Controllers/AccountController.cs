@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
-using Library.BusinessLogic.Services.Interfaces;
+﻿using Library.BusinessLogic.Services.Interfaces;
 using Library.BusinessLogic.Services.ViewModel.Users;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Library.WebApplication.Controllers
 {
@@ -15,14 +15,14 @@ namespace Library.WebApplication.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody]RegisterViewModel model)
+        public async Task<IActionResult> Register([FromBody] RegisterViewModel model)
         {
             var result = await _accountService.RegisterUser(model);
             return Ok(result);
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody]LoginViewModel model)
+        public async Task<IActionResult> Login([FromBody] LoginViewModel model)
         {
             var result = await _accountService.Login(model);
             return Ok(result);
@@ -31,12 +31,12 @@ namespace Library.WebApplication.Controllers
         [HttpGet("confirm")]
         public async Task<IActionResult> ConfirmEmail(string userId, string code)
         {
-            await _accountService.Confirm(userId, (string)code);
+            await _accountService.Confirm(userId, code);
             return Ok();
         }
 
         [HttpPost("forgot")]
-        public async Task<IActionResult> ForgotPassword([FromBody]ForgotPasswordView model)
+        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordView model)
         {
             await _accountService.ForgotPassword(model);
             return Ok();
@@ -49,26 +49,24 @@ namespace Library.WebApplication.Controllers
             return Ok();
         }
         [HttpPost("changeEmail")]
-        public async Task<IActionResult> ChangeEmail([FromBody]ChangeEmailView model)
+        public async Task<IActionResult> ChangeEmail([FromBody] ChangeEmailView model)
         {
             await _accountService.ChangeEmail(model);
             return Ok(model);
-           
+
         }
         [HttpGet("acceptNewEmail")]
-        public async Task<IActionResult> AcceptNewEmail(string userId,string newEmail,string code)
+        public async Task<IActionResult> AcceptNewEmail(string userId, string newEmail, string code)
         {
-            await _accountService.ResetEmail(userId,newEmail,code);
+            await _accountService.ResetEmail(userId, newEmail, code);
             return Ok();
         }
 
         [HttpPost("changePassword")]
-        public async Task<IActionResult> ChangePassword([FromBody]ChangePasswordView model)
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordView model)
         {
             var result = _accountService.ChangePassword(model);
             return Ok(result);
         }
-
-
     }
 }

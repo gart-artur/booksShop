@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Author } from '../models/author';
 import { MatTableDataSource } from '@angular/material';
-import { HttpResponse } from '@angular/common/http';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { AuthorService } from '../services/authors.service';
 import { SelectionModel } from '@angular/cdk/collections';
-import { element } from 'protractor';
 
 let ELEMENT_DATA: Author[] = [];
 @Component({

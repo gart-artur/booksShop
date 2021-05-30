@@ -1,17 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using System.Data;
-using System.Data.SqlClient;
-using AutoMapper;
+﻿using AutoMapper;
 using Library.BusinessLogic.Configuration;
-using Library.BusinessLogic.Services.Interfaces;
 using Library.BusinessLogic.Services;
+using Library.BusinessLogic.Services.Interfaces;
 using Library.DataAccess;
 using Library.DataAccess.Entities;
 using Microsoft.AspNetCore.Identity;
-using Library.BusinessLogic.Helper;
-using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Library.BusinessLogic
 {
@@ -20,7 +17,7 @@ namespace Library.BusinessLogic
         public static void ConfigureServices(IServiceCollection services, string connectionString, bool isDapperEnable)
         {
             services.AddScoped<IDbConnection, SqlConnection>(x => new SqlConnection(connectionString));
-          
+
             services.AddDbContext<MagazineContext>(options => options.UseSqlServer(connectionString, b => b.MigrationsAssembly("Library.DataAccess")));
             services.AddScoped<IBookService, BookService>();
             services.AddScoped<IAuthorService, AuthorService>();

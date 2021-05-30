@@ -2,18 +2,14 @@
 using Library.DataAccess.Entities;
 using Library.DataAccess.Interfaces;
 using Microsoft.Extensions.Configuration;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.DataAccess.Repository.Dapper
 {
     public class BookRepositoryDapper : RepositoryDapper<Book>, IBookRepository
     {
-        public BookRepositoryDapper(IConfiguration configuration) : base(configuration)
+        public BookRepositoryDapper(IConfiguration configuration, IDbConnection dbConnection) : base(configuration, dbConnection)
         {
         }
         public IEnumerable<Book> SortByParams(string name, int minPrice, int maxPrice)
@@ -21,11 +17,15 @@ namespace Library.DataAccess.Repository.Dapper
             string encodeNameForLike = "%" + name + "%";
             var sql = $@"SELECT * FROM {passedTableName} WHERE Name LIKE @encodeNameForLike AND Price > {minPrice} AND Price < {maxPrice}";
 
-            using (IDbConnection db = new SqlConnection(_connectionString))
-            {
-                IEnumerable<Book> records = db.Query<Book>(sql, new { encodeNameForLike });
-                return records;
-            }
+            IEnumerable<Book> records = _connection.Query<Book>(sql, new { encodeNameForLike });
+
+            return records;
+
+            //using (IDbConnection db = new SqlConnection(_connectionString))
+            //{
+            //    IEnumerable<Book> records = _connection.Query<Book>(sql, new { encodeNameForLike });
+            //    return records;
+            //}
         }
     }
 }
