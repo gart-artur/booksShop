@@ -1,0 +1,6 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Library.DataAccess/Migrations/20210530181407_Initial.Designer.cs
+/Library.DataAccess/Migrations/20210530181407_Initial.cs

@@ -15,10 +15,12 @@ namespace Library.BusinessLogic
     public static class Startup
     {
         public static void ConfigureServices(IServiceCollection services, string connectionString, bool isDapperEnable)
-        {
-            services.AddScoped<IDbConnection, SqlConnection>(x => new SqlConnection(connectionString));
+        {            
+            services.AddDbContext<MagazineContext>(options => options.UseSqlServer(connectionString));
 
-            services.AddDbContext<MagazineContext>(options => options.UseSqlServer(connectionString, b => b.MigrationsAssembly("Library.DataAccess")));
+            services.AddScoped<IDbConnection, SqlConnection>(x => new SqlConnection(connectionString));
+            //services.AddDbContext<MagazineContext>(options => options.UseSqlServer(connectionString, b => b.MigrationsAssembly("Library.DataAccess")));
+
             services.AddScoped<IBookService, BookService>();
             services.AddScoped<IAuthorService, AuthorService>();
             services.AddScoped<IBooksAndAuthorService, BooksAndAuthorService>();

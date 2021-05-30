@@ -8,5 +8,5 @@ C:\Users\Anuitex-154\Desktop\booksShop\Library.DataAccess\obj\Debug\netcoreapp3.
 C:\Users\Anuitex-154\Desktop\booksShop\Library.DataAccess\obj\Debug\netcoreapp3.0\Library.DataAccess.pdb
 C:\Users\Anuitex-154\Desktop\booksShop\Library.DataAccess\bin\Debug\netcoreapp3.0\Library.DataAccess.runtimeconfig.json
 C:\Users\Anuitex-154\Desktop\booksShop\Library.DataAccess\bin\Debug\netcoreapp3.0\Library.DataAccess.runtimeconfig.dev.json
-C:\Users\Anuitex-154\Desktop\booksShop\Library.DataAccess\obj\Debug\netcoreapp3.0\Library.DataAccess.csproj.AssemblyReference.cache
 C:\Users\Anuitex-154\Desktop\booksShop\Library.DataAccess\obj\Debug\netcoreapp3.0\Library.DataAccess.genruntimeconfig.cache
+C:\Users\Anuitex-154\Desktop\booksShop\Library.DataAccess\obj\Debug\netcoreapp3.0\Library.DataAccess.csproj.AssemblyReference.cache
