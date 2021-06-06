@@ -1,10 +1,14 @@
 ﻿using Library.BusinessLogic.Services.Interfaces;
+using Library.BusinessLogic.Services.ViewModel;
 using Library.BusinessLogic.Services.ViewModel.Books.Get;
 using Library.BusinessLogic.Services.ViewModel.Books.Post;
+using Library.DataAccess.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Library.WebApplication.Controllers
 {
@@ -56,9 +60,9 @@ namespace Library.WebApplication.Controllers
         }
 
         [HttpPost("sort")]
-        public IActionResult Sort ([FromBody]SortBooksByParamsView model)
+        public async Task<IActionResult> Sort ([FromBody] FilterRequest request)
         {
-            var books = _bookService.SortByParamsAsync(model);
+            List<BookWithAuthorsDto> books = await _bookService.SortByParamsAsync(request);
             return Ok(books);
         }
     }

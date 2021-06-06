@@ -16,8 +16,8 @@ export class RegisterService {
 
   constructor(private http: HttpClient) { }
 
-  registerModel(model: RegisterViewModel) {
-    return this.http.post(`${environment.apiUrl}api/Account/register`, model);
+  registerModel(model: RegisterViewModel): Observable<void> {
+    return this.http.post<void>(`${environment.apiUrl}api/Account/register`, model);
   }
   login(model: LoginModel): Observable<JwtView> {
     return this.http.post<JwtView>(`${environment.apiUrl}api/Account/login`, model);

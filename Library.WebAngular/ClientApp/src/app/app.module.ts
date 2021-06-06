@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MatTableModule } from '@angular/material'
+import { MatTableModule } from '@angular/material';
 
 
 // used to create fake backend
@@ -30,24 +30,16 @@ import { HeaderComponent } from './header/header.component';
 import { AuthInterceptor } from './Interceptor/auth-interceptor';
 import { ToastContainerModule, ToastrModule } from 'ngx-toastr';
 import { AuthGuard } from './guards/auth.guard';
-import { GoAuthGuard } from './guards/goAuth.guard';
 import { CahngeEmailComponent } from './cahnge-email/cahnge-email.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { environment } from 'src/environments/environment';
-
-
-
-
-
-
-
-
-
+import { StripeModule } from 'stripe-angular';
 
 
 @NgModule({
    imports: [
       NgxStripeModule.forRoot(environment.stripeApiKey),
+      StripeModule.forRoot(environment.stripeApiKey),
       BrowserModule,
       ReactiveFormsModule,
       HttpClientModule,
@@ -63,8 +55,11 @@ import { environment } from 'src/environments/environment';
       MatListModule,
       DemoMaterialModule,
       MatSidenavModule,
+      StripeModule,
       ToastContainerModule,
-      ToastrModule.forRoot()//StorageModule.forRoot(IDBNoWrap)
+      ToastrModule.forRoot({
+            preventDuplicates: true
+         })
    ],
    declarations: [
       AppComponent,

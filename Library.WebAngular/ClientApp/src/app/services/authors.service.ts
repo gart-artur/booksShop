@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Author } from '../models/author';
 import { environment } from 'src/environments/environment';
+import { FilterRequest } from '../models/filter-request';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthorService {
@@ -16,11 +18,7 @@ export class AuthorService {
         console.log(id);
         return this.http.post(`${environment.apiUrl}api/Authors/delete/${id}`, {});
     }
-    getAuthors() {
-        return this.http.get(`${environment.apiUrl}api/Authors/authors`);
-
+    getAuthors(request: FilterRequest): Observable<Author[]> {
+        return this.http.post<Author[]>(`${environment.apiUrl}api/Authors/authors`, request);
     }
-    // update(product: Author) {
-    //     return this.http.put(`${environment.apiUrl}` + '/' + product.id, product);
-    // }
 }

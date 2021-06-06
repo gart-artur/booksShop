@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Book } from '../models/book';
 import { environment } from 'src/environments/environment';
-import { SortBooksByParamsView } from '../models/sort-books-by-params-view';
+import { Observable } from 'rxjs';
+import { FilterRequest } from '../models/filter-request';
 
 @Injectable()
 export class BookService {
@@ -21,7 +22,7 @@ export class BookService {
     editBooks(book: Book) {
         return this.http.post(`${environment.apiUrl}api/Books/edit`, book, { observe: 'response' });
     }
-    sortByParams(model: SortBooksByParamsView) {
-        return this.http.post(`${environment.apiUrl}api/Books/sort`, model);
+    sortByParams(model: FilterRequest): Observable<Book[]> {
+        return this.http.post<Book[]>(`${environment.apiUrl}api/Books/sort`, model);
     }
 }

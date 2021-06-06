@@ -1,29 +1,12 @@
-<button mat-raised-button class='mat-raised-button' mat-raised-button color="primary"  style='float: left' (click)="openAddBookPopup('Add Book')">Create</button>
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">      
-    <!-- Checkbox Column -->
-    <ng-container matColumnDef="select">
-      <th mat-header-cell *matHeaderCellDef>
-        <mat-checkbox (change)="$event ? masterToggle() : null"
-                      [checked]="selection.hasValue() && isAllSelected()"
-                      [indeterminate]="selection.hasValue() && !isAllSelected()"
-                      [aria-label]="checkboxLabel()">
-        </mat-checkbox>
-      </th>
-      <td mat-cell *matCellDef="let row">
-        <mat-checkbox (click)="$event.stopPropagation()"
-                      (change)="$event ? selection.toggle(row) : null"
-                      [checked]="selection.isSelected(row)"
-                      [aria-label]="checkboxLabel(row)">
-        </mat-checkbox>
-      </td>
-    </ng-container>    
-  
-      <!-- Position Column -->
-    <ng-container matColumnDef="id">        
-        <th mat-header-cell *matHeaderCellDef> ID. </th>       
-        <td mat-cell *matCellDef="let element"> {{element.id}}</td>
-    </ng-container>
-  
+<div class="example-form w3-container align-center w3-card login-card">
+  <mat-form-field class="example-full-width">
+    <mat-label>Search</mat-label>
+    <input (keyup)="search($event)" matInput placeholder="Anna Karenina">
+  </mat-form-field>
+</div>
+
+<div>
+  <table mat-table [dataSource]="books" class="mat-elevation-z8">
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
@@ -33,62 +16,32 @@
      <!-- Price Column -->
      <ng-container matColumnDef="price">
       <th mat-header-cell *matHeaderCellDef> Price </th>
-      <td mat-cell *matCellDef="let element" > {{element.price}}$</td>
+      <td mat-cell *matCellDef="let element" > {{element.price}} $</td>
     </ng-container>
 
-
-    <!-- Action Column -->
+    <ng-container matColumnDef="authors">
+      <th mat-header-cell *matHeaderCellDef> Authors </th>
+      <td mat-cell *matCellDef="let element">
+        <span *ngFor="let author of element.authors"> 
+          <li>{{ author?.name }}</li>
+       </span>
+      </td>
+    </ng-container>
+    
     <ng-container matColumnDef="text">
       <th mat-header-cell *matHeaderCellDef>  </th>
       <td mat-cell *matCellDef="let element"> {{element.text}}
-        <button mat-raised-button class='mat-raised-button mat-warn' style='float: right'(click)="deleteBook(element)">Delete</button>
-        <button mat-raised-button class='mat-raised-button ' style='float: right'(click)="addBookToCart(element)">Add to Cart</button>          
+        <button mat-raised-button class='mat-raised-button mat-warn' style='float: right'(click)="addBookToCart(element)">Add to Cart</button>    
       </td>    
     </ng-container>
 
-
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-        (click)="selection.toggle(row)">
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
     </tr>
   </table>
 
-<div class='wrap' *ngIf="this.openPopup">
-    <mat-nav-list class="wrap__popup" [formGroup]="editForm">
-      <button mat-raised-button class='mat-raised-button ' style='float: right' (click)="this.openPopup = false" style='color: red; float: right; padding: 0; min-width: 25px;
-        line-height: 25px;'>X</button>
-     
-      <a mat-list-item>
-        <input type="text" placeholder="Books name" aria-label="element" matInput formControlName="name">
-        <input type="number" placeholder="Price" aria-label="element" matInput formControlName="price">
-      </a>
-      <a mat-list-item>
-        <button (click)="add(element)">Add</button>
-      </a>
-    </mat-nav-list>
-  </div>
-  
-  <div class="main_wrapper">
-    <div class="w3-container align-center w3-card login-card">
-      <form [formGroup]="filterForm">   
-        <div class="form-group">
-          <label class="w3-text-blue"><b>Name</b></label>
-          <input type="text"
-                 formControlName="name"
-                 class="w3-input w3-border form-control" />
-        
-          <label class="w3-text-blue"><b>Min Price</b></label>
-          <input type="text"
-                 formControlName="minPrice"
-                 class="w3-input w3-border form-control" />
-        
-          <label class="w3-text-blue"><b>Max Price</b></label>
-          <input formControlName="maxPrice"
-                 class="w3-input w3-border form-control" />
-        </div>
-  
-        <br />
-        <button class="w3-btn w3-blue"  mat-raised-button color="primary"          
-                (click)="loadBooksByFilters()">
-          Search <i class="w3-medium fa fa-check"></i>
-        </button>
+  <mat-paginator (page)="onPageChange($event)" [length]="total"
+    [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons [pageSize]="pageSize">
+  </mat-paginator>
+
+</div>

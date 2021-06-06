@@ -1,21 +1,28 @@
 export class Book {
+    total: number;
     id: number;
     price: number;
     name: string;
-    dateCreated = Date.now();
+    authors: AuthorResponse [] = [];
+}
 
-    constructor() {
-        this.dateCreated = Date.now()
-    }
+export class AuthorResponse {
+    id: number;
+    name: string;
 }
 
 export class ProductOrder {
-    product: Book[];
-    quantity: number;
-    totalPrice: number;
+    books: ProductOrderBook[] = [];
+
     constructor() {
-        this.product = [];
     }
+}
+
+export class ProductOrderBook {
+    id: number;
+    name: string;
+    price: number;
+    qty: number;
 }
 
 export class ProductOrders {

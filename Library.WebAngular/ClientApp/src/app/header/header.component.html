@@ -5,12 +5,13 @@
     <a class="book_logo" target="_blank"><img src="assets/img/book.svg" routerLink="/books">Books</a>
     <a class="author_logo" target="_blank"><img src="assets/img/author.svg" routerLink="/authors">Authors</a>
     <a class="order_logo" target="_blank"><img src="assets/img/order.svg" routerLink="/cart">Bucket</a>
-    <button mat-button [matMenuTriggerFor]="menu" class="setting" target="_blank"><img
-        src="assets/img/setting.svg"></button>
+    <button [matMenuTriggerFor]="menu" class="setting" target="_blank" placeholder="Settings">
+      <img src="assets/img/setting.svg">
+    </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="/changePassword">Change password</button>
       <button mat-menu-item routerLink="/changeEmail">Change email</button>
     </mat-menu>
-    <button class="sing_in" target="_blank"><img src="assets/img/sing_in.svg" (click)="logout()">Sing out</button>
+    <button class="sing_in" target="_blank"><img src="assets/img/sing_in.svg" (click)="logout()"></button>
   </div>
 </div>

@@ -1,11 +1,14 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { CartService } from '../services/cart.service';
-import { ProductOrder, Book } from '../models/book';
+import { ProductOrder, Book, ProductOrderBook } from '../models/book';
 import { FormBuilder } from '@angular/forms';
 import { PaymentViewModel } from '../models/paymentViewModel';
 import { UserPayViewModel } from '../models/user-pay-view-model';
 import { Router } from '@angular/router';
 import { JwtView } from '../models/JwtView';
+import { NotificationService } from '../services/notification.service';
+import { tap } from 'rxjs/operators';
+import { StripeScriptTag } from 'stripe-angular';
 
 @Component({
   selector: 'app-payment',
@@ -14,71 +17,78 @@ import { JwtView } from '../models/JwtView';
 })
 export class PaymentComponent implements OnInit {
 
-  bookNameArray: string = '';
-  shippings: Book[] = [];
-  shippingsItem: ProductOrder[] = [];
-  priceForOrder: ProductOrder;
-  // allname :ProductOrder [] = [];
+  bookNameArray = '';
+  shippings: ProductOrderBook[] = [];
+  total: number;
 
-  userpPayModel = new UserPayViewModel;
+  userpPayModel = new UserPayViewModel();
   userInfo: JwtView;
-
-  checkForm;
 
   cardNumber: string;
   expiryMonth: string;
   expiryYear: string;
   cvc: string;
-  message: string;
 
-  constructor(private _cartService: CartService,
-    private formBulder: FormBuilder,
-    private _zone: NgZone,
-    private router: Router) { }
+  disablePaymentButton = false;
+
+  constructor(
+    private notificationService: NotificationService,
+    private cartService: CartService,
+    private zone: NgZone,
+    private router: Router) {
+  }
 
   ngOnInit() {
-    this.shippings = this._cartService.getItemsFromCart().product
-    this.shippingsItem = this._cartService.getItemsFromCart().product.name;
-    this.priceForOrder = this._cartService.getItemsFromCart().totalPrice
+    this.shippings = this.cartService.getItemsFromCart();
+    this.total = this.cartService.getTotlaPrice();
   }
 
-  onSubmin() {
-    window.alert('Your order has been submitted');
-    this.checkForm.reset();
-    return this._cartService.clearCart();
+  onSubmin(): void {
+    this.notificationService.showSuccess('Your order has been submitted');
+    this.cartService.clearCart();
   }
+
   async getToken() {
-    this.message = 'Loading...';
-    (<any>window).Stripe.card.createToken({
+    this.disablePaymentButton = true;
+    (window as any).Stripe.card.createToken({
       number: this.cardNumber,
-      exp_month: this.expiryMonth,
-      exp_year: this.expiryYear,
+      exp_month: this.expiryMonth.substr(0, this.expiryMonth.indexOf('/')),
+      exp_year: this.expiryMonth.substr(-2, this.expiryMonth.indexOf('/')),
       cvc: this.cvc
     }, (status: number, response: any) => {
-
-      this._zone.run(async () => {
+      this.zone.run(async () => {
         if (status === 200) {
-          this.userpPayModel.token = response.id
-          this.userpPayModel.total = this._cartService.getItemsFromCart().totalPrice
+          this.userpPayModel.token = response.id;
+          this.userpPayModel.total = this.total;
           this.userpPayModel.bookName = this.getNameOfAllBook();
-          this._cartService.sendStripePayment(this.userpPayModel).subscribe((response => this.router.navigateByUrl("/order")))
-          this.bookNameArray = '';
+          this.cartService.sendStripePayment(this.userpPayModel)
+            .pipe(
+              tap(() =>  {
+                this.notificationService.showSuccess('The payment was successful' );
+                this.disablePaymentButton = false;
+                this.cartService.clearCart();
+              })
+            )
+            .subscribe((() => this.router.navigateByUrl('/order')));
         } else {
-          this.message = response.error.message;
+          this.notificationService.showError(response.error.message);
+          this.disablePaymentButton = false;
         }
       });
 
     });
   }
 
-  getNameOfAllBook() {
+
+  private getNameOfAllBook() {
+    this.bookNameArray = '';
     for (let i = 0; i < this.shippings.length; i++) {
-      this.bookNameArray += [i + 1] + ')' + (this.shippings[i].name) + '.  '
+      this.bookNameArray += [i + 1] + ')' + (this.shippings[i].name) + '.  ';
     }
-    return this.bookNameArray
+    return this.bookNameArray;
   }
 
   async sendUserModel() {
-    await this.getToken()
+    await this.getToken();
   }
 }

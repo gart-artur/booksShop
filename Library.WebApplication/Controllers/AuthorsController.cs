@@ -1,7 +1,11 @@
 ﻿using Library.BusinessLogic.Services.Interfaces;
+using Library.BusinessLogic.Services.ViewModel;
 using Library.BusinessLogic.Services.ViewModel.Authors.Get;
 using Library.BusinessLogic.Services.ViewModel.Authors.Post;
+using Library.DataAccess.DTO;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Library.WebApplication.Controllers
 {
@@ -14,10 +18,10 @@ namespace Library.WebApplication.Controllers
             _authorService = authorService;
         }
         
-        [HttpGet("authors")]
-        public IActionResult GetAllAuthors()
+        [HttpPost("authors")]
+        public async Task<IActionResult> GetAllAuthors([FromBody] FilterRequest request)
         {
-            var autrhos = _authorService.GetAuthors();
+            List<AuthorWithBooks> autrhos = await _authorService.GetByFilter(request);
             return Ok(autrhos);
         }    
 

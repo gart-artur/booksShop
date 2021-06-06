@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ProductOrder } from '../models/book';
+import { ProductOrder, ProductOrderBook } from '../models/book';
 import { UserPayViewModel } from '../models/user-pay-view-model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-
-
 
 @Injectable({
   providedIn: 'root'
@@ -14,18 +12,26 @@ export class CartService {
   }
 
   addItemToCart(product: ProductOrder) {
-    localStorage.setItem('products', JSON.stringify(product));
+    this.clearCart();
+    localStorage.setItem('products', JSON.stringify(product.books));
   }
-  getItemsFromCart() {
-    return JSON.parse(localStorage.getItem('products'))
+
+  getItemsFromCart(): ProductOrderBook[] {
+    const products: ProductOrderBook[] = JSON.parse(localStorage.getItem('products'));
+    return products ? products : [] ;
   }
+
   sendStripePayment(model: UserPayViewModel) {
     return this.http.post(`${environment.apiUrl}api/Stripe/charge`, model, { observe: 'response' });
   }
-  getTotlaPrice() {
-    let myObject = JSON.parse(localStorage.getItem('products'));
-    return myObject.totalPrice;
+
+  getTotlaPrice(): number {
+    let total = 0;
+    const books: ProductOrderBook[] = this.getItemsFromCart();
+    books.forEach(book => total += book.price * book.qty);
+    return total;
   }
+
   clearCart() {
     localStorage.clear();
   }

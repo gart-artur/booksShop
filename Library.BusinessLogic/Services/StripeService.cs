@@ -46,7 +46,7 @@ namespace Library.BusinessLogic.Services
             }
             else
             {
-                string message = "Sorry, something wrong...";
+                throw new System.Exception($"{charge.FailureMessage}");
             }
 
         }

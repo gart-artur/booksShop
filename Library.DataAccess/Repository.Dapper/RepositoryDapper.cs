@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Library.DataAccess.Interfaces;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -66,17 +67,20 @@ namespace Library.DataAccess.Repository.Dapper
 
         public async void Insert(T entity)
         {
-            var columns = GetColumns();
+            List<string> columns = GetColumns();
+
             string columnsValue = string.Join(", ", columns.Select(e => e));
+
             string parametrsValue = string.Join(", ", columns.Select(e => "@" + e));
+
             string sql = $"INSERT INTO {passedTableName} ({columnsValue}) VALUES ({parametrsValue})";
 
-            await _connection.ExecuteAsync(sql, entity);
+            //await _connection.ExecuteAsync(sql, entity);
 
-            //using (IDbConnection db = new SqlConnection(_connectionString))
-            //{
-            //    await db.ExecuteAsync(sql, entity);
-            //}
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                await db.ExecuteAsync(sql, entity);
+            }
         }
 
         public async void Update(T entity)

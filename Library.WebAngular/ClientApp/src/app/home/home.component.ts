@@ -16,22 +16,20 @@ import { User } from '../models/user';
 
 export class HomeComponent implements OnInit {
 
+    constructor(private userService: UserService) { }
+
     @ViewChild('sidenav', { static: false }) sidenav: MatSidenav;
 
     reason = '';
+
+    shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
+
+    users: User[] = [];
 
     close(reason: string) {
         this.reason = reason;
         this.sidenav.close();
     }
-
-    shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
-
-
-
-    users: User[] = [];
-
-    constructor(private userService: UserService) { }
 
     ngOnInit() {
         this.userService.getAll().pipe(first()).subscribe(users => {

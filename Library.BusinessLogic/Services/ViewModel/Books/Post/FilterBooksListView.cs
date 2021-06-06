@@ -10,4 +10,11 @@ namespace Library.BusinessLogic.Services.ViewModel.Books.Post
         public IEnumerable<Book> Books { get; set; }        
     }
 
+    public class FilterBooksListViewItems
+    {
+        public string Id { get; set; }
+
+         
+    }
+
 }

@@ -1,16 +1,15 @@
-<h3>Payment Page</h3>
+<!-- <h3>Payment Page</h3>
 <div class="cart-item" *ngFor="let item of shippings">
   <ul style='display: flex;'>
     <ul>{{item.name}}</ul>
     <ul>{{item.price | currency}}</ul>
   </ul>
 </div>
-<div *ngIf="priceForOrder">
-  <ul> Total Price : {{priceForOrder}}$</ul>
+<div *ngIf="shippings.length > 0">
+  <ul> Total Price : {{total}}$</ul>
 </div>
 
 <div>
-  <span class="payment-message">{{message}}</span>
   <div class="form-row">
     <label>
       <span>Card Number</span>
@@ -34,4 +33,51 @@
     </label>
   </div>
   <button (click)="sendUserModel()">Sumbit</button>
+</div> -->
+
+<div id="wrapper">
+  <div class="row">
+    <div class="col-xs-5">
+      <div id="cards">
+        <img src="http://icons.iconarchive.com/icons/designbolts/credit-card-payment/256/Visa-icon.png">
+        <img src="http://icons.iconarchive.com/icons/designbolts/credit-card-payment/256/Master-Card-icon.png">
+      </div>
+      <div class="form-check">
+        <label class="form-check-label" for='card'>
+          Pay ${{total}} with credit card
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-5">
+      <i class="fa fa fa-user"></i>
+      <label for="cardholder">Card holder's Name</label>
+      <input type="text" id="cardholder">
+    </div>
+    <div class="col-xs-5">
+      <i class="fa fa-credit-card-alt"></i>
+      <label for="cardnumber">Card Number</label>
+      <input [(ngModel)]="cardNumber" type="text">
+    </div>
+  </div>
+  <div class="row row-three">
+    <div class="col-xs-2">
+      <i class="fa fa-calendar"></i>
+      <label for="date"></label>
+      <input [(ngModel)]="expiryMonth" type="text" placeholder="MM/YY" id="date">
+    </div>
+    <div class="col-xs-2">
+      <i class="fa fa-lock"></i>
+      <label for="date">CVV / CVC *</label>
+      <input type="text" [(ngModel)]="cvc">
+    </div>
+    <div class="col-xs-5">
+      <span class="small">* CVV or CVC is the card security code, unique three digits number on the back of your card
+        seperate from its number.</span>
+    </div>
+  </div>
+  <footer>
+    <button [disabled]="disablePaymentButton" (click)="sendUserModel()" mat-button class="btn">Pay</button>
+  </footer>
 </div>

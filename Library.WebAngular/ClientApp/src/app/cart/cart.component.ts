@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
-import { ProductOrder } from '../models/book';
-import { MatSidenav } from '@angular/material';
+import { ProductOrder, ProductOrderBook } from '../models/book';
 
 @Component({
   selector: 'app-cart',
@@ -9,23 +8,33 @@ import { MatSidenav } from '@angular/material';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  items:ProductOrder[]=[];
-  sumOfPrice:ProductOrder;
+  books: ProductOrderBook [] = [];
+  total: number;
 
-  constructor(private _cartService : CartService) { }
+  constructor(private cartService: CartService) { }
 
-  ngOnInit() {    
-    this.items = this._cartService.getItemsFromCart().product
-    this.sumOfPrice = this._cartService.getItemsFromCart().totalPrice
+  ngOnInit() {
+    this.books = this.cartService.getItemsFromCart();
+    this.calculateTotal();
   }
- 
-  
-  
 
-  
+  changeQty(book: ProductOrderBook, qty: number) {
+    book.qty += qty;
+    this.calculateTotal();
+  }
 
-  
+  remove(book: ProductOrderBook) {
+    this.books = this.books.filter(x => x.id !== book.id);
+    const order: ProductOrder = {
+      books: this.books
+    };
+    this.cartService.addItemToCart(order);
+    this.calculateTotal();
+  }
 
-
-
+  private calculateTotal(): void {
+    let total = 0;
+    this.books.forEach(book => total += book.price * book.qty);
+    this.total = total;
+  }
 }

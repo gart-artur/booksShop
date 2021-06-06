@@ -9,7 +9,7 @@ namespace Library.BusinessLogic.Configuration
     {
         public AuthorProfile()
         {
-            CreateMap<Author, GetAllAuthorViewModelItem>();
+            CreateMap<Author, GetAllAuthorViewModel>();
             CreateMap<CreateAuthorViewModel, Author>()
                 .ForMember(x => x.BooksAndAuthors, opt => opt.Ignore())
                 .ForMember(x => x.DateCreated, opt => opt.Ignore())
