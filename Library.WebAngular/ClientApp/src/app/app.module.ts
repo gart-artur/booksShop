@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MatTableModule } from '@angular/material';
+import { MatDialogModule, MatTableModule } from '@angular/material';
 
 
 // used to create fake backend
@@ -34,6 +34,7 @@ import { CahngeEmailComponent } from './cahnge-email/cahnge-email.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { environment } from 'src/environments/environment';
 import { StripeModule } from 'stripe-angular';
+import { DialogComponent } from './dialog/dialog.component';
 
 
 @NgModule({
@@ -56,11 +57,15 @@ import { StripeModule } from 'stripe-angular';
       DemoMaterialModule,
       MatSidenavModule,
       StripeModule,
+      MatDialogModule,
       ToastContainerModule,
       ToastrModule.forRoot({
             preventDuplicates: true
          })
    ],
+   entryComponents: [
+      DialogComponent
+    ],
    declarations: [
       AppComponent,
       HomeComponent,
@@ -74,7 +79,8 @@ import { StripeModule } from 'stripe-angular';
       ForgotPasswordComponent,
       HeaderComponent,
       CahngeEmailComponent,
-      ChangePasswordComponent
+      ChangePasswordComponent,
+      DialogComponent
    ],
    providers: [
       AuthGuard,

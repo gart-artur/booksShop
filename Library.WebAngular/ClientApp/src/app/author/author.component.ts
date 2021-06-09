@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { PageEvent } from '@angular/material/paginator';
 import { tap } from 'rxjs/operators';
+import { DialogComponent } from '../dialog/dialog.component';
 import { Author } from '../models/author';
 import { FilterRequest } from '../models/filter-request';
 import { AuthorService } from '../services/authors.service';
@@ -24,6 +26,7 @@ export class AuthorComponent implements OnInit {
 
   constructor(
     private authorServise: AuthorService,
+    private dialog: MatDialog
   ) {
   }
 
@@ -59,5 +62,10 @@ export class AuthorComponent implements OnInit {
   }
 
   showDetails(author: Author): void {
+    const index = this.authors.indexOf(author);
+    this.dialog.open(DialogComponent, {
+      width: '1250px',
+      data: { author, indexNumber: index }
+    });
   }
 }

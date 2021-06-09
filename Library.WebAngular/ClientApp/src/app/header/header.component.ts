@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { LoadService } from '../services/load.service';
 
 @Component({
   selector: 'app-header',
@@ -8,12 +9,18 @@ import { AuthService } from '../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private _authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private loadService: LoadService) { }
 
   ngOnInit() {
   }
 
+  get isLoading(): boolean {
+    return this.loadService.isLoading;
+  }
+
   async logout() {
-    await this._authService.logout();
+    await this.authService.logout();
   }
 }
