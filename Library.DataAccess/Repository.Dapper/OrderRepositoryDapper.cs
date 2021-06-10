@@ -15,7 +15,7 @@ namespace Library.DataAccess.Repository.Dapper
         }
         public async Task<IEnumerable<Order>> GetAllOrdersByUserId(string id)
         {
-            var sql = $@"SELECT * FROM {passedTableName} WHERE UserId = @Id";
+            var sql = $@"SELECT * FROM {passedTableName} WHERE UserId = @Id ORDER BY DateCreated DESC";
 
             IEnumerable<Order> records = await _connection.QueryAsync<Order>(sql, new { Id = id });
             return records;

@@ -35,6 +35,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { environment } from 'src/environments/environment';
 import { StripeModule } from 'stripe-angular';
 import { DialogComponent } from './dialog/dialog.component';
+import { OrderDialogComponent } from './order-dialog/order-dialog.component';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 
 @NgModule({
@@ -59,12 +61,14 @@ import { DialogComponent } from './dialog/dialog.component';
       StripeModule,
       MatDialogModule,
       ToastContainerModule,
+      AngularSvgIconModule.forRoot() ,
       ToastrModule.forRoot({
             preventDuplicates: true
          })
    ],
    entryComponents: [
-      DialogComponent
+      DialogComponent,
+      OrderDialogComponent
     ],
    declarations: [
       AppComponent,
@@ -80,7 +84,8 @@ import { DialogComponent } from './dialog/dialog.component';
       HeaderComponent,
       CahngeEmailComponent,
       ChangePasswordComponent,
-      DialogComponent
+      DialogComponent,
+      OrderDialogComponent
    ],
    providers: [
       AuthGuard,

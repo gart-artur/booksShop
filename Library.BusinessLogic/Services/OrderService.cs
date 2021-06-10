@@ -6,6 +6,7 @@ using Library.BusinessLogic.Services.ViewModel.Stripe;
 using Library.DataAccess.Entities;
 using Library.DataAccess.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Library.BusinessLogic.Services
@@ -26,7 +27,7 @@ namespace Library.BusinessLogic.Services
         }
         public async Task<OrderViewModel> GetAll(string id)
         {
-            IEnumerable<Order> orders = await _orderRepository.GetAllOrdersByUserId(id);
+            IEnumerable<Order> orders = (await _orderRepository.GetAllOrdersByUserId(id)).OrderByDescending(x => x.DateCreated);
             var model = new OrderViewModel()
             {
                 Orders = _mapper.Map<IEnumerable<Order>, List<GetAllOrderViewItem>>(orders)

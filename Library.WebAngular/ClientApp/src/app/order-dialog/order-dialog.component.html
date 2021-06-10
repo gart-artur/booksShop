@@ -1,0 +1,50 @@
+<div class="justify-content-between">
+  <br>
+  <svg-icon src="assets/img/poshta.svg"></svg-icon>
+  <br>
+  <ng-container class="select">
+    <mat-form-field appearance="fill" class="select">
+      <mat-label>Ship From</mat-label>
+      <mat-select [formControl]="shipFromControl" required (selectionChange)="shipFromChange()">
+        <mat-option *ngFor="let region of regions" [value]="region">
+          {{region.region}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" *ngIf="isValidShipFrom" class="select">
+      <mat-label>Postal number</mat-label>
+      <mat-select [formControl]="shipFromDepartmentControl" required>
+        <mat-option *ngFor="let department of shipFromValue.departments" [value]="department">
+          {{department}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="shipFromDepartmentControl.hasError('required')">Select Nova Poshta departmen</mat-error>
+    </mat-form-field>
+  </ng-container>
+
+  <br>
+  <mat-form-field appearance="fill" class="select">
+    <mat-label>Ship To</mat-label>
+    <mat-select [disabled]="!isValidShipFrom || !isValidShipFromDepartmentValue" [formControl]="shipToControl" required
+      (selectionChange)="shipToChange()">
+      <mat-option *ngFor="let region of regions" [value]="region">
+        {{region.region}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="shipToControl.hasError('required')">Please choose city</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" *ngIf="isValidShipTo" class="select">
+    <mat-label>Postal number</mat-label>
+    <mat-select [formControl]="shipToDepartmentControl" required>
+      <mat-option *ngFor="let department of shipToValue.departments" [value]="department">
+        {{department}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="shipToDepartmentControl.hasError('required')">Select Nova Poshta departmen</mat-error>
+  </mat-form-field>
+  <br>
+
+  <p style="text-decoration: underline">Total Value: {{shippingCost}} UAH</p>
+</div>

@@ -3,6 +3,10 @@ import { Order, OrderViewModels } from '../models/order';
 import { OrderService } from '../services/order.service';
 import { Observable } from 'rxjs';
 import { element } from 'protractor';
+import { MatDialog } from '@angular/material';
+import { OrderDialogComponent } from '../order-dialog/order-dialog.component';
+import { LoadService } from '../services/load.service';
+import { finalize, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-order',
@@ -12,18 +16,19 @@ import { element } from 'protractor';
 export class OrderComponent implements OnInit {
 
   searchModel: OrderViewModels;
-  dataModel : Order [] = [];
+  dataModel: Order[] = [];
 
-  constructor(private _orderService: OrderService) { }
+  constructor(
+    private orderService: OrderService,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.loadOrders()
-  }  
+    this.loadOrders();
+  }
 
   loadOrders(): void {
-    this._orderService.getAllOrders().subscribe(response => {
-      this.initialDataAfterSearch(response);
-    })
+    this.orderService.getAllOrders()
+    .subscribe(response => this.initialDataAfterSearch(response));
   }
 
   initialDataAfterSearch(data: OrderViewModels) {
@@ -31,11 +36,18 @@ export class OrderComponent implements OnInit {
     this.search();
   }
 
-  search() : void{
-    this.searchModel.orders.forEach((el:Order)=>{
-      console.log(el)
-      this.dataModel.push(el)
-    })
+  search(): void {
+    this.searchModel.orders.forEach((el: Order) => {
+      console.log(el);
+      this.dataModel.push(el);
+    });
+  }
+
+  shipping(order: Order) {
+    this.dialog.open(OrderDialogComponent, {
+      width: '850px',
+      data: {order}
+    });
   }
 
 }
