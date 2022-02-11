@@ -31,7 +31,7 @@
     "ng-shopping-cart": "^1.0.0",
     "ngx-stripe": "^7.6.0",
     "ngx-toastr": "^11.3.3",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "rxjs": "~6.4.0",
     "stripe-angular": "^1.7.0",
     "tslib": "^1.9.0",
